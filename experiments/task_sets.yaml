@@ -1,0 +1,22 @@
+# Task sets — placeholder pending baseline screening (spec §10).
+#
+# SMOKE  — 2 tasks × 1–2 episodes: cheap sanity check.
+# PILOT  — 12–18 tasks: pick-and-place, grasp/transport, relational,
+#          articulated, insertion, contact-rich, procedural, distractor.
+#          Populated after the initial screening run so we don't cherry-pick.
+# FULL   — all RoboLab-120 tasks; run only after a method survives PILOT.
+#
+# Task IDs must match the checked-out RoboLab task registry — do NOT hard-code
+# names before reading `third_party/RoboLab/policies/cosmos3/`.
+
+smoke:
+  tasks: []           # filled after Cosmos3 client registry inspection
+  episodes_per_task: 1
+
+pilot:
+  tasks: []
+  episodes_per_task: 5   # bumped to 20–30 for promoted configs
+
+full:
+  tasks: []              # populated from RoboLab-120 registry
+  episodes_per_task: null # use benchmark's standard protocol

@@ -1,0 +1,18 @@
+# Example per-machine config. Copy to `configs/machine.yaml` and edit.
+# `configs/machine.yaml` is gitignored so personal paths never get committed.
+paths:
+  hf_cache: "/scratch/<you>/cache/huggingface"
+  uv_cache: "/scratch/<you>/cache/uv"
+  model_cache: "/scratch/<you>/cache/models"
+  results_root: "/scratch/<you>/action-aware-refresh/results"
+
+env:
+  # HF_TOKEN must NOT be recorded in this file. Set it in your shell:
+  #   export HF_TOKEN=hf_...
+  # or run `uvx hf@latest auth login` once (writes to ~/.cache/huggingface).
+  hf_token_env: HF_TOKEN
+
+runtime:
+  # Native installation because no NVIDIA container toolkit is available.
+  container: false
+  python: "3.11"

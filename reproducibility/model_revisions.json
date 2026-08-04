@@ -1,0 +1,17 @@
+{
+  "note": "Populated when the model is first pulled. Locks HF revision SHAs.",
+  "models": {
+    "nvidia/Cosmos3-Nano-Policy-DROID": {
+      "revision": null,
+      "pulled_at_utc": null,
+      "expected_config": {
+        "policy_server_port_default": 8000,
+        "denoising_steps_default": 4,
+        "action_chunk_default": 32,
+        "conditioning_fps_default": 15,
+        "action_dim_default": 8,
+        "decode_video_default": false
+      }
+    }
+  }
+}

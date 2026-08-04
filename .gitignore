@@ -1,0 +1,67 @@
+# envs
+.venv/
+.venv-*/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.uv-cache/
+
+# secrets & tokens — never commit
+.env
+.env.*
+!.env.example
+*.token
+*.credentials
+hf_token*
+credentials.json
+secrets/
+
+# model weights & huggingface cache — always external
+models/
+weights/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+hf_cache/
+huggingface/
+.cache/huggingface/
+
+# generated videos & large media
+*.mp4
+*.mkv
+*.webm
+*.avi
+*.mov
+results/raw/**/*.mp4
+results/raw/**/*.mkv
+results/raw/**/*.parquet
+results/raw/**/*.npz
+results/profiles/**/*.qdrep
+results/profiles/**/*.nsys-rep
+results/profiles/**/*.json.gz
+
+# third-party checkouts — tracked via source_manifest.json, never re-committed here
+third_party/*/
+
+# tool byproducts
+*.log
+*.tmp
+dist/
+build/
+*.egg-info/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp

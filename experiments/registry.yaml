@@ -1,0 +1,47 @@
+# Experiment registry — skeleton.
+# Each entry names a method configuration. Real hypothesis/metrics/stop-criteria
+# are filled in when its milestone is executed. Runners must refuse duplicate
+# run_ids and record commit SHAs at launch time.
+
+baseline_full:
+  parent: null
+  hypothesis: "Official Cosmos3 baseline. Reference for all Pareto plots."
+  server_args:
+    denoising_steps: 4
+    decode_video: false
+  client_args:
+    open_loop_horizon: 32
+  metric: "task_success_vs_normalized_total_compute"
+  stop_criterion: "reference — never disabled"
+
+baseline_decode_video:
+  parent: baseline_full
+  hypothesis: "Same as baseline_full but decode video → measures VAE decode cost."
+  server_args: { denoising_steps: 4, decode_video: true }
+
+baseline_steps_1: { parent: baseline_full, server_args: { denoising_steps: 1, decode_video: false } }
+baseline_steps_2: { parent: baseline_full, server_args: { denoising_steps: 2, decode_video: false } }
+baseline_steps_3: { parent: baseline_full, server_args: { denoising_steps: 3, decode_video: false } }
+baseline_steps_4: { parent: baseline_full, server_args: { denoising_steps: 4, decode_video: false } }
+
+baseline_action_only: { parent: baseline_full, hypothesis: "Disable visual latent generation; keep action denoising." }
+
+baseline_fixed_horizon_8:  { parent: baseline_full, client_args: { open_loop_horizon: 8  } }
+baseline_fixed_horizon_16: { parent: baseline_full, client_args: { open_loop_horizon: 16 } }
+baseline_fixed_horizon_32: { parent: baseline_full, client_args: { open_loop_horizon: 32 } }
+
+# — later milestones —
+oracle_temporal:        { parent: baseline_full }
+event_threshold:        { parent: baseline_full }
+flow_threshold:         { parent: baseline_full }
+event_flow_fused:       { parent: baseline_full }
+learned_gate:           { parent: baseline_full }
+cache_uniform:          { parent: baseline_full }
+cache_teacache_style:   { parent: baseline_full }
+cache_physical_aware:   { parent: baseline_full }
+spatial_random:         { parent: baseline_full }
+spatial_oracle:         { parent: baseline_full }
+keyframe_fixed_refresh: { parent: baseline_full }
+keyframe_oracle_refresh:{ parent: baseline_full }
+keyframe_event_refresh: { parent: baseline_full }
+combined_best:          { parent: baseline_full }

@@ -1,0 +1,31 @@
+# Deployment topology for this host.
+# Derived from docs/environment_report.md. Adjust per machine.
+name: single_host_multi_gpu
+
+host: bwrc-bwell
+
+# GPU assignment. Both are RTX PRO 6000 Blackwell, 98 GB VRAM each.
+# The machine is currently shared — check nvidia-smi before running
+# measurement jobs and prefer the less-loaded GPU.
+gpus:
+  cosmos_server:
+    cuda_visible_devices: "0"
+    role: "policy server (Cosmos3-Nano-Policy-DROID)"
+  robolab_client:
+    cuda_visible_devices: "1"
+    role: "RoboLab / Isaac Sim"
+
+# Network — both services live on this host, talk over loopback.
+cosmos_host: "127.0.0.1"
+cosmos_port: 8000
+
+# Persistent caches — avoid re-downloading model weights and wheels.
+# HF cache is large (>100 GB potentially); keep it on /scratch.
+shared_hf_cache: "/scratch/agustin/robotics/coleman/cache/huggingface"
+uv_cache:        "/scratch/agustin/robotics/coleman/cache/uv"
+model_cache_root:"/scratch/agustin/robotics/coleman/cache/models"
+output_root:     "/scratch/agustin/robotics/coleman/action-aware-refresh/results"
+
+# Clock synchronization: single host, so all wall-times share the same clock.
+# For CUDA-event timing, use torch.cuda.Event.record()/.elapsed_time() and
+# synchronize only at controlled boundaries.

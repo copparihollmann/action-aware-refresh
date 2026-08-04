@@ -1,0 +1,77 @@
+{
+  "generated_utc": null,
+  "note": "Populated by scripts/clone_sources.sh. Never edit by hand — regenerate.",
+  "primary_sources": [
+    {
+      "name": "cosmos",
+      "url": "https://github.com/NVIDIA/cosmos",
+      "phase": "M0",
+      "local_path": "third_party/cosmos",
+      "branch": null,
+      "commit": null,
+      "dirty": null,
+      "license": null,
+      "research_branch": "research/action-aware-refresh"
+    },
+    {
+      "name": "cosmos-framework",
+      "url": "https://github.com/NVIDIA/cosmos-framework",
+      "phase": "M0",
+      "local_path": "third_party/cosmos-framework",
+      "branch": null,
+      "commit": null,
+      "dirty": null,
+      "license": null,
+      "research_branch": "research/action-aware-refresh"
+    },
+    {
+      "name": "RoboLab",
+      "url": "https://github.com/NVLabs/RoboLab",
+      "phase": "M0",
+      "local_path": "third_party/RoboLab",
+      "branch": null,
+      "commit": null,
+      "dirty": null,
+      "license": null,
+      "research_branch": "research/action-aware-refresh"
+    },
+    {
+      "name": "cosmos-policy",
+      "url": "https://github.com/NVlabs/cosmos-policy",
+      "phase": "M0",
+      "local_path": "third_party/cosmos-policy",
+      "branch": null,
+      "commit": null,
+      "dirty": null,
+      "license": null,
+      "research_branch": "research/action-aware-refresh"
+    },
+    {
+      "name": "openpi",
+      "url": "https://github.com/Physical-Intelligence/openpi",
+      "phase": "M9 (transfer validation)",
+      "local_path": "third_party/openpi",
+      "branch": null,
+      "commit": null,
+      "dirty": null,
+      "license": null,
+      "research_branch": "research/action-aware-refresh"
+    }
+  ],
+  "deferred_sources": [
+    {"name": "TeaCache", "url": "https://github.com/ali-vilab/TeaCache", "phase": "M5"},
+    {"name": "FasterCache", "url": "https://github.com/Vchitect/FasterCache", "phase": "M5"},
+    {"name": "DeepCache", "url": "https://github.com/horseee/DeepCache", "phase": "M5"},
+    {"name": "v2e", "url": "https://github.com/SensorsINI/v2e", "phase": "M4 (offline robustness only)"},
+    {"name": "rpg_esim", "url": "https://github.com/uzh-rpg/rpg_esim", "phase": "M4 (event proxy sim)"},
+    {"name": "RAFT (torchvision)", "url": "https://pytorch.org/vision/stable/models/raft.html", "phase": "M4 (via pypi, no clone)"}
+  ],
+  "external_references": [
+    {"name": "ImageWAM", "url": "https://arxiv.org/pdf/2606.19531"},
+    {"name": "FoveatedDiffusion", "url": "https://bchao1.github.io/foveated-diffusion/"},
+    {"name": "DeltaTok/DeltaWorld", "url": "https://deltatok.github.io/"},
+    {"name": "Fast-WAM", "url": "https://arxiv.org/abs/2603.16666"},
+    {"name": "Cosmos3-Nano-Policy-DROID card", "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID"},
+    {"name": "RoboLab project", "url": "https://research.nvidia.com/labs/srl/projects/robolab/"}
+  ]
+}
