@@ -20,6 +20,10 @@ hf_token*
 credentials.json
 secrets/
 
+# personal machine config — gitignored per README; only the example is tracked
+configs/machine.yaml
+configs/machine.local.yaml
+
 # model weights & huggingface cache — always external
 models/
 weights/
