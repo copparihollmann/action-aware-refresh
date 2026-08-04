@@ -5,7 +5,7 @@ description = "Action-Aware Predictive Refresh for Efficient World-Action Models
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = { text = "internal-research" }
-authors = [{ name = "Coleman Lab" }]
+authors = [{ name = "Agustin Nahuel Coppari Hollmann", email = "copparihollmann@gmail.com" }]
 
 dependencies = [
     "numpy>=1.26",
