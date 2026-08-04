@@ -29,6 +29,13 @@
 - Structured logging (`structlog`). Deterministic seeds where possible.
 - No hardcoded personal paths; use `configs/machine.yaml`.
 
+## Shared-machine rule (bwrc-bwell)
+Before running anything that touches the GPUs, downloads gigabytes, or
+takes more than a minute of wall-clock: check `nvidia-smi` for other users'
+processes and **ask** if the machine is busy. This host's GPUs are shared;
+observed contention on 2026-08-03. Prefer to scaffold here and execute on
+a quiet machine.
+
 ## Current phase
 M0–M2 (audit + baseline + compute anatomy). Do NOT start LoRA, RAFT, v2e, or
 spatial modifications until compute anatomy is done and user has approved next phase.

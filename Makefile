@@ -31,7 +31,7 @@ setup:
 	bash scripts/setup_robolab.sh
 
 test:
-	uv run pytest tests/unit
+	uv run --extra dev pytest tests/unit
 
 smoke:
 	bash scripts/smoke_test.sh
