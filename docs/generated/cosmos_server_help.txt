@@ -1,0 +1,89 @@
+# Captured 2026-08-04T02:19:02Z from third_party/cosmos-framework @ a904d2d36b774a51dd06ff9ff906816b1a04f579
+# command: python -m cosmos_framework.scripts.action_policy_server_robolab --help
+
+usage: /scratch/agustin/robotics/action-aware-refresh/third_party/cosmos-framework/cosmos_framework/scripts/action_policy_server_robolab.py [-h] [OPTIONS]
+
+WebSocket inference server for RoboLab/openpi-style Action policy serving.
+
+The server uses OpenPI's WebsocketPolicyServer and speaks its msgpack+NumPy protocol:
+
+
+- on connection, it sends an empty metadata dict;
+- each client message is an observation dict;
+- each response is a dict with ``action`` and, when enabled, ``video``.
+
+Example:
+
+
+  PYTHONPATH=. python -m cosmos_framework.scripts.action_policy_server_robolab     --checkpoint-path nvidia/Cosmos3-Nano-Policy-DROID     --port 8000
+
+╭─ options ────────────────────────────────────────────────────────────────────╮
+│ -h, --help               show this help message and exit                     │
+│ --checkpoint-path STR    Consolidated local safetensors checkpoint           │
+│                          directory, registered checkpoint name, or DCP path  │
+│                          with --allow-dcp-checkpoint. (default:              │
+│                          nvidia/Cosmos3-Nano-Policy-DROID)                   │
+│ --hf-revision STR        Hugging Face revision used when --checkpoint-path   │
+│                          is a supported public RoboLab policy repository.    │
+│                          (default: main)                                     │
+│ --allow-dcp-checkpoint, --no-allow-dcp-checkpoint                            │
+│                          If set, allow direct DCP/S3 checkpoint loading      │
+│                          instead of requiring a consolidated safetensors     │
+│                          export. (default: False)                            │
+│ --experiment {None}|STR  Experiment name for DCP checkpoints using module    │
+│                          configs, e.g. droid_lerobot_8b_policy. (default:    │
+│                          None)                                               │
+│ --experiment-overrides [STR [STR ...]]                                       │
+│                          Hydra experiment overrides forwarded to OmniSetup   │
+│                          for DCP checkpoint loading. (default: )             │
+│ --credential-path {None}|STR                                                 │
+│                          Optional checkpoint object-store credential path    │
+│                          for DCP/S3 loading. (default: None)                 │
+│ --port INT               WebSocket port to bind. (default: 8000)             │
+│ --host STR               WebSocket host to bind. (default: 0.0.0.0)          │
+│ --domain-name STR        Action domain name passed to get_domain_id().       │
+│                          (default: droid_lerobot)                            │
+│ --decode-video, --no-decode-video                                            │
+│                          If set, decode and return the predicted rollout     │
+│                          video as a uint8 NumPy array. (default: False)      │
+│ --output-dir {None}|PATH                                                     │
+│                          Output directory for OmniInference. Defaults to     │
+│                          /tmp/cosmos3_action_server/robolab. (default: None) │
+│ --sampler {unipc,edm}    Diffusion sampler used by OmniInference. (default:  │
+│                          unipc)                                              │
+│ --seed INT               Base generation seed used to initialize the request │
+│                          RNG. (default: 0)                                   │
+│ --deterministic-seed, --no-deterministic-seed                                │
+│                          Use the same seed for every request. If false,      │
+│                          advance a NumPy RNG seeded by --seed. (default:     │
+│                          False)                                              │
+│ --guidance FLOAT         Guidance scale for denoising. (default: 3.0)        │
+│ --num-steps INT          Number of denoising steps. (default: 4)             │
+│ --shift FLOAT            UniPC sampler shift. (default: 5.0)                 │
+│ --resolution {None}|STR  Action transform resolution. The default matches    │
+│                          the released DROID RoboLab policy. (default: 480)   │
+│ --conditioning-fps {None}|FLOAT                                              │
+│                          Conditioning FPS. The default matches the released  │
+│                          DROID RoboLab policy. (default: 15.0)               │
+│ --action-chunk-size {None}|INT                                               │
+│                          Number of action steps to predict. The default      │
+│                          matches the released DROID RoboLab policy.          │
+│                          (default: 32)                                       │
+│ --action-dim {None}|INT  Raw action dimension. The default matches the       │
+│                          released DROID RoboLab policy. (default: 8)         │
+│ --image-height INT       Input observation image height. The default matches │
+│                          the released DROID RoboLab policy. (default: 540)   │
+│ --image-width INT        Input observation image width. The default matches  │
+│                          the released DROID RoboLab policy. (default: 640)   │
+│ --action-space {joint_pos,midtrain}                                          │
+│                          RoboLab action representation to serve. (default:   │
+│                          joint_pos)                                          │
+│ --use-state, --no-use-state                                                  │
+│                          Whether the first action row contains the current   │
+│                          state. (default: True)                              │
+│ --history-length INT     State/history action rows to trim from the          │
+│                          generated action output. (default: 1)               │
+│ --format-prompt-as-json {None,True,False}                                    │
+│                          Serve prompts as structured JSON (matching training │
+│                          ``format_prompt_as_json``). (default: None)         │
+╰──────────────────────────────────────────────────────────────────────────────╯
