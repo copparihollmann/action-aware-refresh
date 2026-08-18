@@ -1417,3 +1417,50 @@ reproduces the recorded `tree` exactly — tested end-to-end on cosmos-framework
 now records `base_commit` and `tree` per source, and `scripts/bootstrap_new_machine.sh`
 rebuilds and verifies. The corpus (88 MB) stays out of git by the user's choice; the handover
 records that re-capturing it costs ~0.2 GPU-h and currently needs a GPU we cannot get.
+
+### Same day — two silent-wrong-value bugs closed (no GPU)
+
+Both were the same species: a value that looked derived and was in fact guessed, failing
+silently. Neither needed a GPU, which is why they were done while all four are occupied.
+
+**1. `make contract` (task #18, open since session 3).** It wrote
+`docs/baseline_contract.md` — 243 hand-verified lines carrying transport details, tensor
+shapes and the JSON-prompt finding — with a ~25-line regex derivation. Two independent
+faults:
+
+- *The clobber.* Default output is now `docs/generated/baseline_contract_derived.md`, and the
+  script refuses to overwrite any file that lacks its own generated-marker unless `--force`.
+  `--check` prints instead. Same guard class as the anatomy-overwrite fix in
+  `run_anatomy_sweep.sh`.
+- *The values were wrong, not merely coarse.* `port[^=]*=[^)\d]*(\d+)` uses a negated
+  character class, which **matches newlines** — so it caught the "port" inside `import`, ran
+  to the next `=` several lines below, and reported the server's default port as **3** against
+  a true **8000**. `num_steps` came out **5** against a true **4** the same way. The docstring
+  claimed "this script never guesses"; it guessed. Extraction is now anchored to the
+  declaration form (`^name: type = default`), resolves exactly one constant hop, and reports
+  UNKNOWN — counted on stderr, never silent — for anything it cannot resolve.
+- The client horizon was UNKNOWN because it is a **class attribute** in
+  `policies/cosmos3/client.py`, not an argparse default in `run.py`, which is the file the
+  script read.
+
+All 23 derived values now agree with the hand-verified contract (port 8000, 4 steps, chunk 32,
+fps 15.0, horizon 32, `decode_video=False`, both return paths present), with zero UNKNOWN. The
+derived file is now useful for what it can actually do: detect staleness. If it disagrees with
+the hand-verified document, one of the two is out of date and the source is the tie-breaker.
+
+**2. Vendor provenance drift.** `warm_start_vendor.locate()` took the commit from the
+manifest, which `make sources` refreshes by hand and therefore lags. Consequence, recorded
+when found: `results/reports/split_schedule*.json` were stamped with the pre-patch SHA while
+the code that actually ran was that commit **plus** `cei-0001`. It now reads live git and
+carries the manifest's value only when the two disagree (`vendor_manifest_stale`), mirroring
+`_git_state` in `action_refresh.config` — the same fix that was applied to substrates in this
+session's earlier work, in the one path that never received it. Also records `vendor_dirty`.
+
+A stale SHA is worse than no SHA, because it looks authoritative. That is the general rule
+both of these violate, and it is why each got regression tests rather than only a fix: 16 new
+tests, including one that asserts the real 243-line contract survives a default `make
+contract`. **133 passed, 2 skipped.**
+
+Not re-stamped: the existing split-schedule result rows still carry the manifest SHA they were
+written with. Rewriting a recorded result to look better is not a fix, and the correction is
+recorded here and in the session-4 report instead.
