@@ -35,6 +35,8 @@ tasksets:
 sources:
 	bash scripts/clone_sources.sh
 
+# Derives the served contract to docs/generated/ and refuses to touch the hand-verified
+# docs/baseline_contract.md. Disagreement between the two means one is stale.
 contract:
 	$(PY) scripts/derive_baseline_contract.py
 

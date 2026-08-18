@@ -53,15 +53,47 @@ class VendorProvenance:
     commit: str | None
     modules: tuple[str, ...]
     spdx: dict[str, str]
+    dirty: bool = False
+    manifest_commit: str | None = None
+
+    @property
+    def manifest_stale(self) -> bool:
+        """True when the manifest names a different commit than the tree actually holds."""
+        return bool(self.manifest_commit) and self.manifest_commit != self.commit
 
     def as_dict(self) -> dict[str, object]:
-        return {
+        d: dict[str, object] = {
             "vendor_source": self.source_name,
             "vendor_commit": self.commit,
+            "vendor_dirty": self.dirty,
             "vendor_sampler_dir": str(self.sampler_dir),
             "vendor_modules": list(self.modules),
             "vendor_spdx": self.spdx,
         }
+        # Only carried when it disagrees, so a normal row stays quiet and a drifting one
+        # cannot be mistaken for a normal one.
+        if self.manifest_stale:
+            d["vendor_manifest_commit"] = self.manifest_commit
+            d["vendor_manifest_stale"] = True
+        return d
+
+
+def _git_state(root: Path) -> tuple[str | None, bool]:
+    """Live HEAD and dirtiness of the clone, or (None, False) if git cannot answer."""
+    import subprocess  # noqa: PLC0415 - only needed on this path
+
+    def git(*args: str) -> str | None:
+        try:
+            r = subprocess.run(
+                ["git", *args], cwd=root, capture_output=True, text=True, check=False, timeout=15
+            )
+        except (OSError, subprocess.SubprocessError):
+            return None
+        return (r.stdout or "").strip() if r.returncode == 0 else None
+
+    head = git("rev-parse", "HEAD")
+    status = git("status", "--porcelain")
+    return head, bool(status)
 
 
 def _manifest_entry(repo_root: Path) -> dict:
@@ -104,13 +136,22 @@ def locate(repo_root: str | Path = ".") -> VendorProvenance:
         else:
             spdx[p.name] = "UNDECLARED"
 
+    # Live git, not the manifest. `make sources` is run by hand, so the manifest lags every
+    # commit made since — and it did: the split-schedule results were stamped with the
+    # pre-patch SHA while the code that actually ran was that commit PLUS cei-0001. A result
+    # carrying a stale SHA is worse than one carrying none, because it looks authoritative.
+    # This mirrors `_git_state` in action_refresh.config, which fixed the same bug for
+    # substrates; this path never received it.
+    commit, dirty = _git_state(root)
     return VendorProvenance(
         source_name=SOURCE_NAME,
         root=root,
         sampler_dir=sampler,
-        commit=entry.get("commit"),
+        commit=commit or entry.get("commit"),
         modules=modules,
         spdx=spdx,
+        dirty=dirty,
+        manifest_commit=entry.get("commit"),
     )
 
 
