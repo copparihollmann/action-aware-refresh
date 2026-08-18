@@ -1,0 +1,140 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "BlockStackingOrderAgnosticTask",
+    "episode": 0,
+    "variant": "ep1_seed1"
+  },
+  "key": "431b9b76f2bbe0e9",
+  "utc": "2026-08-04T19:54:17Z",
+  "elapsed_s": 604.381,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      37.328125,
+      35.56689453125,
+      36.3544921875
+    ],
+    "gpu_compute_apps": "2258224, ./.venv/bin/python, 32104 MiB\n2258324, ./.venv/bin/python, 32092 MiB\n2295830, ./.venv/bin/python, 8611 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.33000001311302185
+    ],
+    "steps": [
+      1350
+    ],
+    "total_steps": 1350,
+    "policy_calls": 43,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 194.828,
+    "env_step_s": 354.268,
+    "video_write_s": 0.0,
+    "wall_total_s": 549.095,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['red_block', 'blue_block', 'green_block'], order=None) (step 1/1)"
+    ],
+    "events": {
+      "GRIPPER_FULLY_CLOSED": 3,
+      "WRONG_OBJECT_GRABBED": 5,
+      "GRIPPER_HIT_OBJECT": 2,
+      "OBJECT_BUMPED": 2,
+      "GRIPPER_HIT_TABLE": 1,
+      "wrong_objects_grabbed": [
+        [
+          "yellow_block",
+          "yellow_block",
+          "yellow_block",
+          "yellow_block",
+          "blue_block"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 604.3,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_12-44-45_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlockStackingOrderAgnosticTask",
+        "task_name": "BlockStackingOrderAgnosticTask",
+        "run_name": "BlockStackingOrderAgnosticTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the blocks into a tower",
+        "attributes": [
+          "stacking",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1350,
+        "duration": 90.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.475938223490919,
+          "joint_sparc_mean": -7.478203285773127,
+          "ee_isj": 2974.618345373231,
+          "joint_isj": 26285.178437345872,
+          "ee_path_length": 5.521757355891637,
+          "joint_rmse_mean": 0.02265379521348956,
+          "ee_speed_max": 0.28004297614097595,
+          "ee_speed_mean": 0.06105579063296318
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 3,
+          "WRONG_OBJECT_GRABBED": 5,
+          "GRIPPER_HIT_OBJECT": 2,
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_TABLE": 1,
+          "wrong_objects_grabbed": [
+            "yellow_block",
+            "yellow_block",
+            "yellow_block",
+            "yellow_block",
+            "blue_block"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 194.828,
+          "policy_inference_avg_ms": 144.3,
+          "env_step_s": 354.268,
+          "env_step_avg_ms": 262.4,
+          "wall_total_s": 549.095,
+          "it_per_sec": 2.46
+        },
+        "score": 0.33000001311302185,
+        "reason": "No object completed. Best progress: stacked(objects=['red_block', 'blue_block', 'green_block'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

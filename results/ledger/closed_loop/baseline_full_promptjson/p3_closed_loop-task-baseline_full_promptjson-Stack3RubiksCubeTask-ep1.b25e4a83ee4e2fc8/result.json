@@ -1,0 +1,130 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full_promptjson",
+    "task": "Stack3RubiksCubeTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "b25e4a83ee4e2fc8",
+  "utc": "2026-08-04T21:26:19Z",
+  "elapsed_s": 412.006,
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      36.32177734375,
+      35.376953125,
+      34.14306640625
+    ],
+    "gpu_compute_apps": "2365575, ./.venv/bin/python, 32106 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.5
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 133.609,
+    "env_step_s": 219.064,
+    "video_write_s": 0.0,
+    "wall_total_s": 352.673,
+    "reasons": [
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+    ],
+    "events": {
+      "GRIPPER_HIT_OBJECT": 2,
+      "WRONG_OBJECT_GRABBED": 1,
+      "OBJECT_BUMPED": 2,
+      "wrong_objects_grabbed": [
+        [
+          "rubiks_cube"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 411.9,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_14-20-03_cosmos3",
+    "episodes": [
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.340310797519241,
+          "joint_sparc_mean": -10.686208534619492,
+          "ee_isj": 2645.040180284479,
+          "joint_isj": 27466.264013658212,
+          "ee_path_length": 2.948061555283176,
+          "joint_rmse_mean": 0.01690928517725437,
+          "ee_speed_max": 0.2280893474817276,
+          "ee_speed_mean": 0.05108002945780754
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 2,
+          "WRONG_OBJECT_GRABBED": 1,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 133.609,
+          "policy_inference_avg_ms": 148.5,
+          "env_step_s": 219.064,
+          "env_step_avg_ms": 243.4,
+          "wall_total_s": 352.673,
+          "it_per_sec": 2.55
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

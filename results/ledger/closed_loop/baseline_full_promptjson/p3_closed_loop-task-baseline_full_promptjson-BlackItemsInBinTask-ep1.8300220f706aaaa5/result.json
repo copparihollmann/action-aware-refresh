@@ -1,0 +1,125 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full_promptjson",
+    "task": "BlackItemsInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "8300220f706aaaa5",
+  "utc": "2026-08-04T22:30:30Z",
+  "elapsed_s": 1582.059,
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.12451171875,
+      33.66455078125,
+      33.9912109375
+    ],
+    "gpu_compute_apps": "2365575, ./.venv/bin/python, 32108 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.20000000298023224
+    ],
+    "steps": [
+      1800
+    ],
+    "total_steps": 1800,
+    "policy_calls": 57,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 265.566,
+    "env_step_s": 1237.391,
+    "video_write_s": 0.0,
+    "wall_total_s": 1502.957,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_in_container(object=glasses, container=grey_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+    ],
+    "events": {
+      "GRIPPER_HIT_OBJECT": 1,
+      "OBJECT_BUMPED": 2,
+      "GRIPPER_HIT_TABLE": 25,
+      "MULTIPLE_OBJECTS_GRABBED": 1
+    },
+    "wall_elapsed_s": 1582.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_15-05-02_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.242687650842659,
+          "joint_sparc_mean": -10.5754596556524,
+          "ee_isj": 4403.5652725302625,
+          "joint_isj": 137902.18063807662,
+          "ee_path_length": 5.289709094419255,
+          "joint_rmse_mean": 0.024664253126481368,
+          "ee_speed_max": 0.24609754979610443,
+          "ee_speed_mean": 0.048601653426885605
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 1,
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_TABLE": 25,
+          "MULTIPLE_OBJECTS_GRABBED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 265.566,
+          "policy_inference_avg_ms": 147.5,
+          "env_step_s": 1237.391,
+          "env_step_avg_ms": 687.4,
+          "wall_total_s": 1502.957,
+          "it_per_sec": 1.2
+        },
+        "score": 0.20000000298023224,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_in_container(object=glasses, container=grey_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+      }
+    ]
+  }
+}

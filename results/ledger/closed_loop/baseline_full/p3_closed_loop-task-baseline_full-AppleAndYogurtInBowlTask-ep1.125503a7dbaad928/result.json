@@ -1,0 +1,120 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "AppleAndYogurtInBowlTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "125503a7dbaad928",
+  "utc": "2026-08-04T12:43:46Z",
+  "elapsed_s": 1526.716,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      32.013671875,
+      33.0078125,
+      33.177734375
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.5
+    ],
+    "steps": [
+      1800
+    ],
+    "total_steps": 1800,
+    "policy_calls": 57,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 259.858,
+    "env_step_s": 1146.396,
+    "video_write_s": 0.0,
+    "wall_total_s": 1406.255,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=yogurt_cup) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 17,
+      "GRIPPER_FULLY_CLOSED": 4,
+      "GRIPPER_HIT_TABLE": 8
+    },
+    "wall_elapsed_s": 1526.7,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_05-19-00_cosmos3",
+    "episodes": [
+      {
+        "env_name": "AppleAndYogurtInBowlTask",
+        "task_name": "AppleAndYogurtInBowlTask",
+        "run_name": "AppleAndYogurtInBowlTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the apple and yogurt in the bowl",
+        "attributes": [
+          "affordance",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.467524342580392,
+          "joint_sparc_mean": -8.844167475611576,
+          "ee_isj": 4459.747396969367,
+          "joint_isj": 34320.895793430136,
+          "ee_path_length": 8.622695503027565,
+          "joint_rmse_mean": 0.020785932699950417,
+          "ee_speed_max": 0.3320448398590088,
+          "ee_speed_mean": 0.07174072414636612
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 17,
+          "GRIPPER_FULLY_CLOSED": 4,
+          "GRIPPER_HIT_TABLE": 8
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 259.858,
+          "policy_inference_avg_ms": 144.4,
+          "env_step_s": 1146.396,
+          "env_step_avg_ms": 636.9,
+          "wall_total_s": 1406.255,
+          "it_per_sec": 1.28
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: object_grabbed(object=yogurt_cup) (step 1/2)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "FruitsOnPlate3Task",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "cb7accb0cbb7817b",
+  "utc": "2026-08-04T09:59:55Z",
+  "elapsed_s": 3055.037,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      34.98583984375,
+      34.53173828125,
+      34.02392578125
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.6666666865348816
+    ],
+    "steps": [
+      3000
+    ],
+    "total_steps": 3000,
+    "policy_calls": 94,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 429.402,
+    "env_step_s": 2478.912,
+    "video_write_s": 0.0,
+    "wall_total_s": 2908.313,
+    "reasons": [
+      "Only 2/3 objects completed. Failed: object_grabbed(object=lemon_01) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 209,
+      "GRIPPER_HIT_TABLE": 2,
+      "GRIPPER_FULLY_CLOSED": 7,
+      "WRONG_OBJECT_GRABBED": 1,
+      "GRIPPER_HIT_OBJECT": 1,
+      "OBJECT_BUMPED": 3,
+      "wrong_objects_grabbed": [
+        [
+          "pumpkinlarge"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 3055.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_02-09-27_cosmos3",
+    "episodes": [
+      {
+        "env_name": "FruitsOnPlate3Task",
+        "task_name": "FruitsOnPlate3Task",
+        "run_name": "FruitsOnPlate3Task_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put three (3) fruits on the plate",
+        "attributes": [
+          "semantics",
+          "vague",
+          "counting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 3000,
+        "duration": 200.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.035772386712859,
+          "joint_sparc_mean": -12.991789472619315,
+          "ee_isj": 5066.479843090262,
+          "joint_isj": 90957.78076196948,
+          "ee_path_length": 9.40246346941376,
+          "joint_rmse_mean": 0.017977294689422513,
+          "ee_speed_max": 0.26685434579849243,
+          "ee_speed_mean": 0.047398269176483154
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 209,
+          "GRIPPER_HIT_TABLE": 2,
+          "GRIPPER_FULLY_CLOSED": 7,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "OBJECT_BUMPED": 3,
+          "wrong_objects_grabbed": [
+            "pumpkinlarge"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 429.402,
+          "policy_inference_avg_ms": 143.1,
+          "env_step_s": 2478.912,
+          "env_step_avg_ms": 826.3,
+          "wall_total_s": 2908.313,
+          "it_per_sec": 1.03
+        },
+        "score": 0.6666666865348816,
+        "reason": "Only 2/3 objects completed. Failed: object_grabbed(object=lemon_01) (step 1/2)"
+      }
+    ]
+  }
+}

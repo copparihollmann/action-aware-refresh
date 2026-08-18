@@ -1,0 +1,18 @@
+{
+  "method": "baseline_official",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32,
+      "num_envs": 10
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Closest runnable reproduction of the published 36.8% RoboLab-120 result: official defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 the baseline all methods should be compared against"
+  },
+  "horizon": 32
+}

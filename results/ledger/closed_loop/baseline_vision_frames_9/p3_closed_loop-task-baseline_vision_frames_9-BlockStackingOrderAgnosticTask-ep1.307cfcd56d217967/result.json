@@ -1,0 +1,114 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9",
+    "task": "BlockStackingOrderAgnosticTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "307cfcd56d217967",
+  "utc": "2026-08-04T16:46:08Z",
+  "elapsed_s": 515.174,
+  "method": "baseline_vision_frames_9",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Imagining 3 latent frames instead of 9 (1,020 vs 3,060 vision tokens) preserves task success. Tests whether the action needs a long imagined rollout or only a coherent one.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": ">2 absolute success points lost on the screened set"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      35.22265625,
+      36.14208984375,
+      36.07568359375
+    ],
+    "gpu_compute_apps": "2056446, ./.venv/bin/python, 32092 MiB\n2088197, ./.venv/bin/python, 31996 MiB\n2107427, ./.venv/bin/python, 8867 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      1350
+    ],
+    "total_steps": 1350,
+    "policy_calls": 43,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 92.557,
+    "env_step_s": 366.369,
+    "video_write_s": 0.0,
+    "wall_total_s": 458.926,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['red_block', 'blue_block'], order=None) (step 1/1)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 515.1,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_09-38-06_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlockStackingOrderAgnosticTask",
+        "task_name": "BlockStackingOrderAgnosticTask",
+        "run_name": "BlockStackingOrderAgnosticTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the blocks into a tower",
+        "attributes": [
+          "stacking",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1350,
+        "duration": 90.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -9.01374875759458,
+          "joint_sparc_mean": -13.072595946132921,
+          "ee_isj": 8121.658897901601,
+          "joint_isj": 65815.10436164995,
+          "ee_path_length": 7.338233055159215,
+          "joint_rmse_mean": 0.023419096050423145,
+          "ee_speed_max": 0.5364416241645813,
+          "ee_speed_mean": 0.08415345102548599
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 92.557,
+          "policy_inference_avg_ms": 68.6,
+          "env_step_s": 366.369,
+          "env_step_avg_ms": 271.4,
+          "wall_total_s": 458.926,
+          "it_per_sec": 2.94
+        },
+        "score": 0.0,
+        "reason": "No object completed. Best progress: stacked(objects=['red_block', 'blue_block'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

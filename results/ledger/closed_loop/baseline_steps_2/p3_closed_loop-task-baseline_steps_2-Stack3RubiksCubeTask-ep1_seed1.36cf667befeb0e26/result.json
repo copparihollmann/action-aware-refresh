@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_steps_2",
+    "task": "Stack3RubiksCubeTask",
+    "episode": 0,
+    "variant": "ep1_seed1"
+  },
+  "key": "36cf667befeb0e26",
+  "utc": "2026-08-04T19:31:34Z",
+  "elapsed_s": 366.569,
+  "method": "baseline_steps_2",
+  "config": {
+    "server_args": {
+      "denoising_steps": 2,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "2",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      36.38427734375,
+      39.9423828125,
+      39.65625
+    ],
+    "gpu_compute_apps": "2258224, ./.venv/bin/python, 32102 MiB\n2258324, ./.venv/bin/python, 32090 MiB\n2277989, ./.venv/bin/python, 8245 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 78.743,
+    "env_step_s": 218.626,
+    "video_write_s": 0.0,
+    "wall_total_s": 297.37,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)"
+    ],
+    "events": {
+      "GRIPPER_HIT_OBJECT": 1
+    },
+    "wall_elapsed_s": 366.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_12-26-13_cosmos3",
+    "episodes": [
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.8124607706819775,
+          "joint_sparc_mean": -6.988425782109616,
+          "ee_isj": 4026.5705225032675,
+          "joint_isj": 26557.957701035975,
+          "ee_path_length": 4.637251207664442,
+          "joint_rmse_mean": 0.02305971433195089,
+          "ee_speed_max": 0.20956654846668243,
+          "ee_speed_mean": 0.07799462974071503
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 78.743,
+          "policy_inference_avg_ms": 87.5,
+          "env_step_s": 218.626,
+          "env_step_avg_ms": 242.9,
+          "wall_total_s": 297.37,
+          "it_per_sec": 3.03
+        },
+        "score": 0.0,
+        "reason": "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

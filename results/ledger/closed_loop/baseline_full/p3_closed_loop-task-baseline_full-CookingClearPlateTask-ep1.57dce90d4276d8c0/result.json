@@ -1,0 +1,147 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "CookingClearPlateTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "57dce90d4276d8c0",
+  "utc": "2026-08-04T10:49:10Z",
+  "elapsed_s": 2608.075,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      35.0048828125,
+      34.96728515625,
+      34.35009765625
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.5
+    ],
+    "steps": [
+      2700
+    ],
+    "total_steps": 2700,
+    "policy_calls": 85,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 387.917,
+    "env_step_s": 2127.519,
+    "video_write_s": 0.0,
+    "wall_total_s": 2515.436,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=spoon_1) (step 1/2)"
+    ],
+    "events": {
+      "OBJECT_BUMPED": 11,
+      "WRONG_OBJECT_GRABBED": 8,
+      "GRIPPER_HIT_OBJECT": 4,
+      "GRIPPER_FULLY_CLOSED": 5,
+      "TARGET_OBJECT_DROPPED": 4,
+      "wrong_objects_grabbed": [
+        [
+          "green_serving_spoon",
+          "green_serving_spoon",
+          "green_serving_spoon",
+          "green_serving_spoon",
+          "green_serving_spoon",
+          "ladle",
+          "ladle",
+          "storage_box_01"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 2608.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_03-06-34_cosmos3",
+    "episodes": [
+      {
+        "env_name": "CookingClearPlateTask",
+        "task_name": "CookingClearPlateTask",
+        "run_name": "CookingClearPlateTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the two measuring cups outside of the plate",
+        "attributes": [
+          "color",
+          "sorting",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 2700,
+        "duration": 180.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.303755868173707,
+          "joint_sparc_mean": -8.697640292315072,
+          "ee_isj": 6287.068732060468,
+          "joint_isj": 88426.93319612551,
+          "ee_path_length": 12.498882327701027,
+          "joint_rmse_mean": 0.02966680880331143,
+          "ee_speed_max": 0.4298013746738434,
+          "ee_speed_mean": 0.069150410592556
+        },
+        "events": {
+          "OBJECT_BUMPED": 11,
+          "WRONG_OBJECT_GRABBED": 8,
+          "GRIPPER_HIT_OBJECT": 4,
+          "GRIPPER_FULLY_CLOSED": 5,
+          "TARGET_OBJECT_DROPPED": 4,
+          "wrong_objects_grabbed": [
+            "green_serving_spoon",
+            "green_serving_spoon",
+            "green_serving_spoon",
+            "green_serving_spoon",
+            "green_serving_spoon",
+            "ladle",
+            "ladle",
+            "storage_box_01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 387.917,
+          "policy_inference_avg_ms": 143.7,
+          "env_step_s": 2127.519,
+          "env_step_avg_ms": 788.0,
+          "wall_total_s": 2515.436,
+          "it_per_sec": 1.07
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: object_grabbed(object=spoon_1) (step 1/2)"
+      }
+    ]
+  }
+}

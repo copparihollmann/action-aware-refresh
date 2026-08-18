@@ -1,0 +1,161 @@
+{
+  "kind": "split_schedule_summary",
+  "n_records": 128,
+  "noise_floor_joint_l2_mean_median": 0.0,
+  "teacher_cuda_ms_median": 7180.82861328125,
+  "cells": [
+    {
+      "cell": "knfv_V1_A16",
+      "video_steps": 1,
+      "action_steps": 16,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 30400.609375,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 2.6975700798146804,
+      "joint_linf_max_median": 3.145657956600189,
+      "endpoint_joint_l2_median": 2.139648420688461,
+      "gripper_disagreement_rate_median": 0.1875,
+      "cosine_median": 0.049621403259310776,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "knfv_V1_A4",
+      "video_steps": 1,
+      "action_steps": 4,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 7270.904052734375,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 2.5109816269688343,
+      "joint_linf_max_median": 2.896201729774475,
+      "endpoint_joint_l2_median": 2.142349705236281,
+      "gripper_disagreement_rate_median": 0.109375,
+      "cosine_median": -0.03983279328593855,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "knfv_V1_A8",
+      "video_steps": 1,
+      "action_steps": 8,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 14954.767578125,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 2.612043099153584,
+      "joint_linf_max_median": 3.0054587721824646,
+      "endpoint_joint_l2_median": 2.116043801633184,
+      "gripper_disagreement_rate_median": 0.125,
+      "cosine_median": 0.015831974220550587,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "knfv_V2_A4",
+      "video_steps": 2,
+      "action_steps": 4,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 7445.6650390625,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 2.185114233402701,
+      "joint_linf_max_median": 2.461407244205475,
+      "endpoint_joint_l2_median": 1.8705252112622848,
+      "gripper_disagreement_rate_median": 0.125,
+      "cosine_median": -0.02602153663225592,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "knfv_V2_A8",
+      "video_steps": 2,
+      "action_steps": 8,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 15111.2265625,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 2.5002792756735643,
+      "joint_linf_max_median": 2.8618414998054504,
+      "endpoint_joint_l2_median": 1.9919940633188935,
+      "gripper_disagreement_rate_median": 0.125,
+      "cosine_median": 0.02363330900582531,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "knfv_V4_A4",
+      "video_steps": 4,
+      "action_steps": 4,
+      "n": 16,
+      "n_engaged": 16,
+      "cuda_ms_median": 7531.639404296875,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 0.04651377297083685,
+      "joint_linf_max_median": 0.06904900074005127,
+      "endpoint_joint_l2_median": 0.06220958896315339,
+      "gripper_disagreement_rate_median": 0.0,
+      "cosine_median": 0.4432785541335299,
+      "ratio_to_noise_floor": Infinity
+    },
+    {
+      "cell": "teacher_cold4",
+      "video_steps": 4,
+      "action_steps": 4,
+      "n": 16,
+      "n_engaged": 0,
+      "cuda_ms_median": 7180.82861328125,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": null,
+      "joint_linf_max_median": null,
+      "endpoint_joint_l2_median": null,
+      "gripper_disagreement_rate_median": null,
+      "cosine_median": null
+    },
+    {
+      "cell": "teacher_repeat",
+      "video_steps": 4,
+      "action_steps": 4,
+      "n": 16,
+      "n_engaged": 0,
+      "cuda_ms_median": 7268.5390625,
+      "all_finite": true,
+      "tasks": [
+        "BananaInBowlTask"
+      ],
+      "joint_l2_mean_median": 0.0,
+      "joint_linf_max_median": 0.0,
+      "endpoint_joint_l2_median": 0.0,
+      "gripper_disagreement_rate_median": 0.0,
+      "cosine_median": 1.0,
+      "ratio_to_noise_floor": 0.0
+    }
+  ],
+  "asymmetric_cells": 5,
+  "asymmetric_cells_collapsed": 5,
+  "verdict": "COLLAPSE",
+  "interpretation": "cosine ~0 means the emitted chunk is unrelated to the teacher's, not a degraded version of it. Read together with the noise floor: a ratio in the hundreds with near-zero cosine is the hard collapse their split_schedule.py docstring warns about for independent_action_schedule=False checkpoints, not graceful degradation.",
+  "provenance": {
+    "substrate": "upstream",
+    "commit": "f98f4d5c9e1eedb2dab731c96bcf978ae344d4f9",
+    "vendor_source": "cosmos3-efficient-imagination",
+    "vendor_commit": "ecb8de41cdb57c6e0ca8430f620d6beb741c084a"
+  }
+}

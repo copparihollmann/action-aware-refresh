@@ -1,0 +1,30 @@
+{
+  "strings": {
+    "prompt": "Stack the rubiks cubes in a tower"
+  },
+  "arrays": {
+    "observation/image": {
+      "shape": [
+        540,
+        640,
+        3
+      ],
+      "dtype": "uint8"
+    },
+    "observation/joint_position": {
+      "shape": [
+        7
+      ],
+      "dtype": "float32"
+    },
+    "observation/gripper_position": {
+      "shape": [
+        1
+      ],
+      "dtype": "float32"
+    }
+  },
+  "source": "Cosmos3Client._pack_request",
+  "policy_request_index": 7,
+  "task": "Stack3RubiksCubeTask"
+}

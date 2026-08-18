@@ -1,0 +1,24 @@
+{
+  "run_id": "cosmos-server-20260805T042526Z",
+  "timestamp_utc": "2026-08-05T04:25:26Z",
+  "checkpoint": "nvidia/Cosmos3-Nano-Policy-DROID",
+  "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+  "denoising_steps": 4,
+  "decode_video": false,
+  "port": 8010,
+  "cuda_visible_devices": "1",
+  "gpu_uuid": "GPU-a2a44f60-c7d1-4450-93df-ead875ea76e8",
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (nvidia/Cosmos-Guardrail1 is gated and access is denied); latencies EXCLUDE guardrail cost"
+  ],
+  "contention": {
+    "loadavg_1_5_15": [
+      35.5517578125,
+      34.908203125,
+      34.6630859375
+    ],
+    "gpu_compute_apps": "2614279, ./.venv/bin/python, 32104 MiB\n2830004, ./.venv/bin/python, 16816 MiB",
+    "top_cpu": "chrisdo+ 99.9 ccache\nchrisdo+ 99.9 gcc\nchrisdo+ 99.9 ccache\nchrisdo+ 99.9 gcc\nchrisdo+ 99.9 gcc"
+  }
+}

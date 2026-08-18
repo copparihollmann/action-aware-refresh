@@ -1,0 +1,22 @@
+{
+  "unit": {
+    "phase": "p1_offline",
+    "kind": "step",
+    "method": "analyze_offline",
+    "task": "",
+    "episode": 0,
+    "variant": ""
+  },
+  "key": "41004bf55932d18a",
+  "utc": "2026-08-04T08:28:57Z",
+  "elapsed_s": 0.969,
+  "result": {
+    "returncode": 0,
+    "elapsed_min": 0.02,
+    "log": "results/ledger/phases/p1_offline-step-analyze_offline.41004bf55932d18a/step.log",
+    "argv": [
+      "/scratch/agustin/robotics/action-aware-refresh/.venv/bin/python",
+      "scripts/analyze_offline_study.py"
+    ]
+  }
+}

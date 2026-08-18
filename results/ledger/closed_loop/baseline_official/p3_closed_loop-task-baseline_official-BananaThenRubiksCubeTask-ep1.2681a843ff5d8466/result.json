@@ -1,0 +1,596 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_official",
+    "task": "BananaThenRubiksCubeTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "2681a843ff5d8466",
+  "utc": "2026-08-05T01:04:44Z",
+  "elapsed_s": 1494.965,
+  "method": "baseline_official",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32,
+      "num_envs": 10
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Closest runnable reproduction of the published 36.8% RoboLab-120 result: official defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 the baseline all methods should be compared against"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32",
+    "ROBOLAB_ENVS": "10"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.72119140625,
+      33.3173828125,
+      32.8857421875
+    ],
+    "gpu_compute_apps": "2614279, ./.venv/bin/python, 32100 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 10,
+    "n_success": 7,
+    "success_rate": 0.7,
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      1.0,
+      1.0
+    ],
+    "steps": [
+      900,
+      458,
+      612,
+      610,
+      527,
+      900,
+      283,
+      900,
+      362,
+      348
+    ],
+    "total_steps": 5900,
+    "policy_calls": 191,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 11106.319999999998,
+    "env_step_s": 3384.4099999999994,
+    "video_write_s": 0.0,
+    "wall_total_s": 14490.730000000001,
+    "reasons": [
+      "Condition not satisfied: object_in_container(object=rubiks_cube, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)",
+      "Completed subtask 'pick_and_place' 2/2",
+      "Wrong object that was grabbed is now detached: 'rubiks_cube'",
+      "Wrong object that was grabbed is now detached: 'rubiks_cube'",
+      "Completed subtask 'pick_and_place' 2/2",
+      "Condition not satisfied: object_grabbed(object=rubiks_cube) (step 1/2)",
+      "Completed subtask 'pick_and_place' 2/2",
+      "Condition not satisfied: object_in_container(object=rubiks_cube, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)",
+      "Completed subtask 'pick_and_place' 2/2",
+      "Wrong object that was grabbed is now detached: 'rubiks_cube'"
+    ],
+    "events": {
+      "GRIPPER_FULLY_CLOSED": 8,
+      "TARGET_OBJECT_DROPPED": 46,
+      "WRONG_OBJECT_GRABBED": 13,
+      "GRIPPER_HIT_OBJECT": 7,
+      "OBJECT_BUMPED": 7,
+      "GRIPPER_HIT_TABLE": 2,
+      "wrong_objects_grabbed": [
+        [
+          "banana",
+          "banana",
+          "banana"
+        ],
+        [
+          "rubiks_cube"
+        ],
+        [
+          "banana",
+          "banana",
+          "banana",
+          "rubiks_cube"
+        ],
+        [
+          "banana"
+        ],
+        [
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 1494.9,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_17-40-12_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.84406359556297,
+          "joint_sparc_mean": -9.464766109598685,
+          "ee_isj": 1968.176610632673,
+          "joint_isj": 42285.6851290604,
+          "ee_path_length": 5.471822612254877,
+          "joint_rmse_mean": 0.027847868317084964,
+          "ee_speed_max": 0.2941242456436157,
+          "ee_speed_mean": 0.08725201338529587
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 2,
+          "TARGET_OBJECT_DROPPED": 2,
+          "WRONG_OBJECT_GRABBED": 3,
+          "GRIPPER_HIT_OBJECT": 1,
+          "OBJECT_BUMPED": 3,
+          "GRIPPER_HIT_TABLE": 2,
+          "wrong_objects_grabbed": [
+            "banana",
+            "banana",
+            "banana"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Condition not satisfied: object_in_container(object=rubiks_cube, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 1,
+        "env_id": 1,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 458,
+        "duration": 30.53333333333333,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.822762986360401,
+          "joint_sparc_mean": -6.476579756138993,
+          "ee_isj": 1011.7898024507876,
+          "joint_isj": 10061.884790764518,
+          "ee_path_length": 2.4668453948939053,
+          "joint_rmse_mean": 0.026747688241678894,
+          "ee_speed_max": 0.22490613162517548,
+          "ee_speed_mean": 0.07814675569534302
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 3,
+          "GRIPPER_HIT_OBJECT": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 2/2"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 2,
+        "env_id": 2,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 612,
+        "duration": 40.8,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.729612613195226,
+          "joint_sparc_mean": -6.729800460186262,
+          "ee_isj": 1239.522950911523,
+          "joint_isj": 11913.976620505198,
+          "ee_path_length": 3.312475398637901,
+          "joint_rmse_mean": 0.02433699065983316,
+          "ee_speed_max": 0.2954830825328827,
+          "ee_speed_mean": 0.07823427021503448
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 10,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Wrong object that was grabbed is now detached: 'rubiks_cube'"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 3,
+        "env_id": 3,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 610,
+        "duration": 40.666666666666664,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.6584468377178028,
+          "joint_sparc_mean": -7.1523596188565,
+          "ee_isj": 1307.7024025845062,
+          "joint_isj": 10829.988548807747,
+          "ee_path_length": 3.368464153022634,
+          "joint_rmse_mean": 0.024464044370649685,
+          "ee_speed_max": 0.2756863236427307,
+          "ee_speed_mean": 0.07995403558015823
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 4,
+          "OBJECT_BUMPED": 2,
+          "WRONG_OBJECT_GRABBED": 4,
+          "GRIPPER_HIT_OBJECT": 2,
+          "wrong_objects_grabbed": [
+            "banana",
+            "banana",
+            "banana",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Wrong object that was grabbed is now detached: 'rubiks_cube'"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 4,
+        "env_id": 4,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 527,
+        "duration": 35.13333333333333,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.587743532675453,
+          "joint_sparc_mean": -6.438301930397455,
+          "ee_isj": 1192.1416994078068,
+          "joint_isj": 9945.76467245258,
+          "ee_path_length": 2.592742867991963,
+          "joint_rmse_mean": 0.022790997512268096,
+          "ee_speed_max": 0.21738506853580475,
+          "ee_speed_mean": 0.07156059890985489
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 8,
+          "GRIPPER_FULLY_CLOSED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 2/2"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 5,
+        "env_id": 5,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.015528915266936,
+          "joint_sparc_mean": -6.467283605102392,
+          "ee_isj": 1724.1129384525148,
+          "joint_isj": 17554.122391349327,
+          "ee_path_length": 5.317068897733124,
+          "joint_rmse_mean": 0.0301028096978893,
+          "ee_speed_max": 0.3036469519138336,
+          "ee_speed_mean": 0.08615605533123016
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 4,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "wrong_objects_grabbed": [
+            "banana"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Condition not satisfied: object_grabbed(object=rubiks_cube) (step 1/2)"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 6,
+        "env_id": 6,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 283,
+        "duration": 18.866666666666667,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.8653878446289918,
+          "joint_sparc_mean": -5.926526574930667,
+          "ee_isj": 636.7807418341561,
+          "joint_isj": 4994.610028373097,
+          "ee_path_length": 1.5604880226867452,
+          "joint_rmse_mean": 0.023214329146357852,
+          "ee_speed_max": 0.24083450436592102,
+          "ee_speed_mean": 0.08049692213535309
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 3
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 2/2"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 7,
+        "env_id": 7,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.32019028889518,
+          "joint_sparc_mean": -6.164902492233191,
+          "ee_isj": 1925.4681742878347,
+          "joint_isj": 17955.049353056056,
+          "ee_path_length": 5.828871715611036,
+          "joint_rmse_mean": 0.027991884102016272,
+          "ee_speed_max": 0.5146443843841553,
+          "ee_speed_mean": 0.09398983418941498
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 6,
+          "GRIPPER_FULLY_CLOSED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: object_in_container(object=rubiks_cube, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 8,
+        "env_id": 8,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 362,
+        "duration": 24.133333333333333,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.515186842438893,
+          "joint_sparc_mean": -6.900191407181985,
+          "ee_isj": 684.4817866154439,
+          "joint_isj": 6736.260124722998,
+          "ee_path_length": 1.9282233011344359,
+          "joint_rmse_mean": 0.02448915600513419,
+          "ee_speed_max": 0.2790437936782837,
+          "ee_speed_mean": 0.07655365765094757
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 3
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 2/2"
+      },
+      {
+        "env_name": "BananaThenRubiksCubeTask",
+        "task_name": "BananaThenRubiksCubeTask",
+        "run_name": "BananaThenRubiksCubeTask_0",
+        "run": 0,
+        "episode": 9,
+        "env_id": 9,
+        "policy": "cosmos3",
+        "instruction": "put the banana then the cube in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 348,
+        "duration": 23.2,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.2909357272742796,
+          "joint_sparc_mean": -6.711234605640951,
+          "ee_isj": 658.7460864192409,
+          "joint_isj": 5633.136507784691,
+          "ee_path_length": 1.7322841211619437,
+          "joint_rmse_mean": 0.02226943890632529,
+          "ee_speed_max": 0.2405085563659668,
+          "ee_speed_mean": 0.07282784581184387
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 3,
+          "WRONG_OBJECT_GRABBED": 4,
+          "GRIPPER_HIT_OBJECT": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1110.632,
+          "policy_inference_avg_ms": 1234.0,
+          "env_step_s": 338.441,
+          "env_step_avg_ms": 376.0,
+          "wall_total_s": 1449.073,
+          "it_per_sec": 0.62
+        },
+        "score": 1.0,
+        "reason": "Wrong object that was grabbed is now detached: 'rubiks_cube'"
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9",
+    "task": "BowlStackingLeftOnRightTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "283a93335fad64ff",
+  "utc": "2026-08-04T16:05:45Z",
+  "elapsed_s": 276.07,
+  "method": "baseline_vision_frames_9",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Imagining 3 latent frames instead of 9 (1,020 vs 3,060 vision tokens) preserves task success. Tests whether the action needs a long imagined rollout or only a coherent one.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": ">2 absolute success points lost on the screened set"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.1162109375,
+      33.4658203125,
+      33.5087890625
+    ],
+    "gpu_compute_apps": "2056446, ./.venv/bin/python, 32092 MiB\n2088197, ./.venv/bin/python, 31136 MiB\n2084543, ./.venv/bin/python, 8547 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      300
+    ],
+    "total_steps": 300,
+    "policy_calls": 10,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 35.827,
+    "env_step_s": 60.64,
+    "video_write_s": 0.0,
+    "wall_total_s": 96.467,
+    "reasons": [
+      "Condition not satisfied: object_in_container(object=['bowl_2'], container=bowl_1, gripper_name=gripper, require_contact_with=True, require_gripper_detached=True) (step 1/1)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 276.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_09-03-30_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BowlStackingLeftOnRightTask",
+        "task_name": "BowlStackingLeftOnRightTask",
+        "run_name": "BowlStackingLeftOnRightTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the left bowl on the right bowl",
+        "attributes": [
+          "spatial",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 300,
+        "duration": 20.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -8.121283596312928,
+          "joint_sparc_mean": -9.987857297932797,
+          "ee_isj": 1436.1138060557164,
+          "joint_isj": 15453.701044697771,
+          "ee_path_length": 1.4575274184906033,
+          "joint_rmse_mean": 0.02294452810592996,
+          "ee_speed_max": 0.35723820328712463,
+          "ee_speed_mean": 0.07368478178977966
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 35.827,
+          "policy_inference_avg_ms": 119.4,
+          "env_step_s": 60.64,
+          "env_step_avg_ms": 202.1,
+          "wall_total_s": 96.467,
+          "it_per_sec": 3.11
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_in_container(object=['bowl_2'], container=bowl_1, gripper_name=gripper, require_contact_with=True, require_gripper_detached=True) (step 1/1)"
+      }
+    ]
+  }
+}

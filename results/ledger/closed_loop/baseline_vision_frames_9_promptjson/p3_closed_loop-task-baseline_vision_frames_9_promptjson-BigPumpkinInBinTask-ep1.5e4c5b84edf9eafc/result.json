@@ -1,0 +1,122 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "BigPumpkinInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "5e4c5b84edf9eafc",
+  "utc": "2026-08-04T23:46:45Z",
+  "elapsed_s": 935.063,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      36.0810546875,
+      35.8076171875,
+      34.6982421875
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32004 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 60.35,
+    "env_step_s": 811.529,
+    "video_write_s": 0.0,
+    "wall_total_s": 871.879,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+    ],
+    "events": {
+      "OBJECT_BUMPED": 1,
+      "GRIPPER_HIT_OBJECT": 1
+    },
+    "wall_elapsed_s": 935.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_16-31-48_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.5684359362750575,
+          "joint_sparc_mean": -11.43666924798245,
+          "ee_isj": 5981.324171605236,
+          "joint_isj": 46665.3632981735,
+          "ee_path_length": 4.537253274399243,
+          "joint_rmse_mean": 0.021623381352009235,
+          "ee_speed_max": 0.4305807650089264,
+          "ee_speed_mean": 0.08091705292463303
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 60.35,
+          "policy_inference_avg_ms": 67.1,
+          "env_step_s": 811.529,
+          "env_step_avg_ms": 901.7,
+          "wall_total_s": 871.879,
+          "it_per_sec": 1.03
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      }
+    ]
+  }
+}

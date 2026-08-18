@@ -1,0 +1,130 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "BowlStackingLeftOnRightTask",
+    "episode": 0,
+    "variant": "ep1_seed1"
+  },
+  "key": "68fbba2210f8a67b",
+  "utc": "2026-08-04T19:08:25Z",
+  "elapsed_s": 137.636,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.001953125,
+      32.67724609375,
+      33.2958984375
+    ],
+    "gpu_compute_apps": "2258224, ./.venv/bin/python, 31136 MiB\n2258324, ./.venv/bin/python, 31136 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      171
+    ],
+    "total_steps": 171,
+    "policy_calls": 6,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 39.123,
+    "env_step_s": 36.485,
+    "video_write_s": 0.0,
+    "wall_total_s": 75.608,
+    "reasons": [
+      "Completed subtask 'stack_bowl_left_on_right' 1/1"
+    ],
+    "events": {
+      "GRIPPER_FULLY_CLOSED": 1,
+      "WRONG_OBJECT_GRABBED": 1,
+      "GRIPPER_HIT_OBJECT": 1,
+      "OBJECT_BUMPED": 1,
+      "wrong_objects_grabbed": [
+        [
+          "bowl_2"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 137.6,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_12-06-48_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BowlStackingLeftOnRightTask",
+        "task_name": "BowlStackingLeftOnRightTask",
+        "run_name": "BowlStackingLeftOnRightTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the left bowl on the right bowl",
+        "attributes": [
+          "spatial",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 171,
+        "duration": 11.4,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -2.65677414468624,
+          "joint_sparc_mean": -4.565365658719896,
+          "ee_isj": 256.10248624825607,
+          "joint_isj": 6866.277851738312,
+          "ee_path_length": 0.8569983577575483,
+          "joint_rmse_mean": 0.019588496306867795,
+          "ee_speed_max": 0.16297559440135956,
+          "ee_speed_mean": 0.07097353786230087
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "bowl_2"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 39.123,
+          "policy_inference_avg_ms": 228.8,
+          "env_step_s": 36.485,
+          "env_step_avg_ms": 213.4,
+          "wall_total_s": 75.608,
+          "it_per_sec": 2.26
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'stack_bowl_left_on_right' 1/1"
+      }
+    ]
+  }
+}

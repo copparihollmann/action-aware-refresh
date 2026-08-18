@@ -1,0 +1,19 @@
+{
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "horizon": 32
+}

@@ -1,0 +1,118 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9",
+    "task": "BigPumpkinInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "9223a39d0177a36b",
+  "utc": "2026-08-04T17:02:05Z",
+  "elapsed_s": 956.581,
+  "method": "baseline_vision_frames_9",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Imagining 3 latent frames instead of 9 (1,020 vs 3,060 vision tokens) preserves task success. Tests whether the action needs a long imagined rollout or only a coherent one.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": ">2 absolute success points lost on the screened set"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.9423828125,
+      34.5849609375,
+      35.25830078125
+    ],
+    "gpu_compute_apps": "2126959, ./.venv/bin/python, 31136 MiB\n2088197, ./.venv/bin/python, 31996 MiB\n2127598, ./.venv/bin/python, 2249 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 62.812,
+    "env_step_s": 829.687,
+    "video_write_s": 0.0,
+    "wall_total_s": 892.499,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+    ],
+    "events": {
+      "OBJECT_BUMPED": 1
+    },
+    "wall_elapsed_s": 956.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_09-46-41_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -8.143688781500696,
+          "joint_sparc_mean": -10.848635515300233,
+          "ee_isj": 6375.228566489557,
+          "joint_isj": 47706.24243848142,
+          "ee_path_length": 5.760590764858145,
+          "joint_rmse_mean": 0.02667972776968646,
+          "ee_speed_max": 0.5694319009780884,
+          "ee_speed_mean": 0.09775260090827942
+        },
+        "events": {
+          "OBJECT_BUMPED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 62.812,
+          "policy_inference_avg_ms": 69.8,
+          "env_step_s": 829.687,
+          "env_step_avg_ms": 921.9,
+          "wall_total_s": 892.499,
+          "it_per_sec": 1.01
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      }
+    ]
+  }
+}

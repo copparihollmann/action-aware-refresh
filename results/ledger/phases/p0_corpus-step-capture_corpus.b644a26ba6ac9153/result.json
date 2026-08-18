@@ -1,0 +1,22 @@
+{
+  "unit": {
+    "phase": "p0_corpus",
+    "kind": "step",
+    "method": "capture_corpus",
+    "task": "",
+    "episode": 0,
+    "variant": ""
+  },
+  "key": "b644a26ba6ac9153",
+  "utc": "2026-08-04T06:54:58Z",
+  "elapsed_s": 0.043,
+  "result": {
+    "returncode": 0,
+    "elapsed_min": 0.0,
+    "log": "results/ledger/phases/p0_corpus-step-capture_corpus.b644a26ba6ac9153/step.log",
+    "argv": [
+      "bash",
+      "scripts/capture_corpus.sh"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "unit": {
+    "phase": "p1_p2_offline",
+    "kind": "action_chunk",
+    "method": "no_imagination_freeze",
+    "task": "BananaInBowlTask_req0011",
+    "episode": 0,
+    "variant": "steps4_seed0_freeze"
+  },
+  "key": "e7f0539b279a5daa",
+  "utc": "2026-08-04T08:05:04Z",
+  "elapsed_s": 8.081,
+  "env": {
+    "python": "3.13.14",
+    "torch": "2.10.0+cu130",
+    "gpu_name": "NVIDIA L40S",
+    "model_load_s": 20.872921939007938,
+    "hf_home": "/scratch/agustin/robotics/cache/huggingface",
+    "guardrails": false,
+    "deviations_from_official": [
+      "guardrails disabled (nvidia/Cosmos-Guardrail1 gated); excludes guardrail cost"
+    ]
+  },
+  "condition": "no_imagination_freeze",
+  "overrides": {
+    "num_steps": 4,
+    "seed": 0,
+    "action_only": "freeze",
+    "experiment": "E1/E2a"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      34.10595703125,
+      32.8642578125,
+      32.78515625
+    ],
+    "gpu_compute_apps": "1508674, /scratch/agustin/robotics/action-aware-refresh/third_party/cosmos-framework/.venv/bin/python, 32102 MiB"
+  },
+  "result": {
+    "wall_ms": 8027.867812,
+    "cuda_ms": 8027.72900390625,
+    "action_shape": [
+      32,
+      8
+    ],
+    "action_finite": true,
+    "peak_reserved_mib": 31576.0,
+    "num_steps": 4,
+    "seed": 0,
+    "vision_frames": null,
+    "intervention": {
+      "mode": "freeze",
+      "calls": 4,
+      "vision_shapes": [
+        [
+          1,
+          48,
+          9,
+          33,
+          40
+        ]
+      ],
+      "latent_frames": [
+        9
+      ]
+    },
+    "action_path": "results/ledger/offline_study/p1_p2_offline-action_chunk-no_imagination_freeze-BananaInBowlTask_req0011-steps4_seed0_freeze.e7f0539b279a5daa/action.npy",
+    "corpus_path": "results/raw/corpus/BananaInBowlTask/captured_request_BananaInBowlTask_req0011.npz",
+    "experiment": "E1/E2a"
+  }
+}

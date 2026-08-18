@@ -1,0 +1,757 @@
+{
+  "baseline": "baseline_full",
+  "rows": [
+    {
+      "method": "baseline_fixed_horizon_8",
+      "n_tasks": 8,
+      "n_episodes": 8,
+      "success_rate": 0.125,
+      "baseline_success_rate_on_shared": 0.4375,
+      "success_points_vs_baseline": -31.25,
+      "policy_s_per_call": 4.863686516853933,
+      "baseline_policy_s_per_call": 4.610162679425837,
+      "normalized_per_call": 1.0549923842296323,
+      "normalized_compute_macro": 4.888561594744926,
+      "normalized_compute_micro": 4.492551301264941,
+      "normalized_calls_macro": 4.823450365125385,
+      "policy_inference_s": 4328.6810000000005,
+      "policy_calls": 890,
+      "total_steps": 7090,
+      "env_step_s": 2482.3399999999997,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 599.907,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 900,
+          "policy_calls": 113
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 423.705,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 900,
+          "policy_calls": 113
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 868.261,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 1350,
+          "policy_calls": 169
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 907.303,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 1350,
+          "policy_calls": 169
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 157.073,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 300,
+          "policy_calls": 38
+        },
+        "ReorientJugTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 496.215,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 900,
+          "policy_calls": 113
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 294.402,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 490,
+          "policy_calls": 62
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 581.815,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 900,
+          "policy_calls": 113
+        }
+      }
+    },
+    {
+      "method": "baseline_full",
+      "n_tasks": 15,
+      "n_episodes": 24,
+      "success_rate": 0.2916666666666667,
+      "baseline_success_rate_on_shared": 0.2916666666666667,
+      "success_points_vs_baseline": 0.0,
+      "policy_s_per_call": 4.577617886178864,
+      "baseline_policy_s_per_call": 4.577617886178864,
+      "normalized_per_call": 1.0,
+      "normalized_compute_macro": 1.0,
+      "normalized_compute_micro": 1.0,
+      "normalized_calls_macro": 1.0,
+      "policy_inference_s": 3846.637,
+      "policy_calls": 1107,
+      "total_steps": 34932,
+      "env_step_s": 22158.836000000003,
+      "per_task": {
+        "AppleAndYogurtInBowlTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 259.858,
+          "baseline_policy_inference_s": 259.858,
+          "steps": 1800,
+          "policy_calls": 57
+        },
+        "BananaThenRubiksCubeTask": {
+          "success": 2,
+          "episodes": 2,
+          "baseline_success": 2,
+          "policy_inference_s": 123.632,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 844,
+          "policy_calls": 27
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 262.985,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 1800,
+          "policy_calls": 58
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 514.524,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 3600,
+          "policy_calls": 114
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 403.879,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 2700,
+          "policy_calls": 86
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 390.894,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 2700,
+          "policy_calls": 86
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 2,
+          "episodes": 2,
+          "baseline_success": 2,
+          "policy_inference_s": 66.89099999999999,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 344,
+          "policy_calls": 12
+        },
+        "ClearOrganicObjectsTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 512.598,
+          "baseline_policy_inference_s": 512.598,
+          "steps": 3600,
+          "policy_calls": 113
+        },
+        "ClutterPlasticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 392.38,
+          "baseline_policy_inference_s": 392.38,
+          "steps": 2700,
+          "policy_calls": 85
+        },
+        "CookingClearPlateTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 387.917,
+          "baseline_policy_inference_s": 387.917,
+          "steps": 2700,
+          "policy_calls": 85
+        },
+        "FruitsOnPlate3Task": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 429.402,
+          "baseline_policy_inference_s": 429.402,
+          "steps": 3000,
+          "policy_calls": 94
+        },
+        "FruitsOnPlateTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 643.696,
+          "baseline_policy_inference_s": 643.696,
+          "steps": 4500,
+          "policy_calls": 141
+        },
+        "ReorientJugTask": {
+          "success": 1,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 177.389,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 1191,
+          "policy_calls": 39
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 1,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 245.832,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 1695,
+          "policy_calls": 54
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 1,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 255.546,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 1758,
+          "policy_calls": 56
+        }
+      }
+    },
+    {
+      "method": "baseline_full_promptjson",
+      "n_tasks": 9,
+      "n_episodes": 9,
+      "success_rate": 0.3333333333333333,
+      "baseline_success_rate_on_shared": 0.3888888888888889,
+      "success_points_vs_baseline": -5.555555555555558,
+      "policy_s_per_call": 4.66429213483146,
+      "baseline_policy_s_per_call": 4.589421052631578,
+      "normalized_per_call": 1.0163138403169505,
+      "normalized_compute_macro": 1.0991621772104831,
+      "normalized_compute_micro": 1.0201345690399466,
+      "normalized_calls_macro": 1.0683873739429295,
+      "policy_inference_s": 1245.366,
+      "policy_calls": 267,
+      "total_steps": 8358,
+      "env_step_s": 3615.496,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 68.682,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 477,
+          "policy_calls": 15
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 130.613,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 265.566,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 1800,
+          "policy_calls": 57
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 197.137,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 199.605,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 57.843,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 286,
+          "policy_calls": 9
+        },
+        "ReorientJugTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 133.35,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 58.961,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 395,
+          "policy_calls": 13
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 133.609,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 900,
+          "policy_calls": 29
+        }
+      }
+    },
+    {
+      "method": "baseline_steps_1",
+      "n_tasks": 9,
+      "n_episodes": 9,
+      "success_rate": 0.2222222222222222,
+      "baseline_success_rate_on_shared": 0.3888888888888889,
+      "success_points_vs_baseline": -16.666666666666668,
+      "policy_s_per_call": 2.266849816849817,
+      "baseline_policy_s_per_call": 4.589421052631578,
+      "normalized_per_call": 0.49392936295309037,
+      "normalized_compute_macro": 0.5702238842605251,
+      "normalized_compute_micro": 0.5069275040834349,
+      "normalized_calls_macro": 1.1397707231040566,
+      "policy_inference_s": 618.85,
+      "policy_calls": 273,
+      "total_steps": 8521,
+      "env_step_s": 3526.4180000000006,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 64.148,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 64.975,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 126.468,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 1800,
+          "policy_calls": 57
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 97.688,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 94.917,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 31.239,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 300,
+          "policy_calls": 10
+        },
+        "ReorientJugTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 28.802,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 398,
+          "policy_calls": 13
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 1,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 47.581,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 623,
+          "policy_calls": 20
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 63.032,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 900,
+          "policy_calls": 29
+        }
+      }
+    },
+    {
+      "method": "baseline_steps_2",
+      "n_tasks": 9,
+      "n_episodes": 18,
+      "success_rate": 0.2777777777777778,
+      "baseline_success_rate_on_shared": 0.3888888888888889,
+      "success_points_vs_baseline": -11.11111111111111,
+      "policy_s_per_call": 2.6498531598513013,
+      "baseline_policy_s_per_call": 4.589421052631578,
+      "normalized_per_call": 0.5773828832575458,
+      "normalized_compute_macro": 0.6680917757448134,
+      "normalized_compute_micro": 0.5838947202867661,
+      "normalized_calls_macro": 1.1202583663823975,
+      "policy_inference_s": 712.8105,
+      "policy_calls": 538,
+      "total_steps": 16766,
+      "env_step_s": 7256.472999999999,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 2,
+          "episodes": 2,
+          "baseline_success": 2,
+          "policy_inference_s": 99.429,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 1217,
+          "policy_calls": 39
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 151.633,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 1800,
+          "policy_calls": 58
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 286.163,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 3600,
+          "policy_calls": 114
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 1,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 185.098,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 2247,
+          "policy_calls": 72
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 0,
+          "policy_inference_s": 223.414,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 2700,
+          "policy_calls": 86
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 2,
+          "policy_inference_s": 80.00800000000001,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 600,
+          "policy_calls": 20
+        },
+        "ReorientJugTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 157.66,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 1800,
+          "policy_calls": 58
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 2,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 85.867,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 1002,
+          "policy_calls": 33
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 2,
+          "baseline_success": 1,
+          "policy_inference_s": 156.349,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 1800,
+          "policy_calls": 58
+        }
+      }
+    },
+    {
+      "method": "baseline_vision_frames_9",
+      "n_tasks": 9,
+      "n_episodes": 9,
+      "success_rate": 0.0,
+      "baseline_success_rate_on_shared": 0.3888888888888889,
+      "success_points_vs_baseline": -38.88888888888889,
+      "policy_s_per_call": 2.2278724832214767,
+      "baseline_policy_s_per_call": 4.589421052631578,
+      "normalized_per_call": 0.4854364979094722,
+      "normalized_compute_macro": 0.6310220320025179,
+      "normalized_compute_micro": 0.5438348735978297,
+      "normalized_calls_macro": 1.2679758513091848,
+      "policy_inference_s": 663.9060000000001,
+      "policy_calls": 298,
+      "total_steps": 9300,
+      "env_step_s": 3710.257,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 60.113,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 62.812,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 122.369,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 1800,
+          "policy_calls": 57
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 92.557,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 102.401,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 35.827,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 300,
+          "policy_calls": 10
+        },
+        "ReorientJugTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 61.008,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 63.209,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 63.61,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 900,
+          "policy_calls": 29
+        }
+      }
+    },
+    {
+      "method": "baseline_vision_frames_9_promptjson",
+      "n_tasks": 9,
+      "n_episodes": 9,
+      "success_rate": 0.0,
+      "baseline_success_rate_on_shared": 0.3888888888888889,
+      "success_points_vs_baseline": -38.88888888888889,
+      "policy_s_per_call": 2.1537449664429533,
+      "baseline_policy_s_per_call": 4.589421052631578,
+      "normalized_per_call": 0.46928467485196074,
+      "normalized_compute_macro": 0.6121440637434626,
+      "normalized_compute_micro": 0.5257399740822717,
+      "normalized_calls_macro": 1.2679758513091848,
+      "policy_inference_s": 641.816,
+      "policy_calls": 298,
+      "total_steps": 9300,
+      "env_step_s": 3654.587,
+      "per_task": {
+        "BananaThenRubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 62.327,
+          "baseline_policy_inference_s": 123.632,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BigPumpkinInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 60.35,
+          "baseline_policy_inference_s": 262.985,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "BlackItemsInBinTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 120.362,
+          "baseline_policy_inference_s": 514.524,
+          "steps": 1800,
+          "policy_calls": 57
+        },
+        "BlockStackingOrderAgnosticTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 91.143,
+          "baseline_policy_inference_s": 403.879,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BlockStackingSpecifiedOrderTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 0,
+          "policy_inference_s": 91.143,
+          "baseline_policy_inference_s": 390.894,
+          "steps": 1350,
+          "policy_calls": 43
+        },
+        "BowlStackingLeftOnRightTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 2,
+          "policy_inference_s": 33.094,
+          "baseline_policy_inference_s": 66.89099999999999,
+          "steps": 300,
+          "policy_calls": 10
+        },
+        "ReorientJugTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 61.694,
+          "baseline_policy_inference_s": 177.389,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "RubiksCubeAndBananaTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 61.369,
+          "baseline_policy_inference_s": 245.832,
+          "steps": 900,
+          "policy_calls": 29
+        },
+        "Stack3RubiksCubeTask": {
+          "success": 0,
+          "episodes": 1,
+          "baseline_success": 1,
+          "policy_inference_s": 60.334,
+          "baseline_policy_inference_s": 255.546,
+          "steps": 900,
+          "policy_calls": 29
+        }
+      }
+    }
+  ]
+}

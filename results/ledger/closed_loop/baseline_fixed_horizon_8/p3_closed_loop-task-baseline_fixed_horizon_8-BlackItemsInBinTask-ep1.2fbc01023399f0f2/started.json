@@ -1,0 +1,12 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_fixed_horizon_8",
+    "task": "BlackItemsInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "pid": 2126951,
+  "utc": "2026-08-04T18:46:34Z"
+}

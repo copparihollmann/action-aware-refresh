@@ -1,0 +1,118 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "ClearOrganicObjectsTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "7d7b54098cac6984",
+  "utc": "2026-08-04T15:05:21Z",
+  "elapsed_s": 3931.277,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.81591796875,
+      33.564453125,
+      33.31640625
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      3600
+    ],
+    "total_steps": 3600,
+    "policy_calls": 113,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 512.598,
+    "env_step_s": 3363.364,
+    "video_write_s": 0.0,
+    "wall_total_s": 3875.962,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=lemon_01) (step 1/2); object_grabbed(object=lemon_02) (step 1/2); object_grabbed(object=lime01) (step 1/2); object_grabbed(object=lime01_01) (step 1/2); object_grabbed(object=orange_01) (step 1/2); object_grabbed(object=orange_02) (step 1/2); object_in_container(object=pomegranate01, container=right_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2); object_grabbed(object=pumpkinlarge) (step 1/2); object_grabbed(object=pumpkinsmall) (step 1/2); object_grabbed(object=red_onion) (step 1/2); object_grabbed(object=avocado01) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 154,
+      "GRIPPER_FULLY_CLOSED": 5
+    },
+    "wall_elapsed_s": 3931.2,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_07-00-19_cosmos3",
+    "episodes": [
+      {
+        "env_name": "ClearOrganicObjectsTask",
+        "task_name": "ClearOrganicObjectsTask",
+        "run_name": "ClearOrganicObjectsTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Clear away the organic objects",
+        "attributes": [
+          "semantics",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 3600,
+        "duration": 240.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.4460399378488304,
+          "joint_sparc_mean": -10.257239890379747,
+          "ee_isj": 7071.020847548023,
+          "joint_isj": 94866.25206027905,
+          "ee_path_length": 12.286995158240352,
+          "joint_rmse_mean": 0.01841127670129191,
+          "ee_speed_max": 0.37946149706840515,
+          "ee_speed_mean": 0.05194178968667984
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 154,
+          "GRIPPER_FULLY_CLOSED": 5
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 512.598,
+          "policy_inference_avg_ms": 142.4,
+          "env_step_s": 3363.364,
+          "env_step_avg_ms": 934.3,
+          "wall_total_s": 3875.962,
+          "it_per_sec": 0.93
+        },
+        "score": 0.0,
+        "reason": "Conditions not satisfied: object_grabbed(object=lemon_01) (step 1/2); object_grabbed(object=lemon_02) (step 1/2); object_grabbed(object=lime01) (step 1/2); object_grabbed(object=lime01_01) (step 1/2); object_grabbed(object=orange_01) (step 1/2); object_grabbed(object=orange_02) (step 1/2); object_in_container(object=pomegranate01, container=right_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2); object_grabbed(object=pumpkinlarge) (step 1/2); object_grabbed(object=pumpkinsmall) (step 1/2); object_grabbed(object=red_onion) (step 1/2); object_grabbed(object=avocado01) (step 1/2)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "BananaInBowlTask",
+    "episode": 0,
+    "variant": "ep1_seed7"
+  },
+  "key": "00692b31ab7b19d7",
+  "utc": "2026-08-05T00:27:52Z",
+  "elapsed_s": 144.924,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      31.9853515625,
+      31.74365234375,
+      32.251953125
+    ],
+    "gpu_compute_apps": "2606740, ./.venv/bin/python, 31136 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      187
+    ],
+    "total_steps": 187,
+    "policy_calls": 6,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 39.314,
+    "env_step_s": 39.759,
+    "video_write_s": 0.0,
+    "wall_total_s": 79.072,
+    "reasons": [
+      "Completed subtask 'pick_and_place' 1/1"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 2
+    },
+    "wall_elapsed_s": 144.9,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_17-26-09_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BananaInBowlTask",
+        "task_name": "BananaInBowlTask",
+        "run_name": "BananaInBowlTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Pick up the banana and place it in the bowl",
+        "attributes": [
+          "semantics",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 187,
+        "duration": 12.466666666666667,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.758604643226797,
+          "joint_sparc_mean": -4.420605547111082,
+          "ee_isj": 547.4357641344695,
+          "joint_isj": 7022.618411566891,
+          "ee_path_length": 0.972162280311144,
+          "joint_rmse_mean": 0.026792699528474972,
+          "ee_speed_max": 0.23612016439437866,
+          "ee_speed_mean": 0.07677797973155975
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 2
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 39.314,
+          "policy_inference_avg_ms": 210.2,
+          "env_step_s": 39.759,
+          "env_step_avg_ms": 212.6,
+          "wall_total_s": 79.072,
+          "it_per_sec": 2.36
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 1/1"
+      }
+    ]
+  }
+}

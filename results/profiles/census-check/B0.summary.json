@@ -1,0 +1,153 @@
+{
+  "env": {
+    "run_id": "anatomy-20260804T060948Z",
+    "timestamp_utc": "2026-08-04T06:09:48Z",
+    "python": "3.13.14",
+    "torch": "2.10.0+cu130",
+    "torch_cuda": "13.0",
+    "gpu": {
+      "gpu_name": "NVIDIA L40S",
+      "capability": "89",
+      "cuda_visible_devices": "0",
+      "gpu_uuid": "GPU-a2a44f60-c7d1-4450-93df-ead875ea76e8",
+      "loadavg_1_5_15": [
+        30.3798828125,
+        30.224609375,
+        30.44384765625
+      ],
+      "gpu_compute_apps": "",
+      "top_cpu": "coppari+  300 ps\ncoppari+  254 python\nchrisdo+  101 cc1plus\nchrisdo+ 99.9 gcc\nchrisdo+ 99.9 c++"
+    },
+    "attention": {
+      "arch_tag": 89,
+      "backend_list": [
+        "flash2",
+        "cudnn",
+        "natten"
+      ]
+    },
+    "cosmos_framework_sha": "7b2228018e80416959915aa8443bb17584450388",
+    "warmup": 1,
+    "iters": 2,
+    "input_kind": "REAL captured request (/scratch/agustin/robotics/action-aware-refresh/results/raw/captured_request_BananaInBowlTask.npz)",
+    "guardrails_enabled": false,
+    "deviations": [
+      "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+    ]
+  },
+  "configs": [
+    {
+      "config": "B0",
+      "overrides": {
+        "checkpoint_path": "nvidia/Cosmos3-Nano-Policy-DROID",
+        "hf_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+        "deterministic_seed": true,
+        "guardrails": false,
+        "num_steps": 4,
+        "decode_video": false
+      },
+      "num_steps": 4,
+      "decode_video": false,
+      "model_load_s": 23.07313683349639,
+      "vram_after_load_mib": {
+        "allocated": 30284.6005859375,
+        "reserved": 30306.0
+      },
+      "vram_peak_mib": {
+        "allocated": 30934.08642578125,
+        "reserved": 31052.0
+      },
+      "input_kind": "REAL captured request from captured_request_BananaInBowlTask.npz (image 540x640x3:uint8, prompt 'Pick up the banana and place it in the bowl')",
+      "token_census": {
+        "sequence_length": 3188,
+        "split_lens": [
+          95,
+          3093
+        ],
+        "attn_modes": [
+          "causal",
+          "full"
+        ],
+        "sample_lens": [
+          3188
+        ],
+        "text_tokens": 95,
+        "num_action_tokens_per_supertoken": 0,
+        "null_action_supertokens": false,
+        "vision": {
+          "tokens_total": 3060,
+          "frames_conditioning": 1,
+          "frames_noised": 8,
+          "token_shapes": [
+            [
+              9,
+              17,
+              20
+            ]
+          ],
+          "mse_supervised_tokens": 2720,
+          "tokens_per_frame": [
+            340
+          ],
+          "tokens_conditioning": 340,
+          "tokens_noised": 2720
+        },
+        "action": {
+          "tokens_total": 33,
+          "frames_conditioning": 1,
+          "frames_noised": 32,
+          "token_shapes": [
+            [
+              33
+            ]
+          ],
+          "mse_supervised_tokens": 32,
+          "tokens_per_frame": [
+            1
+          ],
+          "tokens_conditioning": 1,
+          "tokens_noised": 32
+        },
+        "sound": null,
+        "attributed_tokens": 3188,
+        "unattributed_tokens": 0,
+        "imagined_fraction_of_sequence": 0.8531994981179423
+      },
+      "token_census_error": null,
+      "wall_ms": {
+        "n": 2,
+        "mean": 3417.3181585,
+        "std": 5.473504996664407,
+        "min": 3413.447806,
+        "p50": 3417.3181585,
+        "p95": 3420.80147575,
+        "max": 3421.188511
+      },
+      "module_ms_mean": {
+        "sampler": 3216.1500244140625,
+        "net": 3196.4129638671875,
+        "net.language_model": 3176.494094848633
+      },
+      "module_call_shapes": {
+        "net.language_model": [
+          "position_ids=(3, 3188)",
+          "position_ids=(3, 3103)",
+          "position_ids=(3, 3188)"
+        ]
+      },
+      "flops": {
+        "counted_total": 347129877393920,
+        "by_op": {
+          "aten.mm": 345190749437952,
+          "aten.convolution": 1859284000768,
+          "aten.addmm": 73299656704,
+          "aten._scaled_dot_product_efficient_attention": 6262005760,
+          "aten.bmm": 282292736
+        },
+        "note": "FlopCounterMode counts only ops it recognises. Fused attention (flash-attn / cudnn fmha) is opaque to it, so this is a LOWER BOUND, not the true total. Compare against the analytic attention estimate and report coverage."
+      },
+      "chrome_trace": "/scratch/agustin/robotics/action-aware-refresh/results/profiles/census-check/B0.chrome_trace.json",
+      "records": "/scratch/agustin/robotics/action-aware-refresh/results/profiles/census-check/B0.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "env": {
+    "run_id": "anatomy-20260804T052331Z",
+    "timestamp_utc": "2026-08-04T05:23:31Z",
+    "python": "3.13.14",
+    "torch": "2.10.0+cu130",
+    "torch_cuda": "13.0",
+    "gpu": {
+      "gpu_name": "NVIDIA L40S",
+      "capability": "89",
+      "cuda_visible_devices": "0",
+      "gpu_uuid": "GPU-a2a44f60-c7d1-4450-93df-ead875ea76e8",
+      "loadavg_1_5_15": [
+        27.12744140625,
+        28.361328125,
+        29.39013671875
+      ],
+      "gpu_compute_apps": "1301072, /scratch/kris/KernelBlasterRelease/third_party/stitchcuda/.venv/bin/python, 604 MiB",
+      "top_cpu": "coppari+  259 python\nchrisdo+  199 python\nchrisdo+ 99.6 nvcc\nchrisdo+ 99.6 nvcc\nchrisdo+ 99.6 c++"
+    },
+    "attention": {
+      "arch_tag": 89,
+      "backend_list": [
+        "flash2",
+        "cudnn",
+        "natten"
+      ]
+    },
+    "cosmos_framework_sha": "7b2228018e80416959915aa8443bb17584450388",
+    "warmup": 3,
+    "iters": 10,
+    "input_kind": "REAL captured request (/scratch/agustin/robotics/action-aware-refresh/results/raw/captured_request_BananaInBowlTask.npz)",
+    "guardrails_enabled": false,
+    "deviations": [
+      "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+    ]
+  },
+  "configs": [
+    {
+      "config": "B0",
+      "overrides": {
+        "checkpoint_path": "nvidia/Cosmos3-Nano-Policy-DROID",
+        "hf_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+        "deterministic_seed": true,
+        "guardrails": false,
+        "num_steps": 4,
+        "decode_video": false
+      },
+      "num_steps": 4,
+      "decode_video": false,
+      "model_load_s": 21.070175147615373,
+      "vram_after_load_mib": {
+        "allocated": 30284.6005859375,
+        "reserved": 30306.0
+      },
+      "vram_peak_mib": {
+        "allocated": 30931.904296875,
+        "reserved": 31052.0
+      },
+      "input_kind": "REAL captured request from captured_request_BananaInBowlTask.npz (image 540x640x3:uint8, prompt 'Pick up the banana and place it in the bowl')",
+      "wall_ms": {
+        "n": 10,
+        "mean": 3722.3338433999998,
+        "std": 213.75478100581518,
+        "min": 3438.238798,
+        "p50": 3783.155863,
+        "p95": 3967.6522127,
+        "max": 3970.722704
+      },
+      "module_ms_mean": {
+        "sampler": 3523.50302734375,
+        "net": 3502.4096343994142,
+        "net.language_model": 3484.3957427978517
+      },
+      "module_call_shapes": {
+        "net.language_model": [
+          "position_ids=(3, 3188)",
+          "position_ids=(3, 3103)",
+          "position_ids=(3, 3188)"
+        ]
+      },
+      "flops": {
+        "counted_total": 347129877393920,
+        "by_op": {
+          "aten.mm": 345190749437952,
+          "aten.convolution": 1859284000768,
+          "aten.addmm": 73299656704,
+          "aten._scaled_dot_product_efficient_attention": 6262005760,
+          "aten.bmm": 282292736
+        },
+        "note": "FlopCounterMode counts only ops it recognises. Fused attention (flash-attn / cudnn fmha) is opaque to it, so this is a LOWER BOUND, not the true total. Compare against the analytic attention estimate and report coverage."
+      },
+      "chrome_trace": "/scratch/agustin/robotics/action-aware-refresh/results/profiles/m2-anatomy-real/B0.chrome_trace.json",
+      "records": "/scratch/agustin/robotics/action-aware-refresh/results/profiles/m2-anatomy-real/B0.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "RubiksCubeAndBananaTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "e8ab80dd27e20b14",
+  "utc": "2026-08-04T23:09:12Z",
+  "elapsed_s": 304.791,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      38.474609375,
+      35.54248046875,
+      34.05517578125
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32002 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 61.369,
+    "env_step_s": 198.939,
+    "video_write_s": 0.0,
+    "wall_total_s": 260.308,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=rubiks_cube) (step 1/2); object_grabbed(object=banana) (step 1/2)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 304.7,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_16-04-32_cosmos3",
+    "episodes": [
+      {
+        "env_name": "RubiksCubeAndBananaTask",
+        "task_name": "RubiksCubeAndBananaTask",
+        "run_name": "RubiksCubeAndBananaTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the cube and the banana in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.531415735483671,
+          "joint_sparc_mean": -11.459175968473712,
+          "ee_isj": 5837.5156886226905,
+          "joint_isj": 54700.39015596469,
+          "ee_path_length": 4.228465531643811,
+          "joint_rmse_mean": 0.025138871623614865,
+          "ee_speed_max": 0.3460339903831482,
+          "ee_speed_mean": 0.0753101035952568
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 61.369,
+          "policy_inference_avg_ms": 68.2,
+          "env_step_s": 198.939,
+          "env_step_avg_ms": 221.0,
+          "wall_total_s": 260.308,
+          "it_per_sec": 3.46
+        },
+        "score": 0.0,
+        "reason": "Conditions not satisfied: object_grabbed(object=rubiks_cube) (step 1/2); object_grabbed(object=banana) (step 1/2)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "BlackItemsInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "f3034a796e37b967",
+  "utc": "2026-08-04T13:10:16Z",
+  "elapsed_s": 1463.512,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      32.9765625,
+      33.46142578125,
+      33.2958984375
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.4000000059604645
+    ],
+    "steps": [
+      1800
+    ],
+    "total_steps": 1800,
+    "policy_calls": 57,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 254.777,
+    "env_step_s": 1130.424,
+    "video_write_s": 0.0,
+    "wall_total_s": 1385.201,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 10,
+      "GRIPPER_HIT_TABLE": 7
+    },
+    "wall_elapsed_s": 1463.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_05-46-29_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.508160034213438,
+          "joint_sparc_mean": -8.865172755956822,
+          "ee_isj": 4051.5085604760907,
+          "joint_isj": 78320.17781390989,
+          "ee_path_length": 7.231085100682773,
+          "joint_rmse_mean": 0.023495056122330573,
+          "ee_speed_max": 0.4486820101737976,
+          "ee_speed_mean": 0.06080086529254913
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 10,
+          "GRIPPER_HIT_TABLE": 7
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 254.777,
+          "policy_inference_avg_ms": 141.5,
+          "env_step_s": 1130.424,
+          "env_step_avg_ms": 628.0,
+          "wall_total_s": 1385.201,
+          "it_per_sec": 1.3
+        },
+        "score": 0.4000000059604645,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+      }
+    ]
+  }
+}

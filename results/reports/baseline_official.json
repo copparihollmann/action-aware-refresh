@@ -1,0 +1,200 @@
+{
+ "method": "baseline_official",
+ "utc_completed": "2026-08-05T06:27:39Z",
+ "protocol": {
+  "num_envs": 10,
+  "episodes_per_task": 10,
+  "denoising_steps": 4,
+  "open_loop_horizon": 32,
+  "decode_video": false,
+  "guardrails": false,
+  "video_mode": "none",
+  "task_set": "screened_9"
+ },
+ "deviations_from_official": [
+  "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+ ],
+ "aggregate": {
+  "n_tasks": 9,
+  "n_episodes": 90,
+  "n_success": 28,
+  "success_rate": 0.3111111111111111,
+  "mean_task_score": 0.502000003721979,
+  "wall_gpu_h": 5.950495277777778,
+  "policy_calls": 2661,
+  "control_steps": 83155
+ },
+ "per_task": {
+  "BananaThenRubiksCubeTask": {
+   "n_success": 7,
+   "mean_score": 0.95,
+   "policy_calls": 191,
+   "total_steps": 5900,
+   "elapsed_s": 1494.965,
+   "scores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.5,
+    1.0,
+    1.0
+   ]
+  },
+  "BigPumpkinInBinTask": {
+   "n_success": 0,
+   "mean_score": 0.0,
+   "policy_calls": 290,
+   "total_steps": 9000,
+   "elapsed_s": 2456.245,
+   "scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "BlackItemsInBinTask": {
+   "n_success": 0,
+   "mean_score": 0.4400000125169754,
+   "policy_calls": 570,
+   "total_steps": 18000,
+   "elapsed_s": 4605.221,
+   "scores": [
+    0.20000000298023224,
+    0.4000000059604645,
+    0.4000000059604645,
+    0.6000000238418579,
+    0.4000000059604645,
+    0.6000000238418579,
+    0.6000000238418579,
+    0.20000000298023224,
+    0.4000000059604645,
+    0.6000000238418579
+   ]
+  },
+  "BlockStackingOrderAgnosticTask": {
+   "n_success": 0,
+   "mean_score": 0.4950000196695328,
+   "policy_calls": 430,
+   "total_steps": 13500,
+   "elapsed_s": 3435.507,
+   "scores": [
+    0.33000001311302185,
+    0.6600000262260437,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.6600000262260437,
+    0.33000001311302185,
+    0.33000001311302185,
+    0.6600000262260437,
+    0.6600000262260437,
+    0.6600000262260437
+   ]
+  },
+  "BlockStackingSpecifiedOrderTask": {
+   "n_success": 0,
+   "mean_score": 0.033000001311302186,
+   "policy_calls": 430,
+   "total_steps": 13500,
+   "elapsed_s": 3414.662,
+   "scores": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.33000001311302185,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "BowlStackingLeftOnRightTask": {
+   "n_success": 6,
+   "mean_score": 0.6,
+   "policy_calls": 76,
+   "total_steps": 2264,
+   "elapsed_s": 551.821,
+   "scores": [
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "ReorientJugTask": {
+   "n_success": 4,
+   "mean_score": 0.5,
+   "policy_calls": 241,
+   "total_steps": 7488,
+   "elapsed_s": 1903.018,
+   "scores": [
+    0.0,
+    1.0,
+    1.0,
+    0.5,
+    0.0,
+    1.0,
+    0.5,
+    0.0,
+    1.0,
+    0.0
+   ]
+  },
+  "RubiksCubeAndBananaTask": {
+   "n_success": 10,
+   "mean_score": 1.0,
+   "policy_calls": 145,
+   "total_steps": 4569,
+   "elapsed_s": 1262.822,
+   "scores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "Stack3RubiksCubeTask": {
+   "n_success": 1,
+   "mean_score": 0.5,
+   "policy_calls": 288,
+   "total_steps": 8934,
+   "elapsed_s": 2297.522,
+   "scores": [
+    0.0,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    1.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "horizon": 32
+}

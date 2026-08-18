@@ -1,0 +1,138 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_steps_1",
+    "task": "BigPumpkinInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "a25c122f3f88c0a7",
+  "utc": "2026-08-04T16:22:18Z",
+  "elapsed_s": 975.119,
+  "method": "baseline_steps_1",
+  "config": {
+    "server_args": {
+      "denoising_steps": 1,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "1",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      35.6337890625,
+      37.22216796875,
+      35.42431640625
+    ],
+    "gpu_compute_apps": "2056446, ./.venv/bin/python, 32092 MiB\n2088197, ./.venv/bin/python, 31996 MiB\n2093221, ./.venv/bin/python, 893 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 64.975,
+    "env_step_s": 844.073,
+    "video_write_s": 0.0,
+    "wall_total_s": 909.048,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+    ],
+    "events": {
+      "OBJECT_BUMPED": 7,
+      "GRIPPER_HIT_OBJECT": 5,
+      "GRIPPER_FULLY_CLOSED": 2,
+      "TARGET_OBJECT_DROPPED": 1,
+      "GRIPPER_HIT_TABLE": 1,
+      "WRONG_OBJECT_GRABBED": 3,
+      "wrong_objects_grabbed": [
+        [
+          "lime01",
+          "lime01",
+          "orange_01"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 975.1,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_09-06-39_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.6053699842286604,
+          "joint_sparc_mean": -10.32862648284175,
+          "ee_isj": 5888.093605131711,
+          "joint_isj": 101579.8799198267,
+          "ee_path_length": 6.579255508182099,
+          "joint_rmse_mean": 0.030884261034688505,
+          "ee_speed_max": 0.6408000588417053,
+          "ee_speed_mean": 0.10987033694982529
+        },
+        "events": {
+          "OBJECT_BUMPED": 7,
+          "GRIPPER_HIT_OBJECT": 5,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "TARGET_OBJECT_DROPPED": 1,
+          "GRIPPER_HIT_TABLE": 1,
+          "WRONG_OBJECT_GRABBED": 3,
+          "wrong_objects_grabbed": [
+            "lime01",
+            "lime01",
+            "orange_01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 64.975,
+          "policy_inference_avg_ms": 72.2,
+          "env_step_s": 844.073,
+          "env_step_avg_ms": 937.9,
+          "wall_total_s": 909.048,
+          "it_per_sec": 0.99
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      }
+    ]
+  }
+}

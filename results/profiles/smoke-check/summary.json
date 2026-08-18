@@ -1,0 +1,96 @@
+{
+  "env": {
+    "run_id": "anatomy-20260804T023622Z",
+    "timestamp_utc": "2026-08-04T02:36:22Z",
+    "python": "3.13.14",
+    "torch": "2.10.0+cu130",
+    "torch_cuda": "13.0",
+    "gpu": {
+      "gpu_name": "NVIDIA L40S",
+      "capability": "89",
+      "cuda_visible_devices": "0",
+      "gpu_uuid": "GPU-a2a44f60-c7d1-4450-93df-ead875ea76e8",
+      "loadavg_1_5_15": [
+        52.86376953125,
+        57.17626953125,
+        53.4736328125
+      ],
+      "gpu_compute_apps": "925156, /scratch/kris/KernelBlasterRelease/third_party/stitchcuda/.venv/bin/python, 5208 MiB",
+      "top_cpu": "coppari+  400 ps\nchrisdo+  303 python\ncoppari+  176 python\nchrisdo+  142 cc1plus\nchrisdo+  112 python"
+    },
+    "attention": {
+      "arch_tag": 89,
+      "backend_list": [
+        "flash2",
+        "cudnn",
+        "natten"
+      ]
+    },
+    "cosmos_framework_sha": "7b2228018e80416959915aa8443bb17584450388",
+    "warmup": 1,
+    "iters": 3,
+    "input_kind": "SYNTHETIC deterministic observation (seed 12345)",
+    "guardrails_enabled": false,
+    "deviations": [
+      "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+    ]
+  },
+  "configs": [
+    {
+      "config": "B0",
+      "overrides": {
+        "checkpoint_path": "nvidia/Cosmos3-Nano-Policy-DROID",
+        "hf_revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+        "deterministic_seed": true,
+        "guardrails": false,
+        "num_steps": 4,
+        "decode_video": false
+      },
+      "num_steps": 4,
+      "decode_video": false,
+      "model_load_s": 38.528392784297466,
+      "vram_after_load_mib": {
+        "allocated": 30291.5576171875,
+        "reserved": 30642.0
+      },
+      "vram_peak_mib": {
+        "allocated": 30941.64697265625,
+        "reserved": 31578.0
+      },
+      "wall_ms": {
+        "n": 3,
+        "mean": 3523.182513,
+        "std": 10.806831139116726,
+        "min": 3512.987149,
+        "p50": 3522.048942,
+        "p95": 3533.2651974,
+        "max": 3534.511448
+      },
+      "module_ms_mean": {
+        "sampler": 3248.34716796875,
+        "net": 3226.3147583007812,
+        "net.language_model": 3202.9665323893228
+      },
+      "module_call_shapes": {
+        "net.language_model": [
+          "position_ids=(3, 3184)",
+          "position_ids=(3, 3103)",
+          "position_ids=(3, 3184)"
+        ]
+      },
+      "flops": {
+        "counted_total": 347074311248384,
+        "by_op": {
+          "aten.mm": 345135183298560,
+          "aten.convolution": 1859284000768,
+          "aten.addmm": 73299656704,
+          "aten._scaled_dot_product_efficient_attention": 6262005760,
+          "aten.bmm": 282286592
+        },
+        "note": "FlopCounterMode counts only ops it recognises. Fused attention (flash-attn / cudnn fmha) is opaque to it, so this is a LOWER BOUND, not the true total. Compare against the analytic attention estimate and report coverage."
+      },
+      "chrome_trace": null,
+      "records": "../../results/profiles/smoke-check/B0.jsonl"
+    }
+  ]
+}

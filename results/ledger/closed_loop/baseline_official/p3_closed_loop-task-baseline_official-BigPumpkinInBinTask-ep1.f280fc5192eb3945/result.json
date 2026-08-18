@@ -1,0 +1,641 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_official",
+    "task": "BigPumpkinInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "f280fc5192eb3945",
+  "utc": "2026-08-05T05:10:54Z",
+  "elapsed_s": 2456.245,
+  "method": "baseline_official",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32,
+      "num_envs": 10
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Closest runnable reproduction of the published 36.8% RoboLab-120 result: official defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 the baseline all methods should be compared against"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32",
+    "ROBOLAB_ENVS": "10"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      36.14013671875,
+      35.4423828125,
+      34.9609375
+    ],
+    "gpu_compute_apps": "2614279, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 10,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps": [
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900
+    ],
+    "total_steps": 9000,
+    "policy_calls": 290,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 14326.21,
+    "env_step_s": 9554.599999999999,
+    "video_write_s": 0.0,
+    "wall_total_s": 23880.809999999998,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)",
+      "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+    ],
+    "events": {
+      "OBJECT_BUMPED": 12,
+      "GRIPPER_HIT_OBJECT": 11,
+      "GRIPPER_FULLY_CLOSED": 20,
+      "WRONG_OBJECT_GRABBED": 24,
+      "wrong_objects_grabbed": [
+        [
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01"
+        ],
+        [
+          "pomegranate01",
+          "pomegranate01",
+          "pomegranate01"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 2456.2,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_21-30-34_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.863833812540628,
+          "joint_sparc_mean": -13.137420487725977,
+          "ee_isj": 1906.5886219100835,
+          "joint_isj": 19960.61789912432,
+          "ee_path_length": 3.366959452814811,
+          "joint_rmse_mean": 0.017048184793537847,
+          "ee_speed_max": 0.3497912585735321,
+          "ee_speed_mean": 0.056631360203027725
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "WRONG_OBJECT_GRABBED": 6,
+          "wrong_objects_grabbed": [
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 1,
+        "env_id": 1,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.891799858972076,
+          "joint_sparc_mean": -13.134990962843805,
+          "ee_isj": 1677.2817412626496,
+          "joint_isj": 24753.28400498365,
+          "ee_path_length": 2.9053513582947494,
+          "joint_rmse_mean": 0.017585434211158293,
+          "ee_speed_max": 0.29075178503990173,
+          "ee_speed_mean": 0.048815593123435974
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 7,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 2,
+        "env_id": 2,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.9043201781526,
+          "joint_sparc_mean": -12.072625378996914,
+          "ee_isj": 1321.3258201859935,
+          "joint_isj": 25848.722932245204,
+          "ee_path_length": 2.5447278840091103,
+          "joint_rmse_mean": 0.015490661824606978,
+          "ee_speed_max": 0.19082389771938324,
+          "ee_speed_mean": 0.0427606925368309
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 3,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 3,
+        "env_id": 3,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.123704405462248,
+          "joint_sparc_mean": -10.635244426383013,
+          "ee_isj": 1629.8439950746092,
+          "joint_isj": 30138.8184101924,
+          "ee_path_length": 3.7404892642748964,
+          "joint_rmse_mean": 0.019701520229491055,
+          "ee_speed_max": 0.2561408281326294,
+          "ee_speed_mean": 0.06137438118457794
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 4,
+        "env_id": 4,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.859398715822634,
+          "joint_sparc_mean": -11.804270330974731,
+          "ee_isj": 1847.8961729023283,
+          "joint_isj": 21310.01566925075,
+          "ee_path_length": 3.820610220451927,
+          "joint_rmse_mean": 0.019426321980788704,
+          "ee_speed_max": 0.30470508337020874,
+          "ee_speed_mean": 0.06284879148006439
+        },
+        "events": {
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 4,
+          "wrong_objects_grabbed": [
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 5,
+        "env_id": 5,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.7961756718954405,
+          "joint_sparc_mean": -11.308288798514026,
+          "ee_isj": 1739.9307170549305,
+          "joint_isj": 20093.511903106024,
+          "ee_path_length": 3.609151499110232,
+          "joint_rmse_mean": 0.018250091690319846,
+          "ee_speed_max": 0.3373353183269501,
+          "ee_speed_mean": 0.059472326189279556
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "GRIPPER_FULLY_CLOSED": 2
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 6,
+        "env_id": 6,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.800616987546441,
+          "joint_sparc_mean": -9.188632205429773,
+          "ee_isj": 1057.5767138314936,
+          "joint_isj": 26648.486449660777,
+          "ee_path_length": 2.169246489714423,
+          "joint_rmse_mean": 0.021315554527592196,
+          "ee_speed_max": 0.24219085276126862,
+          "ee_speed_mean": 0.03647413104772568
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 2,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 7,
+        "env_id": 7,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.430030022636734,
+          "joint_sparc_mean": -10.42997360118319,
+          "ee_isj": 1618.864205241198,
+          "joint_isj": 35477.37791695269,
+          "ee_path_length": 3.374655181561328,
+          "joint_rmse_mean": 0.018520868189377128,
+          "ee_speed_max": 0.25889497995376587,
+          "ee_speed_mean": 0.05553341284394264
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 8,
+        "env_id": 8,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.56222082317006,
+          "joint_sparc_mean": -8.586692704966865,
+          "ee_isj": 1639.4022270194628,
+          "joint_isj": 16218.036323328324,
+          "ee_path_length": 3.56171815495038,
+          "joint_rmse_mean": 0.019310731428306003,
+          "ee_speed_max": 0.26352429389953613,
+          "ee_speed_mean": 0.05888480320572853
+        },
+        "events": {
+          "OBJECT_BUMPED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "wrong_objects_grabbed": [
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      },
+      {
+        "env_name": "BigPumpkinInBinTask",
+        "task_name": "BigPumpkinInBinTask",
+        "run_name": "BigPumpkinInBinTask_0",
+        "run": 0,
+        "episode": 9,
+        "env_id": 9,
+        "policy": "cosmos3",
+        "instruction": "Put the bigger pumpkin in the bin",
+        "attributes": [
+          "size",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.128164332149749,
+          "joint_sparc_mean": -14.01758006266733,
+          "ee_isj": 1730.5842959913343,
+          "joint_isj": 30891.165263473584,
+          "ee_path_length": 3.0140855345661723,
+          "joint_rmse_mean": 0.017493735136231262,
+          "ee_speed_max": 0.3477012813091278,
+          "ee_speed_mean": 0.051106907427310944
+        },
+        "events": {
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 3,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "wrong_objects_grabbed": [
+            "pomegranate01",
+            "pomegranate01",
+            "pomegranate01"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1432.621,
+          "policy_inference_avg_ms": 1591.8,
+          "env_step_s": 955.46,
+          "env_step_avg_ms": 1061.6,
+          "wall_total_s": 2388.081,
+          "it_per_sec": 0.38
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=pumpkinlarge) (step 1/2)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unit": {
+    "phase": "p3_pareto",
+    "kind": "step",
+    "method": "closed_loop_baseline_full",
+    "task": "",
+    "episode": 0,
+    "variant": ""
+  },
+  "key": "82a88bf13530223f",
+  "utc": "2026-08-04T15:26:40Z",
+  "elapsed_s": 0.363,
+  "result": {
+    "returncode": 0,
+    "elapsed_min": 0.01,
+    "log": "results/ledger/phases/p3_pareto-step-closed_loop_baseline_full.82a88bf13530223f/step.log",
+    "argv": [
+      "/scratch/agustin/robotics/action-aware-refresh/.venv/bin/python",
+      "scripts/run_closed_loop.py",
+      "--method",
+      "baseline_full",
+      "--set",
+      "pilot_screened",
+      "--episodes",
+      "1",
+      "--retry-failed"
+    ]
+  }
+}

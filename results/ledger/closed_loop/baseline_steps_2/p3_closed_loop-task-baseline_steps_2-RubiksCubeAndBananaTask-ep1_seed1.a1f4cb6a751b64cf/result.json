@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_steps_2",
+    "task": "RubiksCubeAndBananaTask",
+    "episode": 0,
+    "variant": "ep1_seed1"
+  },
+  "key": "a1f4cb6a751b64cf",
+  "utc": "2026-08-04T19:25:28Z",
+  "elapsed_s": 299.086,
+  "method": "baseline_steps_2",
+  "config": {
+    "server_args": {
+      "denoising_steps": 2,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "2",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      43.93310546875,
+      44.96875,
+      40.49609375
+    ],
+    "gpu_compute_apps": "2258224, ./.venv/bin/python, 32102 MiB\n2258324, ./.venv/bin/python, 32090 MiB\n2268464, ./.venv/bin/python, 8569 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      740
+    ],
+    "total_steps": 740,
+    "policy_calls": 24,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 64.506,
+    "env_step_s": 176.889,
+    "video_write_s": 0.0,
+    "wall_total_s": 241.395,
+    "reasons": [
+      "Completed subtask 'pick_and_place' 1/1"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 5
+    },
+    "wall_elapsed_s": 299.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_12-21-05_cosmos3",
+    "episodes": [
+      {
+        "env_name": "RubiksCubeAndBananaTask",
+        "task_name": "RubiksCubeAndBananaTask",
+        "run_name": "RubiksCubeAndBananaTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the cube and the banana in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 740,
+        "duration": 49.333333333333336,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.187570120233637,
+          "joint_sparc_mean": -8.367021573581246,
+          "ee_isj": 2391.365857305829,
+          "joint_isj": 17789.6709237071,
+          "ee_path_length": 3.89178302857897,
+          "joint_rmse_mean": 0.021538411154384946,
+          "ee_speed_max": 0.31999143958091736,
+          "ee_speed_mean": 0.07867934554815292
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 5
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 64.506,
+          "policy_inference_avg_ms": 87.2,
+          "env_step_s": 176.889,
+          "env_step_avg_ms": 239.0,
+          "wall_total_s": 241.395,
+          "it_per_sec": 3.07
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 1/1"
+      }
+    ]
+  }
+}

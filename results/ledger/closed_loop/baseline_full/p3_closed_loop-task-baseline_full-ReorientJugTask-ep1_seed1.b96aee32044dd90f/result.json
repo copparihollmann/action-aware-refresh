@@ -1,0 +1,146 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "ReorientJugTask",
+    "episode": 0,
+    "variant": "ep1_seed1"
+  },
+  "key": "b96aee32044dd90f",
+  "utc": "2026-08-04T19:21:22Z",
+  "elapsed_s": 543.054,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      46.787109375,
+      40.15234375,
+      36.251953125
+    ],
+    "gpu_compute_apps": "2258224, ./.venv/bin/python, 32102 MiB\n2258324, ./.venv/bin/python, 32090 MiB\n2267780, ./.venv/bin/python, 459 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 132.435,
+    "env_step_s": 350.928,
+    "video_write_s": 0.0,
+    "wall_total_s": 483.363,
+    "reasons": [
+      "Condition not satisfied: object_upright(object=utilityjug_a02, require_gripper_detached=True) (step 2/2)"
+    ],
+    "events": {
+      "WRONG_OBJECT_GRABBED": 8,
+      "GRIPPER_HIT_OBJECT": 2,
+      "GRIPPER_FULLY_CLOSED": 3,
+      "OBJECT_BUMPED": 3,
+      "wrong_objects_grabbed": [
+        [
+          "utilityjug_a01",
+          "utilityjug_a01",
+          "utilityjug_a01",
+          "utilityjug_a01",
+          "utilityjug_a01",
+          "utilityjug_a02",
+          "utilityjug_a02",
+          "utilityjug_a02"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 543.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_12-12-55_cosmos3",
+    "episodes": [
+      {
+        "env_name": "ReorientJugTask",
+        "task_name": "ReorientJugTask",
+        "run_name": "ReorientJugTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stand the jug upright",
+        "attributes": [
+          "semantics",
+          "reorientation",
+          "affordance",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.439463749252479,
+          "joint_sparc_mean": -7.393581757357,
+          "ee_isj": 2100.4684419391397,
+          "joint_isj": 36649.890413700654,
+          "ee_path_length": 3.1401564857179127,
+          "joint_rmse_mean": 0.023943553858159113,
+          "ee_speed_max": 0.21378782391548157,
+          "ee_speed_mean": 0.054513152688741684
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 8,
+          "GRIPPER_HIT_OBJECT": 2,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "OBJECT_BUMPED": 3,
+          "wrong_objects_grabbed": [
+            "utilityjug_a01",
+            "utilityjug_a01",
+            "utilityjug_a01",
+            "utilityjug_a01",
+            "utilityjug_a01",
+            "utilityjug_a02",
+            "utilityjug_a02",
+            "utilityjug_a02"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 132.435,
+          "policy_inference_avg_ms": 147.2,
+          "env_step_s": 350.928,
+          "env_step_avg_ms": 389.9,
+          "wall_total_s": 483.363,
+          "it_per_sec": 1.86
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_upright(object=utilityjug_a02, require_gripper_detached=True) (step 2/2)"
+      }
+    ]
+  }
+}

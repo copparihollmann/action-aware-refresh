@@ -1,0 +1,134 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_steps_1",
+    "task": "ReorientJugTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "91639235a69dc3c3",
+  "utc": "2026-08-04T15:39:17Z",
+  "elapsed_s": 251.602,
+  "method": "baseline_steps_1",
+  "config": {
+    "server_args": {
+      "denoising_steps": 1,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "1",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      37.1279296875,
+      34.34033203125,
+      33.73046875
+    ],
+    "gpu_compute_apps": "2056446, ./.venv/bin/python, 32090 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      398
+    ],
+    "total_steps": 398,
+    "policy_calls": 13,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 28.802,
+    "env_step_s": 153.3,
+    "video_write_s": 0.0,
+    "wall_total_s": 182.103,
+    "reasons": [
+      "Completed subtask 'reorient_jug' 1/1"
+    ],
+    "events": {
+      "WRONG_OBJECT_GRABBED": 2,
+      "GRIPPER_HIT_OBJECT": 1,
+      "GRIPPER_FULLY_CLOSED": 2,
+      "OBJECT_BUMPED": 1,
+      "wrong_objects_grabbed": [
+        [
+          "utilityjug_a02",
+          "utilityjug_a02"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 251.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_08-35-51_cosmos3",
+    "episodes": [
+      {
+        "env_name": "ReorientJugTask",
+        "task_name": "ReorientJugTask",
+        "run_name": "ReorientJugTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stand the jug upright",
+        "attributes": [
+          "semantics",
+          "reorientation",
+          "affordance",
+          "moderate"
+        ],
+        "success": true,
+        "episode_step": 398,
+        "duration": 26.53333333333333,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.485637825242049,
+          "joint_sparc_mean": -9.463364622172161,
+          "ee_isj": 2135.645847760001,
+          "joint_isj": 19193.750393534203,
+          "ee_path_length": 2.2154612813891914,
+          "joint_rmse_mean": 0.02828836260873244,
+          "ee_speed_max": 0.33875975012779236,
+          "ee_speed_mean": 0.08612983673810959
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 2,
+          "GRIPPER_HIT_OBJECT": 1,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "utilityjug_a02",
+            "utilityjug_a02"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 28.802,
+          "policy_inference_avg_ms": 72.4,
+          "env_step_s": 153.3,
+          "env_step_avg_ms": 385.2,
+          "wall_total_s": 182.103,
+          "it_per_sec": 2.19
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'reorient_jug' 1/1"
+      }
+    ]
+  }
+}

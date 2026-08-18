@@ -1,0 +1,114 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9",
+    "task": "RubiksCubeAndBananaTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "c372e2398645ea38",
+  "utc": "2026-08-04T16:23:25Z",
+  "elapsed_s": 310.179,
+  "method": "baseline_vision_frames_9",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Imagining 3 latent frames instead of 9 (1,020 vs 3,060 vision tokens) preserves task success. Tests whether the action needs a long imagined rollout or only a coherent one.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": ">2 absolute success points lost on the screened set"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      34.142578125,
+      34.81591796875,
+      34.90966796875
+    ],
+    "gpu_compute_apps": "2056446, ./.venv/bin/python, 32092 MiB\n2088197, ./.venv/bin/python, 31996 MiB\n2093813, ./.venv/bin/python, 10011 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 63.209,
+    "env_step_s": 202.899,
+    "video_write_s": 0.0,
+    "wall_total_s": 266.109,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=rubiks_cube) (step 1/2); object_grabbed(object=banana) (step 1/2)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 310.1,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_09-18-41_cosmos3",
+    "episodes": [
+      {
+        "env_name": "RubiksCubeAndBananaTask",
+        "task_name": "RubiksCubeAndBananaTask",
+        "run_name": "RubiksCubeAndBananaTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the cube and the banana in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.94245116022841,
+          "joint_sparc_mean": -9.589317986734711,
+          "ee_isj": 4915.612980952014,
+          "joint_isj": 46827.80416532655,
+          "ee_path_length": 5.1853540430811424,
+          "joint_rmse_mean": 0.02760983938005503,
+          "ee_speed_max": 0.3871322572231293,
+          "ee_speed_mean": 0.08748739957809448
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 63.209,
+          "policy_inference_avg_ms": 70.2,
+          "env_step_s": 202.899,
+          "env_step_avg_ms": 225.4,
+          "wall_total_s": 266.109,
+          "it_per_sec": 3.38
+        },
+        "score": 0.0,
+        "reason": "Conditions not satisfied: object_grabbed(object=rubiks_cube) (step 1/2); object_grabbed(object=banana) (step 1/2)"
+      }
+    ]
+  }
+}

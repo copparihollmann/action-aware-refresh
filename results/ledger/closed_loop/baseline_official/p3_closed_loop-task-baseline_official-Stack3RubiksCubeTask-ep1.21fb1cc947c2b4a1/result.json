@@ -1,0 +1,706 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_official",
+    "task": "Stack3RubiksCubeTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "21fb1cc947c2b4a1",
+  "utc": "2026-08-05T02:35:48Z",
+  "elapsed_s": 2297.522,
+  "method": "baseline_official",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32,
+      "num_envs": 10
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Closest runnable reproduction of the published 36.8% RoboLab-120 result: official defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 the baseline all methods should be compared against"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32",
+    "ROBOLAB_ENVS": "10"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.41748046875,
+      33.62841796875,
+      33.517578125
+    ],
+    "gpu_compute_apps": "2614279, ./.venv/bin/python, 32102 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 10,
+    "n_success": 1,
+    "success_rate": 0.1,
+    "scores": [
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      1.0
+    ],
+    "steps": [
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      900,
+      834
+    ],
+    "total_steps": 8934,
+    "policy_calls": 288,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 17964.98,
+    "env_step_s": 4398.0599999999995,
+    "video_write_s": 0.0,
+    "wall_total_s": 22363.04,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)",
+      "Completed subtask 'stack_all_3_cubes' 2/2"
+    ],
+    "events": {
+      "GRIPPER_HIT_OBJECT": 23,
+      "GRIPPER_FULLY_CLOSED": 20,
+      "WRONG_OBJECT_GRABBED": 53,
+      "OBJECT_BUMPED": 20,
+      "wrong_objects_grabbed": [
+        [
+          "rubiks_cube_1",
+          "rubiks_cube",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube_1",
+          "rubiks_cube_1",
+          "rubiks_cube_1",
+          "rubiks_cube_1"
+        ],
+        [
+          "rubiks_cube_1",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube_2",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube_2"
+        ],
+        [
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube_1",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube_1",
+          "rubiks_cube"
+        ],
+        [
+          "rubiks_cube_1",
+          "rubiks_cube_1",
+          "rubiks_cube_1",
+          "rubiks_cube_2",
+          "rubiks_cube_1",
+          "rubiks_cube_2",
+          "rubiks_cube_1",
+          "rubiks_cube_2"
+        ],
+        [
+          "rubiks_cube_2",
+          "rubiks_cube_2",
+          "rubiks_cube",
+          "rubiks_cube_2",
+          "rubiks_cube_2",
+          "rubiks_cube_1",
+          "rubiks_cube_1"
+        ]
+      ],
+      "MULTIPLE_OBJECTS_GRABBED": 1
+    },
+    "wall_elapsed_s": 2297.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_18-58-04_cosmos3",
+    "episodes": [
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.2057586787023045,
+          "joint_sparc_mean": -6.687589201238034,
+          "ee_isj": 2163.584489294126,
+          "joint_isj": 20006.497176873578,
+          "ee_path_length": 5.076323177556191,
+          "joint_rmse_mean": 0.02841025366348199,
+          "ee_speed_max": 0.3493466377258301,
+          "ee_speed_mean": 0.08204956352710724
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 2,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "WRONG_OBJECT_GRABBED": 3,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.0,
+        "reason": "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 1,
+        "env_id": 1,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.620932365704235,
+          "joint_sparc_mean": -8.06405518214514,
+          "ee_isj": 2177.692488607311,
+          "joint_isj": 19034.080466169293,
+          "ee_path_length": 4.635147326490131,
+          "joint_rmse_mean": 0.024647272697900353,
+          "ee_speed_max": 0.23535320162773132,
+          "ee_speed_mean": 0.0760241448879242
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 4,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "GRIPPER_HIT_OBJECT": 2,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube_1",
+            "rubiks_cube_1",
+            "rubiks_cube_1"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 2,
+        "env_id": 2,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.586363116628169,
+          "joint_sparc_mean": -7.094031454842702,
+          "ee_isj": 2364.512366833075,
+          "joint_isj": 23474.154012842217,
+          "ee_path_length": 4.347700877564781,
+          "joint_rmse_mean": 0.0310046914273072,
+          "ee_speed_max": 0.24292893707752228,
+          "ee_speed_mean": 0.07167244702577591
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 2,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "WRONG_OBJECT_GRABBED": 2,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 3,
+        "env_id": 3,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.605844765259922,
+          "joint_sparc_mean": -6.355419464568816,
+          "ee_isj": 2126.4751002080648,
+          "joint_isj": 20029.192809544897,
+          "ee_path_length": 4.671981103390696,
+          "joint_rmse_mean": 0.02780280440901487,
+          "ee_speed_max": 0.23748724162578583,
+          "ee_speed_mean": 0.07653121650218964
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 2,
+          "WRONG_OBJECT_GRABBED": 13,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube_2",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 4,
+        "env_id": 4,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.021250333210778,
+          "joint_sparc_mean": -10.333709876512984,
+          "ee_isj": 1940.4554418667813,
+          "joint_isj": 15279.598684694902,
+          "ee_path_length": 3.966608143137706,
+          "joint_rmse_mean": 0.023546301589624195,
+          "ee_speed_max": 0.55463045835495,
+          "ee_speed_mean": 0.0663067176938057
+        },
+        "events": {
+          "OBJECT_BUMPED": 3,
+          "WRONG_OBJECT_GRABBED": 3,
+          "GRIPPER_HIT_OBJECT": 2,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube_2"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 5,
+        "env_id": 5,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.84765080301018,
+          "joint_sparc_mean": -7.499315155215441,
+          "ee_isj": 2227.1779011890067,
+          "joint_isj": 37868.014810249304,
+          "ee_path_length": 4.683932364991544,
+          "joint_rmse_mean": 0.0285913823169447,
+          "ee_speed_max": 0.29332709312438965,
+          "ee_speed_mean": 0.07738232612609863
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 3,
+          "WRONG_OBJECT_GRABBED": 9,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 6,
+        "env_id": 6,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.3017892172972285,
+          "joint_sparc_mean": -8.860309802887398,
+          "ee_isj": 2064.023524172059,
+          "joint_isj": 21718.08883418001,
+          "ee_path_length": 4.3054700764491365,
+          "joint_rmse_mean": 0.026937829866056504,
+          "ee_speed_max": 0.31686529517173767,
+          "ee_speed_mean": 0.07167716324329376
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 3,
+          "WRONG_OBJECT_GRABBED": 2,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 7,
+        "env_id": 7,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.474156073371936,
+          "joint_sparc_mean": -7.468827801942246,
+          "ee_isj": 2190.8558663741655,
+          "joint_isj": 20451.981263052294,
+          "ee_path_length": 4.629260949568252,
+          "joint_rmse_mean": 0.02605148416682736,
+          "ee_speed_max": 0.24230743944644928,
+          "ee_speed_mean": 0.07579934597015381
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 2,
+          "GRIPPER_HIT_OBJECT": 2,
+          "OBJECT_BUMPED": 4,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 8,
+        "env_id": 8,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.863485234783003,
+          "joint_sparc_mean": -7.806756577745321,
+          "ee_isj": 2129.4808992573544,
+          "joint_isj": 17314.410508131637,
+          "ee_path_length": 4.122696864096314,
+          "joint_rmse_mean": 0.02243441146475687,
+          "ee_speed_max": 0.27307364344596863,
+          "ee_speed_mean": 0.06870205700397491
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 2,
+          "WRONG_OBJECT_GRABBED": 8,
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "MULTIPLE_OBJECTS_GRABBED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_1",
+            "rubiks_cube_1",
+            "rubiks_cube_1",
+            "rubiks_cube_2",
+            "rubiks_cube_1",
+            "rubiks_cube_2",
+            "rubiks_cube_1",
+            "rubiks_cube_2"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 0.5,
+        "reason": "Condition not satisfied: stacked(objects=['rubiks_cube', 'rubiks_cube_1', 'rubiks_cube_2'], order=None) (step 1/1)"
+      },
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 9,
+        "env_id": 9,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": true,
+        "episode_step": 834,
+        "duration": 55.6,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.373300642882537,
+          "joint_sparc_mean": -8.448306262944937,
+          "ee_isj": 1786.7860889286094,
+          "joint_isj": 23981.328166392195,
+          "ee_path_length": 3.8990177003627906,
+          "joint_rmse_mean": 0.023334441900188612,
+          "ee_speed_max": 0.25100743770599365,
+          "ee_speed_mean": 0.06932681798934937
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 7,
+          "GRIPPER_HIT_OBJECT": 3,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "rubiks_cube_2",
+            "rubiks_cube_2",
+            "rubiks_cube",
+            "rubiks_cube_2",
+            "rubiks_cube_2",
+            "rubiks_cube_1",
+            "rubiks_cube_1"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 1796.498,
+          "policy_inference_avg_ms": 1996.1,
+          "env_step_s": 439.806,
+          "env_step_avg_ms": 488.7,
+          "wall_total_s": 2236.304,
+          "it_per_sec": 0.4
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'stack_all_3_cubes' 2/2"
+      }
+    ]
+  }
+}

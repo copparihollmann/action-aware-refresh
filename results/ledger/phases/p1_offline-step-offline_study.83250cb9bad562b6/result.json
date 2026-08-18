@@ -1,0 +1,29 @@
+{
+  "unit": {
+    "phase": "p1_offline",
+    "kind": "step",
+    "method": "offline_study",
+    "task": "",
+    "episode": 0,
+    "variant": ""
+  },
+  "key": "83250cb9bad562b6",
+  "utc": "2026-08-04T08:15:38Z",
+  "elapsed_s": 3341.442,
+  "result": {
+    "returncode": 0,
+    "elapsed_min": 55.69,
+    "log": "results/ledger/phases/p1_offline-step-offline_study.83250cb9bad562b6/step.log",
+    "argv": [
+      "/scratch/agustin/robotics/action-aware-refresh/third_party/cosmos-framework/.venv/bin/python",
+      "scripts/offline_action_study.py",
+      "--corpus-glob",
+      "results/raw/corpus/*/captured_request_*.npz",
+      "--steps",
+      "1,2,3,4",
+      "--seeds",
+      "4",
+      "--action-only"
+    ]
+  }
+}

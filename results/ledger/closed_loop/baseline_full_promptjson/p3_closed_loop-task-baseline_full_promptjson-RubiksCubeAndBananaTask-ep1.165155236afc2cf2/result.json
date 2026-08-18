@@ -1,0 +1,120 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full_promptjson",
+    "task": "RubiksCubeAndBananaTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "165155236afc2cf2",
+  "utc": "2026-08-04T21:19:27Z",
+  "elapsed_s": 195.204,
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.3671875,
+      33.7080078125,
+      33.4150390625
+    ],
+    "gpu_compute_apps": "2365575, ./.venv/bin/python, 32106 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      395
+    ],
+    "total_steps": 395,
+    "policy_calls": 13,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 58.961,
+    "env_step_s": 90.467,
+    "video_write_s": 0.0,
+    "wall_total_s": 149.428,
+    "reasons": [
+      "Completed subtask 'pick_and_place' 1/1"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 4,
+      "GRIPPER_FULLY_CLOSED": 1
+    },
+    "wall_elapsed_s": 195.1,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_14-16-37_cosmos3",
+    "episodes": [
+      {
+        "env_name": "RubiksCubeAndBananaTask",
+        "task_name": "RubiksCubeAndBananaTask",
+        "run_name": "RubiksCubeAndBananaTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the cube and the banana in the bowl",
+        "attributes": [
+          "conjunction",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 395,
+        "duration": 26.333333333333332,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -2.9208067350713858,
+          "joint_sparc_mean": -7.671632270723259,
+          "ee_isj": 1417.5504262595803,
+          "joint_isj": 13018.310788595976,
+          "ee_path_length": 2.1883558651764687,
+          "joint_rmse_mean": 0.020621978196465253,
+          "ee_speed_max": 0.3002654016017914,
+          "ee_speed_mean": 0.08327486366033554
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 4,
+          "GRIPPER_FULLY_CLOSED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 58.961,
+          "policy_inference_avg_ms": 149.3,
+          "env_step_s": 90.467,
+          "env_step_avg_ms": 229.0,
+          "wall_total_s": 149.428,
+          "it_per_sec": 2.64
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'pick_and_place' 1/1"
+      }
+    ]
+  }
+}

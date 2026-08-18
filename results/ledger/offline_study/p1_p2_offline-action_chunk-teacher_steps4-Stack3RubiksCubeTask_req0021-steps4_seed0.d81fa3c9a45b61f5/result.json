@@ -1,0 +1,54 @@
+{
+  "unit": {
+    "phase": "p1_p2_offline",
+    "kind": "action_chunk",
+    "method": "teacher_steps4",
+    "task": "Stack3RubiksCubeTask_req0021",
+    "episode": 0,
+    "variant": "steps4_seed0"
+  },
+  "key": "d81fa3c9a45b61f5",
+  "utc": "2026-08-04T07:08:05Z",
+  "elapsed_s": 7.983,
+  "env": {
+    "python": "3.13.14",
+    "torch": "2.10.0+cu130",
+    "gpu_name": "NVIDIA L40S",
+    "model_load_s": 21.99271209537983,
+    "hf_home": "/scratch/agustin/robotics/cache/huggingface",
+    "guardrails": false,
+    "deviations_from_official": [
+      "guardrails disabled (nvidia/Cosmos-Guardrail1 gated); excludes guardrail cost"
+    ]
+  },
+  "condition": "teacher_steps4",
+  "overrides": {
+    "num_steps": 4,
+    "seed": 0,
+    "experiment": "A/reference"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.4619140625,
+      34.2275390625,
+      34.4755859375
+    ],
+    "gpu_compute_apps": "1474962, /scratch/agustin/robotics/action-aware-refresh/third_party/cosmos-framework/.venv/bin/python, 32102 MiB"
+  },
+  "result": {
+    "wall_ms": 7928.034199,
+    "cuda_ms": 7927.896484375,
+    "action_shape": [
+      32,
+      8
+    ],
+    "action_finite": true,
+    "peak_reserved_mib": 31576.0,
+    "num_steps": 4,
+    "seed": 0,
+    "intervention": null,
+    "action_path": "results/ledger/offline_study/p1_p2_offline-action_chunk-teacher_steps4-Stack3RubiksCubeTask_req0021-steps4_seed0.d81fa3c9a45b61f5/action.npy",
+    "corpus_path": "results/raw/corpus/Stack3RubiksCubeTask/captured_request_Stack3RubiksCubeTask_req0021.npz",
+    "experiment": "A/reference"
+  }
+}

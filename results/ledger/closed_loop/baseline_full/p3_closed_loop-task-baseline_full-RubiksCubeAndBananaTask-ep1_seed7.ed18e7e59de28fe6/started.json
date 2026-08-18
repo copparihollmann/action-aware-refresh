@@ -1,0 +1,12 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "RubiksCubeAndBananaTask",
+    "episode": 0,
+    "variant": "ep1_seed7"
+  },
+  "pid": 2606738,
+  "utc": "2026-08-05T00:27:52Z"
+}

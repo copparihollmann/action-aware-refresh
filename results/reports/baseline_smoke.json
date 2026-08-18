@@ -1,0 +1,243 @@
+{
+  "status": "PASS",
+  "primary_task": "BananaInBowlTask",
+  "alt_task": "RubiksCubeAndBananaTask",
+  "alt_status": "PASS",
+  "server": {
+    "server_started": {
+      "state": "PASS",
+      "note": "[robolab-policy-server] starting host=",
+      "provenance": "VERIFIED: serve() startup line"
+    },
+    "healthz_advertised": {
+      "state": "PASS",
+      "note": "[robolab-policy-server] Health check: http://",
+      "provenance": "VERIFIED: serve() health-check line"
+    },
+    "config_logged": {
+      "state": "PASS",
+      "note": "action_space=joint_pos action_dim=8",
+      "provenance": "VERIFIED: RobolabPolicyService logs the resolved config"
+    },
+    "request_served": {
+      "state": "PASS",
+      "note": "[robolab-policy-server] prompt=",
+      "provenance": "VERIFIED: infer() logs prompt+seed per request"
+    },
+    "no_nans": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: numerical failure in the served output"
+    },
+    "no_traceback": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: server exception"
+    },
+    "no_cuda_oom": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: OOM \u2014 expected risk at 45 GiB with ~31 GiB of weights"
+    },
+    "action_dim_matches_contract": {
+      "state": "PASS",
+      "note": "server reported action_dim=8, contract says 8",
+      "provenance": "compared against docs/baseline_contract.md"
+    }
+  },
+  "primary": {
+    "client_connected": {
+      "state": "PASS",
+      "note": "[Cosmos3Client] Connected to 127.0.0.1:8000.",
+      "provenance": "VERIFIED: policies/cosmos3/client.py __init__ prints this after _connect()"
+    },
+    "episode_started": {
+      "state": "PASS",
+      "note": "[RoboLab] Running BananaInBowlTask_0: ",
+      "provenance": "VERIFIED: robolab/eval/runner.py:251"
+    },
+    "output_dir_announced": {
+      "state": "PASS",
+      "note": "Output         : /scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-03_22-13-27_cosmos3",
+      "provenance": "VERIFIED: robolab/core/utils/print_utils.py:30"
+    },
+    "no_traceback": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: client exception"
+    },
+    "no_terminated_with_error": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: VERIFIED: policies/cosmos3/run.py:56 prints this on any exception"
+    },
+    "results_written": {
+      "state": "PASS",
+      "note": "1 episode record(s) in /scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-03_22-13-27_cosmos3/episode_results.jsonl",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "sim_advanced": {
+      "state": "PASS",
+      "note": "episode_step = [145]",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "episode_terminated": {
+      "state": "PASS",
+      "note": "success=True step=145 score=1.0 reason=\"Completed subtask 'pick_and_place' 1/1\"",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "metrics_finite": {
+      "state": "PASS",
+      "note": "all trajectory metrics finite",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    }
+  },
+  "alt": {
+    "client_connected": {
+      "state": "PASS",
+      "note": "[Cosmos3Client] Connected to 127.0.0.1:8000.",
+      "provenance": "VERIFIED: policies/cosmos3/client.py __init__ prints this after _connect()"
+    },
+    "episode_started": {
+      "state": "PASS",
+      "note": "[RoboLab] Running RubiksCubeAndBananaTask_0: ",
+      "provenance": "VERIFIED: robolab/eval/runner.py:251"
+    },
+    "output_dir_announced": {
+      "state": "PASS",
+      "note": "Output         : /scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-03_22-15-37_cosmos3",
+      "provenance": "VERIFIED: robolab/core/utils/print_utils.py:30"
+    },
+    "no_traceback": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: client exception"
+    },
+    "no_terminated_with_error": {
+      "state": "PASS",
+      "note": "none found",
+      "provenance": "counter-evidence: VERIFIED: policies/cosmos3/run.py:56 prints this on any exception"
+    },
+    "results_written": {
+      "state": "PASS",
+      "note": "1 episode record(s) in /scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-03_22-15-37_cosmos3/episode_results.jsonl",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "sim_advanced": {
+      "state": "PASS",
+      "note": "episode_step = [900]",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "episode_terminated": {
+      "state": "PASS",
+      "note": "success=False step=900 score=1.0 reason='Condition not satisfied: object_in_container(object=banana, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)'",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    },
+    "metrics_finite": {
+      "state": "PASS",
+      "note": "all trajectory metrics finite",
+      "provenance": "VERIFIED: episode_results.jsonl (robolab/core/logging/results.py:606)"
+    }
+  },
+  "primary_episodes": [
+    {
+      "env_name": "BananaInBowlTask",
+      "task_name": "BananaInBowlTask",
+      "run_name": "BananaInBowlTask_0",
+      "run": 0,
+      "episode": 0,
+      "env_id": 0,
+      "policy": "cosmos3",
+      "instruction": "Pick up the banana and place it in the bowl",
+      "attributes": [
+        "semantics",
+        "simple"
+      ],
+      "success": true,
+      "episode_step": 145,
+      "duration": 9.666666666666666,
+      "dt": 0.06666666666666667,
+      "metrics": {
+        "ee_sparc": -2.0368297815162935,
+        "joint_sparc_mean": -4.148111180914446,
+        "ee_isj": 387.9207709093515,
+        "joint_isj": 2190.895380522642,
+        "ee_path_length": 0.8803250793266422,
+        "joint_rmse_mean": 0.023127213615129642,
+        "ee_speed_max": 0.23730236291885376,
+        "ee_speed_mean": 0.0900588184595108
+      },
+      "events": {
+        "TARGET_OBJECT_DROPPED": 2
+      },
+      "instruction_type": "default",
+      "timing": {
+        "policy_inference_s": 44.852,
+        "policy_inference_avg_ms": 309.3,
+        "env_step_s": 32.394,
+        "env_step_avg_ms": 223.4,
+        "video_write_s": 3.142,
+        "video_write_avg_ms": 21.7,
+        "wall_total_s": 80.388,
+        "it_per_sec": 1.8
+      },
+      "score": 1.0,
+      "reason": "Completed subtask 'pick_and_place' 1/1"
+    }
+  ],
+  "alt_episodes": [
+    {
+      "env_name": "RubiksCubeAndBananaTask",
+      "task_name": "RubiksCubeAndBananaTask",
+      "run_name": "RubiksCubeAndBananaTask_0",
+      "run": 0,
+      "episode": 0,
+      "env_id": 0,
+      "policy": "cosmos3",
+      "instruction": "Put the cube and the banana in the bowl",
+      "attributes": [
+        "conjunction",
+        "simple"
+      ],
+      "success": false,
+      "episode_step": 900,
+      "duration": 60.0,
+      "dt": 0.06666666666666667,
+      "metrics": {
+        "ee_sparc": -5.160697736347239,
+        "joint_sparc_mean": -7.040630487022325,
+        "ee_isj": 2105.8799423527325,
+        "joint_isj": 18865.76844953813,
+        "ee_path_length": 5.014818152123052,
+        "joint_rmse_mean": 0.02489493918306537,
+        "ee_speed_max": 0.3992696702480316,
+        "ee_speed_mean": 0.08061742782592773
+      },
+      "events": {
+        "TARGET_OBJECT_DROPPED": 11,
+        "GRIPPER_FULLY_CLOSED": 2,
+        "WRONG_OBJECT_GRABBED": 2,
+        "GRIPPER_HIT_OBJECT": 1,
+        "OBJECT_BUMPED": 2,
+        "wrong_objects_grabbed": [
+          "banana",
+          "banana"
+        ]
+      },
+      "instruction_type": "default",
+      "timing": {
+        "policy_inference_s": 136.743,
+        "policy_inference_avg_ms": 151.9,
+        "env_step_s": 216.778,
+        "env_step_avg_ms": 240.9,
+        "video_write_s": 16.742,
+        "video_write_avg_ms": 18.6,
+        "wall_total_s": 370.263,
+        "it_per_sec": 2.43
+      },
+      "score": 1.0,
+      "reason": "Condition not satisfied: object_in_container(object=banana, container=bowl, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+    }
+  ],
+  "server_request_count": 34
+}

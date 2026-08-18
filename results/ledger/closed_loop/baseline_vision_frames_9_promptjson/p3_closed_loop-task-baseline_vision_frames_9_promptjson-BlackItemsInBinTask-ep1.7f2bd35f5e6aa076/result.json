@@ -1,0 +1,123 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "BlackItemsInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "7f2bd35f5e6aa076",
+  "utc": "2026-08-05T00:08:47Z",
+  "elapsed_s": 1321.601,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.291015625,
+      33.70703125,
+      33.98828125
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32004 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.20000000298023224
+    ],
+    "steps": [
+      1800
+    ],
+    "total_steps": 1800,
+    "policy_calls": 57,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 120.362,
+    "env_step_s": 1142.457,
+    "video_write_s": 0.0,
+    "wall_total_s": 1262.819,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 9,
+      "GRIPPER_FULLY_CLOSED": 11
+    },
+    "wall_elapsed_s": 1321.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_16-47-24_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.295135727186833,
+          "joint_sparc_mean": -13.121426897888918,
+          "ee_isj": 13050.38912270875,
+          "joint_isj": 96971.57078407741,
+          "ee_path_length": 7.652714514251712,
+          "joint_rmse_mean": 0.021338077037588388,
+          "ee_speed_max": 0.6398302316665649,
+          "ee_speed_mean": 0.07096613198518753
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 9,
+          "GRIPPER_FULLY_CLOSED": 11
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 120.362,
+          "policy_inference_avg_ms": 66.9,
+          "env_step_s": 1142.457,
+          "env_step_avg_ms": 634.7,
+          "wall_total_s": 1262.819,
+          "it_per_sec": 1.43
+        },
+        "score": 0.20000000298023224,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+      }
+    ]
+  }
+}

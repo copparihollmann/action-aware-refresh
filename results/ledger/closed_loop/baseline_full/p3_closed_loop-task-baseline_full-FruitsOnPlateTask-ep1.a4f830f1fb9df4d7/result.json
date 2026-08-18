@@ -1,0 +1,141 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "FruitsOnPlateTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "a4f830f1fb9df4d7",
+  "utc": "2026-08-04T12:18:19Z",
+  "elapsed_s": 4279.094,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.0341796875,
+      33.107421875,
+      32.8544921875
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.7142857313156128
+    ],
+    "steps": [
+      4500
+    ],
+    "total_steps": 4500,
+    "policy_calls": 141,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 643.696,
+    "env_step_s": 3560.292,
+    "video_write_s": 0.0,
+    "wall_total_s": 4203.989,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=orange_01) (step 1/2); object_grabbed(object=pomegranate01) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 77,
+      "GRIPPER_HIT_OBJECT": 2,
+      "GRIPPER_FULLY_CLOSED": 9,
+      "WRONG_OBJECT_GRABBED": 3,
+      "OBJECT_BUMPED": 3,
+      "MULTIPLE_OBJECTS_GRABBED": 1,
+      "GRIPPER_HIT_TABLE": 5,
+      "wrong_objects_grabbed": [
+        [
+          "pumpkinlarge",
+          "redonion",
+          "pumpkinlarge"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 4279.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_04-07-42_cosmos3",
+    "episodes": [
+      {
+        "env_name": "FruitsOnPlateTask",
+        "task_name": "FruitsOnPlateTask",
+        "run_name": "FruitsOnPlateTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put all the fruits on the plate",
+        "attributes": [
+          "semantics",
+          "vague",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 4500,
+        "duration": 300.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -9.250170998700996,
+          "joint_sparc_mean": -10.97995922552164,
+          "ee_isj": 9304.8997815871,
+          "joint_isj": 110512.14477043411,
+          "ee_path_length": 20.573458587042,
+          "joint_rmse_mean": 0.023170481715180175,
+          "ee_speed_max": 0.3845841884613037,
+          "ee_speed_mean": 0.06751793622970581
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 77,
+          "GRIPPER_HIT_OBJECT": 2,
+          "GRIPPER_FULLY_CLOSED": 9,
+          "WRONG_OBJECT_GRABBED": 3,
+          "OBJECT_BUMPED": 3,
+          "MULTIPLE_OBJECTS_GRABBED": 1,
+          "GRIPPER_HIT_TABLE": 5,
+          "wrong_objects_grabbed": [
+            "pumpkinlarge",
+            "redonion",
+            "pumpkinlarge"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 643.696,
+          "policy_inference_avg_ms": 143.0,
+          "env_step_s": 3560.292,
+          "env_step_avg_ms": 791.2,
+          "wall_total_s": 4203.989,
+          "it_per_sec": 1.07
+        },
+        "score": 0.7142857313156128,
+        "reason": "Conditions not satisfied: object_grabbed(object=orange_01) (step 1/2); object_grabbed(object=pomegranate01) (step 1/2)"
+      }
+    ]
+  }
+}

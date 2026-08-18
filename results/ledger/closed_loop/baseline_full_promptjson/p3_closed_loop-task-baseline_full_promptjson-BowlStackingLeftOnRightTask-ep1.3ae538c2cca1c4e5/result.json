@@ -1,0 +1,142 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full_promptjson",
+    "task": "BowlStackingLeftOnRightTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "3ae538c2cca1c4e5",
+  "utc": "2026-08-04T21:03:25Z",
+  "elapsed_s": 187.44,
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      31.99169921875,
+      31.61376953125,
+      32.4443359375
+    ],
+    "gpu_compute_apps": "2365575, ./.venv/bin/python, 31136 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 1,
+    "success_rate": 1.0,
+    "scores": [
+      1.0
+    ],
+    "steps": [
+      286
+    ],
+    "total_steps": 286,
+    "policy_calls": 9,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 57.843,
+    "env_step_s": 64.204,
+    "video_write_s": 0.0,
+    "wall_total_s": 122.047,
+    "reasons": [
+      "Completed subtask 'stack_bowl_left_on_right' 1/1"
+    ],
+    "events": {
+      "GRIPPER_HIT_OBJECT": 1,
+      "WRONG_OBJECT_GRABBED": 6,
+      "GRIPPER_FULLY_CLOSED": 1,
+      "OBJECT_BUMPED": 1,
+      "wrong_objects_grabbed": [
+        [
+          "bowl_2",
+          "bowl_2",
+          "bowl_2",
+          "bowl_2",
+          "bowl_2",
+          "bowl_2"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 187.4,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_14-01-01_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BowlStackingLeftOnRightTask",
+        "task_name": "BowlStackingLeftOnRightTask",
+        "run_name": "BowlStackingLeftOnRightTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the left bowl on the right bowl",
+        "attributes": [
+          "spatial",
+          "simple"
+        ],
+        "success": true,
+        "episode_step": 286,
+        "duration": 19.066666666666666,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.321393502676692,
+          "joint_sparc_mean": -7.559172151422721,
+          "ee_isj": 988.2510564603222,
+          "joint_isj": 22466.238104366745,
+          "ee_path_length": 1.1752077978712354,
+          "joint_rmse_mean": 0.026021032087469784,
+          "ee_speed_max": 0.1866774559020996,
+          "ee_speed_mean": 0.06224704161286354
+        },
+        "events": {
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 6,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "bowl_2",
+            "bowl_2",
+            "bowl_2",
+            "bowl_2",
+            "bowl_2",
+            "bowl_2"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 57.843,
+          "policy_inference_avg_ms": 202.2,
+          "env_step_s": 64.204,
+          "env_step_avg_ms": 224.5,
+          "wall_total_s": 122.047,
+          "it_per_sec": 2.34
+        },
+        "score": 1.0,
+        "reason": "Completed subtask 'stack_bowl_left_on_right' 1/1"
+      }
+    ]
+  }
+}

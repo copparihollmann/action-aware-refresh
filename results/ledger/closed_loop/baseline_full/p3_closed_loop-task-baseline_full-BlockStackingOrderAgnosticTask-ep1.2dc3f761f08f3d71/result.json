@@ -1,0 +1,160 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full",
+    "task": "BlockStackingOrderAgnosticTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "2dc3f761f08f3d71",
+  "utc": "2026-08-04T08:45:59Z",
+  "elapsed_s": 639.578,
+  "method": "baseline_full",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": null,
+    "hypothesis": "Official Cosmos3 baseline. Reference for all Pareto plots.",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 never disabled"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      32.02392578125,
+      32.89453125,
+      33.06298828125
+    ],
+    "gpu_compute_apps": "1619010, ./.venv/bin/python, 31136 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.6600000262260437
+    ],
+    "steps": [
+      1350
+    ],
+    "total_steps": 1350,
+    "policy_calls": 43,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 209.051,
+    "env_step_s": 377.816,
+    "video_write_s": 0.0,
+    "wall_total_s": 586.867,
+    "reasons": [
+      "Condition not satisfied: stacked(objects=['red_block', 'blue_block', 'green_block', 'yellow_block'], order=None) (step 1/1)"
+    ],
+    "events": {
+      "WRONG_OBJECT_GRABBED": 15,
+      "GRIPPER_HIT_OBJECT": 3,
+      "OBJECT_BUMPED": 6,
+      "GRIPPER_FULLY_CLOSED": 1,
+      "MULTIPLE_OBJECTS_GRABBED": 1,
+      "wrong_objects_grabbed": [
+        [
+          "yellow_block",
+          "red_block",
+          "green_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "yellow_block",
+          "red_block",
+          "yellow_block",
+          "yellow_block",
+          "red_block",
+          "red_block"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 639.5,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_01-35-51_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlockStackingOrderAgnosticTask",
+        "task_name": "BlockStackingOrderAgnosticTask",
+        "run_name": "BlockStackingOrderAgnosticTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the blocks into a tower",
+        "attributes": [
+          "stacking",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1350,
+        "duration": 90.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.117449058526575,
+          "joint_sparc_mean": -7.911976259830673,
+          "ee_isj": 2857.3122746674635,
+          "joint_isj": 24822.66010026433,
+          "ee_path_length": 4.918462143543582,
+          "joint_rmse_mean": 0.019458714496522134,
+          "ee_speed_max": 0.262328565120697,
+          "ee_speed_mean": 0.05610935762524605
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 15,
+          "GRIPPER_HIT_OBJECT": 3,
+          "OBJECT_BUMPED": 6,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "MULTIPLE_OBJECTS_GRABBED": 1,
+          "wrong_objects_grabbed": [
+            "yellow_block",
+            "red_block",
+            "green_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "yellow_block",
+            "red_block",
+            "yellow_block",
+            "yellow_block",
+            "red_block",
+            "red_block"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 209.051,
+          "policy_inference_avg_ms": 154.9,
+          "env_step_s": 377.816,
+          "env_step_avg_ms": 279.9,
+          "wall_total_s": 586.867,
+          "it_per_sec": 2.3
+        },
+        "score": 0.6600000262260437,
+        "reason": "Condition not satisfied: stacked(objects=['red_block', 'blue_block', 'green_block', 'yellow_block'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,647 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_official",
+    "task": "BlackItemsInBinTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "be1c34f1582056b9",
+  "utc": "2026-08-05T06:27:39Z",
+  "elapsed_s": 4605.221,
+  "method": "baseline_official",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false
+    },
+    "client_args": {
+      "open_loop_horizon": 32,
+      "num_envs": 10
+    },
+    "parent": "baseline_full",
+    "hypothesis": "Closest runnable reproduction of the published 36.8% RoboLab-120 result: official defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 the baseline all methods should be compared against"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32",
+    "ROBOLAB_ENVS": "10"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      34.00830078125,
+      33.88232421875,
+      33.76171875
+    ],
+    "gpu_compute_apps": "2614279, ./.venv/bin/python, 32104 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 10,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.20000000298023224,
+      0.4000000059604645,
+      0.4000000059604645,
+      0.6000000238418579,
+      0.4000000059604645,
+      0.6000000238418579,
+      0.6000000238418579,
+      0.20000000298023224,
+      0.4000000059604645,
+      0.6000000238418579
+    ],
+    "steps": [
+      1800,
+      1800,
+      1800,
+      1800,
+      1800,
+      1800,
+      1800,
+      1800,
+      1800,
+      1800
+    ],
+    "total_steps": 18000,
+    "policy_calls": 570,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 30892.550000000007,
+    "env_step_s": 14521.06,
+    "video_write_s": 0.0,
+    "wall_total_s": 45413.62,
+    "reasons": [
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_in_container(object=computer_mouse, container=grey_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=glasses) (step 1/2)",
+      "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)"
+    ],
+    "events": {
+      "TARGET_OBJECT_DROPPED": 105,
+      "GRIPPER_HIT_OBJECT": 14,
+      "WRONG_OBJECT_GRABBED": 15,
+      "OBJECT_BUMPED": 37,
+      "GRIPPER_FULLY_CLOSED": 47,
+      "GRIPPER_HIT_TABLE": 195,
+      "wrong_objects_grabbed": [
+        [
+          "lizard_figurine",
+          "lizard_figurine"
+        ],
+        [
+          "lizard_figurine",
+          "lizard_figurine",
+          "lizard_figurine"
+        ],
+        [
+          "grey_bin"
+        ],
+        [
+          "marker",
+          "marker",
+          "marker"
+        ],
+        [
+          "grey_bin",
+          "marker"
+        ],
+        [
+          "lizard_figurine",
+          "lizard_figurine",
+          "lizard_figurine"
+        ],
+        [
+          "marker"
+        ]
+      ],
+      "MULTIPLE_OBJECTS_GRABBED": 2,
+      "OBJECT_MOVED": 1
+    },
+    "wall_elapsed_s": 4605.2,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_22-11-31_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.8083077525125795,
+          "joint_sparc_mean": -8.17708381347615,
+          "ee_isj": 3775.482632325213,
+          "joint_isj": 144338.3213186218,
+          "ee_path_length": 8.221196498437543,
+          "joint_rmse_mean": 0.02894043850824082,
+          "ee_speed_max": 0.36979296803474426,
+          "ee_speed_mean": 0.06664066016674042
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 9,
+          "GRIPPER_HIT_OBJECT": 2,
+          "WRONG_OBJECT_GRABBED": 2,
+          "OBJECT_BUMPED": 8,
+          "GRIPPER_FULLY_CLOSED": 5,
+          "GRIPPER_HIT_TABLE": 11,
+          "wrong_objects_grabbed": [
+            "lizard_figurine",
+            "lizard_figurine"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.20000000298023224,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 1,
+        "env_id": 1,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.6586739767203085,
+          "joint_sparc_mean": -8.915696992599738,
+          "ee_isj": 3357.9531697336038,
+          "joint_isj": 250055.3846425218,
+          "ee_path_length": 7.665758366590694,
+          "joint_rmse_mean": 0.027258736304660653,
+          "ee_speed_max": 0.4015964865684509,
+          "ee_speed_mean": 0.06448883563280106
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 8,
+          "GRIPPER_HIT_OBJECT": 1,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "WRONG_OBJECT_GRABBED": 3,
+          "OBJECT_BUMPED": 2,
+          "GRIPPER_HIT_TABLE": 47,
+          "wrong_objects_grabbed": [
+            "lizard_figurine",
+            "lizard_figurine",
+            "lizard_figurine"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.4000000059604645,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 2,
+        "env_id": 2,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.899173135502327,
+          "joint_sparc_mean": -8.51103984744481,
+          "ee_isj": 4457.6382889594715,
+          "joint_isj": 238466.30705103328,
+          "ee_path_length": 8.857057236081758,
+          "joint_rmse_mean": 0.03220226299127805,
+          "ee_speed_max": 0.33547788858413696,
+          "ee_speed_mean": 0.07542132586240768
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 13,
+          "GRIPPER_FULLY_CLOSED": 8,
+          "GRIPPER_HIT_TABLE": 7,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_HIT_OBJECT": 2,
+          "OBJECT_BUMPED": 2,
+          "wrong_objects_grabbed": [
+            "grey_bin"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.4000000059604645,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 3,
+        "env_id": 3,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -3.949965109600692,
+          "joint_sparc_mean": -10.922269659718514,
+          "ee_isj": 3661.485614065392,
+          "joint_isj": 187107.8788687847,
+          "ee_path_length": 7.870118151713442,
+          "joint_rmse_mean": 0.027577204412966547,
+          "ee_speed_max": 0.2795509696006775,
+          "ee_speed_mean": 0.0648418739438057
+        },
+        "events": {
+          "GRIPPER_HIT_TABLE": 29,
+          "TARGET_OBJECT_DROPPED": 16,
+          "GRIPPER_FULLY_CLOSED": 4,
+          "GRIPPER_HIT_OBJECT": 1,
+          "MULTIPLE_OBJECTS_GRABBED": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.6000000238418579,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_in_container(object=computer_mouse, container=grey_bin, require_contact_with=False, require_gripper_detached=True) (step 2/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 4,
+        "env_id": 4,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.595257550405737,
+          "joint_sparc_mean": -10.481683616497461,
+          "ee_isj": 4341.65694970181,
+          "joint_isj": 394978.3659344382,
+          "ee_path_length": 6.540460654016458,
+          "joint_rmse_mean": 0.03457185010912901,
+          "ee_speed_max": 0.4273115396499634,
+          "ee_speed_mean": 0.058219727128744125
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 7,
+          "TARGET_OBJECT_DROPPED": 11,
+          "GRIPPER_HIT_TABLE": 17,
+          "GRIPPER_HIT_OBJECT": 1,
+          "WRONG_OBJECT_GRABBED": 3,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "marker",
+            "marker",
+            "marker"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.4000000059604645,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 5,
+        "env_id": 5,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.630258198184729,
+          "joint_sparc_mean": -8.432962522283358,
+          "ee_isj": 3182.069396801112,
+          "joint_isj": 189788.29661333945,
+          "ee_path_length": 7.658084324418376,
+          "joint_rmse_mean": 0.030286951457399756,
+          "ee_speed_max": 0.38457465171813965,
+          "ee_speed_mean": 0.06472711265087128
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 5,
+          "OBJECT_BUMPED": 2,
+          "TARGET_OBJECT_DROPPED": 14,
+          "GRIPPER_HIT_TABLE": 6,
+          "GRIPPER_HIT_OBJECT": 1
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.6000000238418579,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 6,
+        "env_id": 6,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.933823898850779,
+          "joint_sparc_mean": -8.922563382555351,
+          "ee_isj": 4260.831774626897,
+          "joint_isj": 120928.6840786016,
+          "ee_path_length": 9.684849181438876,
+          "joint_rmse_mean": 0.0366790790983929,
+          "ee_speed_max": 0.5014544725418091,
+          "ee_speed_mean": 0.08107337355613708
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 11,
+          "GRIPPER_HIT_OBJECT": 3,
+          "GRIPPER_HIT_TABLE": 12,
+          "GRIPPER_FULLY_CLOSED": 2,
+          "WRONG_OBJECT_GRABBED": 2,
+          "MULTIPLE_OBJECTS_GRABBED": 1,
+          "OBJECT_BUMPED": 1,
+          "wrong_objects_grabbed": [
+            "grey_bin",
+            "marker"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.6000000238418579,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 7,
+        "env_id": 7,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.062565805025204,
+          "joint_sparc_mean": -8.829483638489162,
+          "ee_isj": 3256.5535086774576,
+          "joint_isj": 188099.2265693953,
+          "ee_path_length": 7.737675175280288,
+          "joint_rmse_mean": 0.029999450026052622,
+          "ee_speed_max": 0.4533875584602356,
+          "ee_speed_mean": 0.06569347530603409
+        },
+        "events": {
+          "GRIPPER_FULLY_CLOSED": 6,
+          "TARGET_OBJECT_DROPPED": 4,
+          "GRIPPER_HIT_OBJECT": 1,
+          "OBJECT_BUMPED": 17,
+          "WRONG_OBJECT_GRABBED": 3,
+          "OBJECT_MOVED": 1,
+          "wrong_objects_grabbed": [
+            "lizard_figurine",
+            "lizard_figurine",
+            "lizard_figurine"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.20000000298023224,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=smartphone) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 8,
+        "env_id": 8,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.464486895865784,
+          "joint_sparc_mean": -9.837431496318047,
+          "ee_isj": 3500.0315185686673,
+          "joint_isj": 200091.47290442995,
+          "ee_path_length": 7.455119582928813,
+          "joint_rmse_mean": 0.02410049939354514,
+          "ee_speed_max": 0.4742041826248169,
+          "ee_speed_mean": 0.06333474814891815
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 13,
+          "GRIPPER_HIT_OBJECT": 1,
+          "GRIPPER_FULLY_CLOSED": 3,
+          "GRIPPER_HIT_TABLE": 30
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.4000000059604645,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2); object_grabbed(object=glasses) (step 1/2)"
+      },
+      {
+        "env_name": "BlackItemsInBinTask",
+        "task_name": "BlackItemsInBinTask",
+        "run_name": "BlackItemsInBinTask_0",
+        "run": 0,
+        "episode": 9,
+        "env_id": 9,
+        "policy": "cosmos3",
+        "instruction": "Put the black items in the grey bin",
+        "attributes": [
+          "color",
+          "sorting",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1800,
+        "duration": 120.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.194979469977371,
+          "joint_sparc_mean": -8.972108113363394,
+          "ee_isj": 5233.600990299203,
+          "joint_isj": 441307.5311187708,
+          "ee_path_length": 8.59508440366745,
+          "joint_rmse_mean": 0.03924228353055491,
+          "ee_speed_max": 0.5206284523010254,
+          "ee_speed_mean": 0.07267957925796509
+        },
+        "events": {
+          "TARGET_OBJECT_DROPPED": 6,
+          "GRIPPER_HIT_TABLE": 36,
+          "OBJECT_BUMPED": 4,
+          "GRIPPER_FULLY_CLOSED": 5,
+          "WRONG_OBJECT_GRABBED": 1,
+          "GRIPPER_HIT_OBJECT": 1,
+          "wrong_objects_grabbed": [
+            "marker"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 3089.255,
+          "policy_inference_avg_ms": 1716.3,
+          "env_step_s": 1452.106,
+          "env_step_avg_ms": 806.7,
+          "wall_total_s": 4541.362,
+          "it_per_sec": 0.4
+        },
+        "score": 0.6000000238418579,
+        "reason": "Conditions not satisfied: object_grabbed(object=remote_control) (step 1/2); object_grabbed(object=computer_mouse) (step 1/2)"
+      }
+    ]
+  }
+}

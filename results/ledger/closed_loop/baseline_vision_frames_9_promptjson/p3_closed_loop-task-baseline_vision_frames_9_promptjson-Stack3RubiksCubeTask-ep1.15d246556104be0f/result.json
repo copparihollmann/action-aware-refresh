@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "Stack3RubiksCubeTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "15d246556104be0f",
+  "utc": "2026-08-04T23:14:42Z",
+  "elapsed_s": 330.027,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      32.748046875,
+      34.3935546875,
+      34.01513671875
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32002 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 60.334,
+    "env_step_s": 213.716,
+    "video_write_s": 0.0,
+    "wall_total_s": 274.05,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 330.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_16-09-46_cosmos3",
+    "episodes": [
+      {
+        "env_name": "Stack3RubiksCubeTask",
+        "task_name": "Stack3RubiksCubeTask",
+        "run_name": "Stack3RubiksCubeTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the rubiks cubes in a tower",
+        "attributes": [
+          "stacking",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -6.7506937392540625,
+          "joint_sparc_mean": -12.511101927708188,
+          "ee_isj": 6416.327573704798,
+          "joint_isj": 50019.05362838234,
+          "ee_path_length": 4.706959612373987,
+          "joint_rmse_mean": 0.021537355677658777,
+          "ee_speed_max": 0.4118066728115082,
+          "ee_speed_mean": 0.08263570070266724
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 60.334,
+          "policy_inference_avg_ms": 67.0,
+          "env_step_s": 213.716,
+          "env_step_avg_ms": 237.5,
+          "wall_total_s": 274.05,
+          "it_per_sec": 3.28
+        },
+        "score": 0.0,
+        "reason": "No object completed. Best progress: stacked(objects=['rubiks_cube', 'rubiks_cube_1'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

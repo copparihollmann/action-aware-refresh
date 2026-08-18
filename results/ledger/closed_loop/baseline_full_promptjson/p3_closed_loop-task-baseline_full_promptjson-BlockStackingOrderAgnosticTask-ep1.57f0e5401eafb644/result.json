@@ -1,0 +1,200 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_full_promptjson",
+    "task": "BlockStackingOrderAgnosticTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "57f0e5401eafb644",
+  "utc": "2026-08-04T21:47:14Z",
+  "elapsed_s": 631.03,
+  "method": "baseline_full_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_full",
+    "hypothesis": "The official baseline, served with the prompt format it was trained with. Tests whether our 33-39% baseline success is a setup artefact rather than the model's true ability.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "reference \u2014 replaces baseline_full if materially better"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      33.45263671875,
+      34.68896484375,
+      34.64794921875
+    ],
+    "gpu_compute_apps": "2365575, ./.venv/bin/python, 32108 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.6600000262260437
+    ],
+    "steps": [
+      1350
+    ],
+    "total_steps": 1350,
+    "policy_calls": 43,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 197.137,
+    "env_step_s": 371.083,
+    "video_write_s": 0.0,
+    "wall_total_s": 568.22,
+    "reasons": [
+      "Condition not satisfied: stacked(objects=['red_block', 'blue_block', 'green_block', 'yellow_block'], order=None) (step 1/1)"
+    ],
+    "events": {
+      "WRONG_OBJECT_GRABBED": 34,
+      "GRIPPER_HIT_OBJECT": 4,
+      "OBJECT_BUMPED": 7,
+      "MULTIPLE_OBJECTS_GRABBED": 1,
+      "GRIPPER_FULLY_CLOSED": 1,
+      "wrong_objects_grabbed": [
+        [
+          "green_block",
+          "green_block",
+          "yellow_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "red_block",
+          "blue_block",
+          "red_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "red_block",
+          "green_block",
+          "green_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "blue_block",
+          "yellow_block"
+        ]
+      ]
+    },
+    "wall_elapsed_s": 631.0,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_14-37-22_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlockStackingOrderAgnosticTask",
+        "task_name": "BlockStackingOrderAgnosticTask",
+        "run_name": "BlockStackingOrderAgnosticTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the blocks into a tower",
+        "attributes": [
+          "stacking",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1350,
+        "duration": 90.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -4.342060542850537,
+          "joint_sparc_mean": -12.839702305778617,
+          "ee_isj": 4765.398539683758,
+          "joint_isj": 55564.954476765415,
+          "ee_path_length": 5.2916938877166455,
+          "joint_rmse_mean": 0.01888847567158161,
+          "ee_speed_max": 0.24310782551765442,
+          "ee_speed_mean": 0.06153445690870285
+        },
+        "events": {
+          "WRONG_OBJECT_GRABBED": 34,
+          "GRIPPER_HIT_OBJECT": 4,
+          "OBJECT_BUMPED": 7,
+          "MULTIPLE_OBJECTS_GRABBED": 1,
+          "GRIPPER_FULLY_CLOSED": 1,
+          "wrong_objects_grabbed": [
+            "green_block",
+            "green_block",
+            "yellow_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "red_block",
+            "blue_block",
+            "red_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "red_block",
+            "green_block",
+            "green_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "blue_block",
+            "yellow_block"
+          ]
+        },
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 197.137,
+          "policy_inference_avg_ms": 146.0,
+          "env_step_s": 371.083,
+          "env_step_avg_ms": 274.9,
+          "wall_total_s": 568.22,
+          "it_per_sec": 2.38
+        },
+        "score": 0.6600000262260437,
+        "reason": "Condition not satisfied: stacked(objects=['red_block', 'blue_block', 'green_block', 'yellow_block'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

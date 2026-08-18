@@ -1,0 +1,116 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "BlockStackingOrderAgnosticTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "c5c5d897426fd6a6",
+  "utc": "2026-08-04T23:31:10Z",
+  "elapsed_s": 506.343,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      35.23388671875,
+      34.22705078125,
+      33.8984375
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32004 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      1350
+    ],
+    "total_steps": 1350,
+    "policy_calls": 43,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 91.143,
+    "env_step_s": 363.266,
+    "video_write_s": 0.0,
+    "wall_total_s": 454.409,
+    "reasons": [
+      "No object completed. Best progress: stacked(objects=['red_block', 'blue_block'], order=None) (step 1/1)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 506.3,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_16-23-14_cosmos3",
+    "episodes": [
+      {
+        "env_name": "BlockStackingOrderAgnosticTask",
+        "task_name": "BlockStackingOrderAgnosticTask",
+        "run_name": "BlockStackingOrderAgnosticTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stack the blocks into a tower",
+        "attributes": [
+          "stacking",
+          "complex"
+        ],
+        "success": false,
+        "episode_step": 1350,
+        "duration": 90.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -7.995800310654779,
+          "joint_sparc_mean": -12.121920071826763,
+          "ee_isj": 9398.010442497292,
+          "joint_isj": 71090.24284777028,
+          "ee_path_length": 7.107819940175242,
+          "joint_rmse_mean": 0.02090485250826163,
+          "ee_speed_max": 0.42482832074165344,
+          "ee_speed_mean": 0.08356305956840515
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 91.143,
+          "policy_inference_avg_ms": 67.5,
+          "env_step_s": 363.266,
+          "env_step_avg_ms": 269.1,
+          "wall_total_s": 454.409,
+          "it_per_sec": 2.97
+        },
+        "score": 0.0,
+        "reason": "No object completed. Best progress: stacked(objects=['red_block', 'blue_block'], order=None) (step 1/1)"
+      }
+    ]
+  }
+}

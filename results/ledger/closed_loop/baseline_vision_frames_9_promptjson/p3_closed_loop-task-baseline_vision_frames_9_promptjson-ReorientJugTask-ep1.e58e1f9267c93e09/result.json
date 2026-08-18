@@ -1,0 +1,118 @@
+{
+  "unit": {
+    "phase": "p3_closed_loop",
+    "kind": "task",
+    "method": "baseline_vision_frames_9_promptjson",
+    "task": "ReorientJugTask",
+    "episode": 0,
+    "variant": "ep1"
+  },
+  "key": "e58e1f9267c93e09",
+  "utc": "2026-08-04T23:04:07Z",
+  "elapsed_s": 453.721,
+  "method": "baseline_vision_frames_9_promptjson",
+  "config": {
+    "server_args": {
+      "denoising_steps": 4,
+      "decode_video": false,
+      "vision_frames": 9,
+      "format_prompt_as_json": true
+    },
+    "client_args": {
+      "open_loop_horizon": 32
+    },
+    "parent": "baseline_vision_frames_9",
+    "hypothesis": "Re-test the one statistically significant result (0/9, p=0.012) under the prompt format the checkpoint was trained with. If the 0/9 survives, the \"imagination is the plan\" conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.\n",
+    "metric": "task_success_vs_normalized_total_compute",
+    "stop_criterion": "diagnostic re-measurement, not a candidate method"
+  },
+  "server_env": {
+    "COSMOS_DENOISING_STEPS": "4",
+    "COSMOS_DECODE_VIDEO": "false",
+    "COSMOS_VISION_FRAMES": "9",
+    "COSMOS_PROMPT_JSON": "true"
+  },
+  "client_env": {
+    "ROBOLAB_OPEN_LOOP_HORIZON": "32"
+  },
+  "contention": {
+    "loadavg_1_5_15": [
+      34.10595703125,
+      33.7666015625,
+      33.13232421875
+    ],
+    "gpu_compute_apps": "2492206, ./.venv/bin/python, 32002 MiB"
+  },
+  "guardrails": false,
+  "deviations_from_official": [
+    "guardrails disabled (gated Cosmos-Guardrail1 unavailable)"
+  ],
+  "result": {
+    "n_episodes": 1,
+    "n_success": 0,
+    "success_rate": 0.0,
+    "scores": [
+      0.0
+    ],
+    "steps": [
+      900
+    ],
+    "total_steps": 900,
+    "policy_calls": 29,
+    "open_loop_horizon": 32,
+    "policy_inference_s": 61.694,
+    "env_step_s": 334.103,
+    "video_write_s": 0.0,
+    "wall_total_s": 395.797,
+    "reasons": [
+      "Condition not satisfied: object_grabbed(object=utilityjug_a02) (step 1/2)"
+    ],
+    "events": {},
+    "wall_elapsed_s": 453.7,
+    "output_dir": "/scratch/agustin/robotics/action-aware-refresh/third_party/RoboLab/output/2026-08-04_15-57-09_cosmos3",
+    "episodes": [
+      {
+        "env_name": "ReorientJugTask",
+        "task_name": "ReorientJugTask",
+        "run_name": "ReorientJugTask_0",
+        "run": 0,
+        "episode": 0,
+        "env_id": 0,
+        "policy": "cosmos3",
+        "instruction": "Stand the jug upright",
+        "attributes": [
+          "semantics",
+          "reorientation",
+          "affordance",
+          "moderate"
+        ],
+        "success": false,
+        "episode_step": 900,
+        "duration": 60.0,
+        "dt": 0.06666666666666667,
+        "metrics": {
+          "ee_sparc": -5.527150479092336,
+          "joint_sparc_mean": -14.634540275521312,
+          "ee_isj": 5637.562043328116,
+          "joint_isj": 45134.99267108223,
+          "ee_path_length": 3.7794965251610915,
+          "joint_rmse_mean": 0.01914270580978141,
+          "ee_speed_max": 0.48962166905403137,
+          "ee_speed_mean": 0.06861379742622375
+        },
+        "events": {},
+        "instruction_type": "default",
+        "timing": {
+          "policy_inference_s": 61.694,
+          "policy_inference_avg_ms": 68.5,
+          "env_step_s": 334.103,
+          "env_step_avg_ms": 371.2,
+          "wall_total_s": 395.797,
+          "it_per_sec": 2.27
+        },
+        "score": 0.0,
+        "reason": "Condition not satisfied: object_grabbed(object=utilityjug_a02) (step 1/2)"
+      }
+    ]
+  }
+}
