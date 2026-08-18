@@ -1,0 +1,108 @@
+From 1b74659001354cc054163cfb75a63cfeec0c4674 Mon Sep 17 00:00:00 2001
+From: action-aware-refresh <copparihollmann@berkeley.edu>
+Date: Mon, 3 Aug 2026 22:12:32 -0700
+Subject: [PATCH] research: env-gated capture of one real policy request in
+ Cosmos3Client
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The M2 compute-anatomy probe drives the model in-process, so it needs an
+observation to feed it. Hand-authoring one risks profiling a payload the closed
+loop never sends — wrong dtype, wrong composed-view geometry, or a prompt that
+tokenizes to a different length, any of which silently changes the measured
+token count and therefore the cost attribution we are trying to make.
+
+This dumps the first genuine request built by _pack_request during a live
+RoboLab episode, so the probe profiles real input.
+
+Strictly additive and off by default: it does nothing unless
+ACTION_REFRESH_CAPTURE_REQUEST names an output path. It writes at most once per
+process and swallows its own exceptions — a debug artifact must never be able
+to fail an eval run.
+---
+ policies/cosmos3/client.py | 49 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 48 insertions(+), 1 deletion(-)
+
+diff --git a/policies/cosmos3/client.py b/policies/cosmos3/client.py
+index 0a29532..283f7e2 100644
+--- a/policies/cosmos3/client.py
++++ b/policies/cosmos3/client.py
+@@ -2,6 +2,7 @@
+ # SPDX-License-Identifier: Apache-2.0
+ 
+ import logging
++import os
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
+@@ -12,6 +13,50 @@ from robolab.eval.base_client import InferenceClient
+ 
+ logger = logging.getLogger(__name__)
+ 
++# --- research/action-aware-refresh: request capture ------------------------
++# Our M2 compute-anatomy probe drives the model in-process and therefore has to
++# construct an observation itself. Hand-writing one is how you end up profiling
++# a payload the real closed loop never sends (wrong dtype, wrong composed-view
++# geometry, a prompt that tokenizes to a different length). So capture the first
++# genuine request instead, from the live closed loop, and profile that.
++#
++# Off unless ACTION_REFRESH_CAPTURE_REQUEST names an output .npz path; writes
++# exactly once per process and never raises into the control loop — a debug
++# artifact must not be able to fail an eval run.
++_CAPTURE_ENV = "ACTION_REFRESH_CAPTURE_REQUEST"
++_captured = False
++
++
++def _maybe_capture_request(request: dict) -> None:
++    global _captured
++    path = os.environ.get(_CAPTURE_ENV)
++    if not path or _captured:
++        return
++    _captured = True  # set first: a failed write must not retry every step
++    try:
++        arrays = {k: np.asarray(v) for k, v in request.items() if not isinstance(v, str)}
++        meta = {k: v for k, v in request.items() if isinstance(v, str)}
++        os.makedirs(os.path.dirname(os.path.abspath(path)) or ".", exist_ok=True)
++        np.savez(path, **arrays)
++        with open(os.path.splitext(path)[0] + ".json", "w") as fh:
++            import json
++
++            json.dump(
++                {
++                    "strings": meta,
++                    "arrays": {
++                        k: {"shape": list(v.shape), "dtype": str(v.dtype)}
++                        for k, v in arrays.items()
++                    },
++                    "source": "Cosmos3Client._pack_request, first request of the run",
++                },
++                fh,
++                indent=2,
++            )
++        logger.info("[capture] wrote real policy request to %s", path)
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("[capture] failed to write %s: %s", path, exc)
++
+ 
+ class Cosmos3Client(InferenceClient):
+     """ """
+@@ -99,12 +144,14 @@ class Cosmos3Client(InferenceClient):
+         right = right.squeeze(0).permute(1, 2, 0).numpy().astype(wrist.dtype)
+         image = np.concatenate((wrist, np.concatenate((left, right), axis=1)))
+ 
+-        return {
++        request = {
+             "observation/image": image,
+             "observation/joint_position": extracted_obs["joint_position"],
+             "observation/gripper_position": extracted_obs["gripper_position"],
+             "prompt": instruction,
+         }
++        _maybe_capture_request(request)  # research/action-aware-refresh; no-op unless enabled
++        return request
+ 
+     def _query_server(self, request: dict) -> dict:
+         """ """
+-- 
+2.43.0
+

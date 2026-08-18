@@ -1,0 +1,39 @@
+From 2257031c5f7362e303f469b30caca035621f1088 Mon Sep 17 00:00:00 2001
+From: action-aware-refresh <copparihollmann@berkeley.edu>
+Date: Mon, 3 Aug 2026 19:33:26 -0700
+Subject: [PATCH] research: skip _download_on_rank0 collective at world_size==1
+
+On a single-GPU run with an initialized NCCL process group,
+broadcast_object_list() segfaults inside c10d::broadcast (torch 2.10.0+cu130,
+L40S sm89), so OmniInference.create() cannot complete and the policy server
+cannot start. At world_size==1 there is no peer to share the path with, so the
+broadcast is pure overhead; returning the locally downloaded path is
+semantically identical. Multi-rank behaviour is unchanged.
+---
+ cosmos_framework/inference/common/inference.py | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/cosmos_framework/inference/common/inference.py b/cosmos_framework/inference/common/inference.py
+index 9755f94..abc0cef 100644
+--- a/cosmos_framework/inference/common/inference.py
++++ b/cosmos_framework/inference/common/inference.py
+@@ -28,6 +28,16 @@ def _download_on_rank0(download: Callable[[], str | Path]) -> Path:
+     if not torch.distributed.is_available() or not torch.distributed.is_initialized():
+         return Path(download())
+ 
++    # RESEARCH PATCH (research/action-aware-refresh): skip the collective when
++    # there is only one rank to share with. On a single-GPU run with an
++    # initialized NCCL group, broadcast_object_list() segfaults inside
++    # c10d::broadcast (observed on torch 2.10.0+cu130, L40S sm89), which makes
++    # the policy server unstartable. There is nothing to broadcast at
++    # world_size==1, so returning directly is semantically identical and leaves
++    # all multi-rank behaviour untouched.
++    if torch.distributed.get_world_size() == 1:
++        return Path(download())
++
+     payload: list[str | None] = [None, None]
+     local_error: Exception | None = None
+     if torch.distributed.get_rank() == 0:
+-- 
+2.43.0
+

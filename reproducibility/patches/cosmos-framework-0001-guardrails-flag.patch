@@ -1,0 +1,54 @@
+From d1347be1cab1123c6aad39ec39b39f1334c74141 Mon Sep 17 00:00:00 2001
+From: action-aware-refresh <copparihollmann@berkeley.edu>
+Date: Mon, 3 Aug 2026 19:31:00 -0700
+Subject: [PATCH] research: additive --guardrails/--no-guardrails flag on the
+ RoboLab policy server
+
+Upstream leaves OmniSetupArgs.guardrails at its default of True and gives the
+RoboLab server no way to change it, so starting the server unconditionally
+downloads the GATED repo nvidia/Cosmos-Guardrail1. Without approved access the
+server cannot start at all, which blocks the M1 smoke test and M2 anatomy.
+
+The flag is strictly additive and defaults to True, so the official baseline is
+byte-identical. --no-guardrails is for measurement runs only and must be
+recorded as a deviation: the guardrail runners are real deployed cost.
+---
+ .../scripts/action_policy_server_robolab.py       | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/cosmos_framework/scripts/action_policy_server_robolab.py b/cosmos_framework/scripts/action_policy_server_robolab.py
+index cbe1deb..ab65e77 100644
+--- a/cosmos_framework/scripts/action_policy_server_robolab.py
++++ b/cosmos_framework/scripts/action_policy_server_robolab.py
+@@ -358,6 +358,18 @@ class RobolabServerArgs(pydantic.BaseModel):
+     format_prompt_as_json: bool | None = None
+     """Serve prompts as structured JSON (matching training ``format_prompt_as_json``)."""
+ 
++    guardrails: bool = True
++    """Enable the Cosmos guardrail runners.
++
++    RESEARCH PATCH (research/action-aware-refresh). Upstream hardcodes
++    OmniSetupArgs.guardrails to its default of True, which forces a download of
++    the GATED repo ``nvidia/Cosmos-Guardrail1``. Without approved access the
++    policy server cannot start at all. This flag is additive: the default is
++    unchanged, so the official baseline is untouched. Pass --no-guardrails only
++    for measurement runs, and record it as a deviation — the guardrail runners
++    are real deployed cost.
++    """
++
+ 
+ class RobolabPolicyService:
+     def __init__(self, args: RobolabServerArgs) -> None:
+@@ -426,6 +438,9 @@ class RobolabPolicyService:
+             "checkpoint_path": args.checkpoint_path,
+             "output_dir": args.output_dir or _DEFAULT_ROBOLAB_OUTPUT_DIR,
+             "sampler": args.sampler,
++            # RESEARCH PATCH: forward the guardrail toggle (upstream leaves it
++            # at OmniSetupOverrides' default of True). See RobolabServerArgs.
++            "guardrails": args.guardrails,
+         }
+         if args.experiment is not None:
+             setup_overrides["experiment"] = args.experiment
+-- 
+2.43.0
+

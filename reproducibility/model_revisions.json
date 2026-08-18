@@ -1,17 +1,69 @@
 {
-  "note": "Populated when the model is first pulled. Locks HF revision SHAs.",
+  "note": "Locks HF revision SHAs. `observed_config` values were read from the checked-out source at third_party/cosmos-framework@a904d2d3 (cosmos_framework/scripts/action_policy_server_robolab.py) and from the model card's config.json \u2014 they are observations, not expectations. Upstream's own default hf_revision is the MOVING ref 'main', so pinning here is what makes a run reproducible.",
   "models": {
     "nvidia/Cosmos3-Nano-Policy-DROID": {
-      "revision": null,
-      "pulled_at_utc": null,
-      "expected_config": {
+      "revision": "6706d7680581c255ff61e0f3bb49d90eac55c79e",
+      "revision_source": "https://huggingface.co/api/models/nvidia/Cosmos3-Nano-Policy-DROID (field `sha`), resolved 2026-08-03",
+      "pulled_at_utc": "2026-08-04T02:39:29Z",
+      "gated": false,
+      "license": "other (NVIDIA Open Model License)",
+      "weights_bytes_total": 32940000000,
+      "weights_layout": {
+        "transformer": "7 shards, ~30.35 GB bf16 (~15.2B params)",
+        "vae": "1.409 GB",
+        "vision_encoder": "1.153 GB"
+      },
+      "observed_config": {
         "policy_server_port_default": 8000,
+        "policy_server_host_default": "0.0.0.0",
         "denoising_steps_default": 4,
         "action_chunk_default": 32,
-        "conditioning_fps_default": 15,
+        "conditioning_fps_default": 15.0,
         "action_dim_default": 8,
-        "decode_video_default": false
+        "decode_video_default": false,
+        "image_height_default": 540,
+        "image_width_default": 640,
+        "resolution_default": "480",
+        "action_space_default": "joint_pos",
+        "use_state_default": true,
+        "history_length_default": 1,
+        "sampler_default": "unipc",
+        "guidance_default": 3.0,
+        "shift_default": 5.0,
+        "seed_default": 0,
+        "deterministic_seed_default": false,
+        "domain_name_default": "droid_lerobot",
+        "upstream_hf_revision_default": "main",
+        "joint_attn_implementation": "two_way",
+        "action_gen": true,
+        "patch_spatial": 2,
+        "latent_downsample_factor": 16,
+        "max_vae_latent_side_after_patchify": 20,
+        "position_embedding_type": "unified_3d_mrope"
+      },
+      "local_snapshot": "/scratch/agustin/robotics/cache/huggingface/hub/models--nvidia--Cosmos3-Nano-Policy-DROID/snapshots/6706d7680581c255ff61e0f3bb49d90eac55c79e",
+      "files_downloaded": 43,
+      "measured": {
+        "peak_vram_reserved_mib_b0": 31578,
+        "peak_vram_allocated_mib_b0": 30942,
+        "model_load_s": 38.5,
+        "joint_sequence_tokens": 3184,
+        "attention_arch_tag": 89,
+        "attention_backend_list": [
+          "flash2",
+          "cudnn",
+          "natten"
+        ],
+        "composed_view_resolution": "544x736 (3-view concat: wrist on top, two exterior below)",
+        "conditioning_clip_seconds": 2.0
       }
+    },
+    "nvidia/Cosmos-Guardrail1": {
+      "revision": "d6d4bfa899a71454a700907664f3e88f503950cf",
+      "gated": true,
+      "status": "ACCESS DENIED - requires approval on Hugging Face",
+      "why_it_matters": "OmniSetupArgs.guardrails defaults to True and the RoboLab policy server exposes no flag for it upstream, so starting the OFFICIAL server unconditionally downloads this repo. Without approved access the server cannot start. All numbers recorded in this session were taken with --no-guardrails (research patch 0001) and therefore EXCLUDE guardrail cost, which is part of the official baseline.",
+      "action_required": "Request access at https://huggingface.co/nvidia/Cosmos-Guardrail1, then export HF_TOKEN."
     }
   }
 }

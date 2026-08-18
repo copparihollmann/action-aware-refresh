@@ -1,0 +1,37 @@
+From 7b2228018e80416959915aa8443bb17584450388 Mon Sep 17 00:00:00 2001
+From: action-aware-refresh <copparihollmann@berkeley.edu>
+Date: Mon, 3 Aug 2026 19:35:55 -0700
+Subject: [PATCH] research: make sync_model_states a no-op at world_size==1
+
+_verify_param_shape_across_processes()/_sync_module_states() segfault inside
+NCCL on this stack (torch 2.10.0+cu130, L40S sm89) when the process group has a
+single rank, so the VAE tokenizer cannot be constructed and the policy server
+cannot start. With one rank there is no peer to synchronize from, so returning
+early is semantically identical. Multi-rank behaviour is unchanged.
+---
+ cosmos_framework/utils/distributed.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/cosmos_framework/utils/distributed.py b/cosmos_framework/utils/distributed.py
+index 87cdd39..0303f98 100644
+--- a/cosmos_framework/utils/distributed.py
++++ b/cosmos_framework/utils/distributed.py
+@@ -399,6 +399,15 @@ def sync_model_states(
+     """
+     if not dist.is_available() or not dist.is_initialized():
+         return
++    # RESEARCH PATCH (research/action-aware-refresh): a single rank has no
++    # peer to synchronize with, so this whole function is a semantic no-op at
++    # world_size==1. It is not a *performance* no-op: the underlying
++    # _verify_param_shape_across_processes()/_sync_module_states() collectives
++    # segfault inside NCCL on this stack (torch 2.10.0+cu130, L40S sm89,
++    # single-GPU init), which makes the policy server unstartable. Multi-rank
++    # behaviour is untouched.
++    if dist.get_world_size() == 1:
++        return
+     if process_group is None:
+         process_group = _get_default_group()
+     if not params_and_buffers_to_ignore:
+-- 
+2.43.0
+

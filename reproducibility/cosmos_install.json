@@ -1,0 +1,26 @@
+{
+  "cosmos_group": "cu130-train",
+  "installed_utc": "2026-08-04T02:18:15Z",
+  "python_version": "3.13.14",
+  "packages": {
+    "torch": "2.10.0+cu130",
+    "torchvision": "0.25.0+cu130",
+    "torchcodec": "0.10.0+cu130",
+    "triton": "3.6.0",
+    "flash-attn": "2.7.4.post1+cu130.torch210",
+    "flash-attn-3-nv": "1.0.3+cu130.torch210",
+    "natten": "0.21.6.dev6+cu130.torch210.gb300",
+    "transformer-engine": "2.12+cu130.torch210",
+    "torchao": "0.16.0+cu130",
+    "numpy": "2.2.6"
+  },
+  "gpu": "NVIDIA L40S sm89",
+  "note": "flash3 is Hopper-only (arch_tag==90); on SM 8.9 get_backend_list() returns ['flash2','cudnn','natten'], so absolute latencies are not comparable to NVIDIA's published FA3 numbers.",
+  "extra_packages": {
+    "structlog": {
+      "version": "26.1.0",
+      "why": "our own scripts (probe, offline study) import action_refresh.logging, which uses structlog. Pure Python, no compiled deps, so it cannot perturb the measured torch/flash-attn stack \u2014 verified after install.",
+      "installed_with": "uv pip install (NOT uv add: upstream pyproject/uv.lock stay clean)"
+    }
+  }
+}

@@ -1,77 +1,143 @@
 {
-  "generated_utc": null,
-  "note": "Populated by scripts/clone_sources.sh. Never edit by hand — regenerate.",
+  "generated_utc": "2026-08-18T05:17:04Z",
+  "note": "Populated by scripts/clone_sources.sh. Never edit by hand \u2014 regenerate.",
   "primary_sources": [
     {
       "name": "cosmos",
       "url": "https://github.com/NVIDIA/cosmos",
       "phase": "M0",
       "local_path": "third_party/cosmos",
-      "branch": null,
-      "commit": null,
-      "dirty": null,
-      "license": null,
-      "research_branch": "research/action-aware-refresh"
+      "branch": "research/action-aware-refresh",
+      "commit": "404b9bf2144640834c63ae7d9e7269e0f4ea02cb",
+      "dirty": false,
+      "license": "LICENSE",
+      "research_branch": "research/action-aware-refresh",
+      "base_commit": "404b9bf2144640834c63ae7d9e7269e0f4ea02cb",
+      "tree": "4d1b6fc5a014adb8896aa43dbbce3a87151438db"
     },
     {
       "name": "cosmos-framework",
       "url": "https://github.com/NVIDIA/cosmos-framework",
       "phase": "M0",
       "local_path": "third_party/cosmos-framework",
-      "branch": null,
-      "commit": null,
-      "dirty": null,
-      "license": null,
-      "research_branch": "research/action-aware-refresh"
+      "branch": "research/action-aware-refresh",
+      "commit": "f98f4d5c9e1eedb2dab731c96bcf978ae344d4f9",
+      "dirty": false,
+      "license": "LICENSE",
+      "research_branch": "research/action-aware-refresh",
+      "base_commit": "a904d2d36b774a51dd06ff9ff906816b1a04f579",
+      "tree": "ace900a08e60e9b51552b746ecf674964898a732"
     },
     {
       "name": "RoboLab",
       "url": "https://github.com/NVLabs/RoboLab",
       "phase": "M0",
       "local_path": "third_party/RoboLab",
-      "branch": null,
-      "commit": null,
-      "dirty": null,
-      "license": null,
-      "research_branch": "research/action-aware-refresh"
+      "branch": "research/action-aware-refresh",
+      "commit": "0377dd1af7469b4328f7dec5765156447977227a",
+      "dirty": true,
+      "license": "LICENSE",
+      "research_branch": "research/action-aware-refresh",
+      "base_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+      "tree": "cc8b874d83741c4fb7f8bc458722d8ec2e5c5189"
     },
     {
       "name": "cosmos-policy",
       "url": "https://github.com/NVlabs/cosmos-policy",
       "phase": "M0",
       "local_path": "third_party/cosmos-policy",
-      "branch": null,
-      "commit": null,
-      "dirty": null,
-      "license": null,
-      "research_branch": "research/action-aware-refresh"
+      "branch": "research/action-aware-refresh",
+      "commit": "18a2accadf4e7a3531e56754102af5a24d2316da",
+      "dirty": false,
+      "license": "LICENSE",
+      "research_branch": "research/action-aware-refresh",
+      "base_commit": "18a2accadf4e7a3531e56754102af5a24d2316da",
+      "tree": "039cf7a9436b32bfd82abcba0c6595f3348a4992"
     },
     {
       "name": "openpi",
       "url": "https://github.com/Physical-Intelligence/openpi",
       "phase": "M9 (transfer validation)",
       "local_path": "third_party/openpi",
-      "branch": null,
-      "commit": null,
-      "dirty": null,
+      "branch": "research/action-aware-refresh",
+      "commit": "15a9616a00943ada6c20a0f158e3adb39df2ccac",
+      "dirty": false,
+      "license": "LICENSE",
+      "research_branch": "research/action-aware-refresh",
+      "base_commit": "15a9616a00943ada6c20a0f158e3adb39df2ccac",
+      "tree": "a7f18af2745255b5fa98c86d6031f858bf73d1be"
+    },
+    {
+      "name": "cosmos3-efficient-imagination",
+      "url": "git@github.com:chooper1/Cosmos3-Efficient-Imagination",
+      "phase": "M3 (prior art / methods source \u2014 NOT a substrate; see private/upstream_fork_audit.md)",
+      "local_path": "third_party/cosmos3-efficient-imagination",
+      "research_branch": null,
+      "note": "Private. Standalone repo that patches cosmos-framework from the outside (framework_patches/) and monkeypatches its sampler; contains no cosmos_framework package, so it cannot serve as a substrate. No LICENSE file.",
+      "branch": "research/action-aware-refresh",
+      "commit": "8433abd72f6a25237ed0c0dcdeb135e2b83f9943",
+      "dirty": false,
       "license": null,
-      "research_branch": "research/action-aware-refresh"
+      "base_commit": "ecb8de41cdb57c6e0ca8430f620d6beb741c084a",
+      "tree": "4c8934952e8e8a75cfe633619644e2ebbace1f3f"
     }
   ],
   "deferred_sources": [
-    {"name": "TeaCache", "url": "https://github.com/ali-vilab/TeaCache", "phase": "M5"},
-    {"name": "FasterCache", "url": "https://github.com/Vchitect/FasterCache", "phase": "M5"},
-    {"name": "DeepCache", "url": "https://github.com/horseee/DeepCache", "phase": "M5"},
-    {"name": "v2e", "url": "https://github.com/SensorsINI/v2e", "phase": "M4 (offline robustness only)"},
-    {"name": "rpg_esim", "url": "https://github.com/uzh-rpg/rpg_esim", "phase": "M4 (event proxy sim)"},
-    {"name": "RAFT (torchvision)", "url": "https://pytorch.org/vision/stable/models/raft.html", "phase": "M4 (via pypi, no clone)"}
+    {
+      "name": "TeaCache",
+      "url": "https://github.com/ali-vilab/TeaCache",
+      "phase": "M5"
+    },
+    {
+      "name": "FasterCache",
+      "url": "https://github.com/Vchitect/FasterCache",
+      "phase": "M5"
+    },
+    {
+      "name": "DeepCache",
+      "url": "https://github.com/horseee/DeepCache",
+      "phase": "M5"
+    },
+    {
+      "name": "v2e",
+      "url": "https://github.com/SensorsINI/v2e",
+      "phase": "M4 (offline robustness only)"
+    },
+    {
+      "name": "rpg_esim",
+      "url": "https://github.com/uzh-rpg/rpg_esim",
+      "phase": "M4 (event proxy sim)"
+    },
+    {
+      "name": "RAFT (torchvision)",
+      "url": "https://pytorch.org/vision/stable/models/raft.html",
+      "phase": "M4 (via pypi, no clone)"
+    }
   ],
   "external_references": [
-    {"name": "ImageWAM", "url": "https://arxiv.org/pdf/2606.19531"},
-    {"name": "FoveatedDiffusion", "url": "https://bchao1.github.io/foveated-diffusion/"},
-    {"name": "DeltaTok/DeltaWorld", "url": "https://deltatok.github.io/"},
-    {"name": "Fast-WAM", "url": "https://arxiv.org/abs/2603.16666"},
-    {"name": "Cosmos3-Nano-Policy-DROID card", "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID"},
-    {"name": "RoboLab project", "url": "https://research.nvidia.com/labs/srl/projects/robolab/"}
+    {
+      "name": "ImageWAM",
+      "url": "https://arxiv.org/pdf/2606.19531"
+    },
+    {
+      "name": "FoveatedDiffusion",
+      "url": "https://bchao1.github.io/foveated-diffusion/"
+    },
+    {
+      "name": "DeltaTok/DeltaWorld",
+      "url": "https://deltatok.github.io/"
+    },
+    {
+      "name": "Fast-WAM",
+      "url": "https://arxiv.org/abs/2603.16666"
+    },
+    {
+      "name": "Cosmos3-Nano-Policy-DROID card",
+      "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID"
+    },
+    {
+      "name": "RoboLab project",
+      "url": "https://research.nvidia.com/labs/srl/projects/robolab/"
+    }
   ]
 }

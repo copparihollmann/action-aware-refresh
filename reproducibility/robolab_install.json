@@ -1,0 +1,22 @@
+{
+  "isaac_extra": "isaac50",
+  "installed_utc": "2026-08-04T02:27:20Z",
+  "python_version": "3.11.15",
+  "isaac_sim_version": "5.0.0.0",
+  "isaac_lab_version": "2.2.0",
+  "torch_version": "2.7.0+cu128",
+  "openpi_client_version": "0.1.2",
+  "robolab_commit": "0aef241fb088ca21bb4ebd24448940ed56620d17",
+  "note": "isaacsim is not imported here \u2014 importing it initialises Omniverse Kit and requires EULA acceptance. Versions come from package metadata.",
+  "extra_packages": {
+    "openpi-client": {
+      "version": "0.1.2",
+      "why": "imported by policies/cosmos3/client.py but not a declared RoboLab dependency"
+    },
+    "structlog": {
+      "version": "26.1.0",
+      "why": "our scripts import action_refresh.logging (used by the ledger), and the oracle/gate analyses run in this venv because they need h5py. Pure Python, no compiled deps, so it cannot perturb the measured isaacsim/torch stack \u2014 verified after install.",
+      "installed_with": "uv pip install (NOT uv add: upstream pyproject/uv.lock stay clean)"
+    }
+  }
+}
