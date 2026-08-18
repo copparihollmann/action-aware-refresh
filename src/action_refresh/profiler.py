@@ -44,7 +44,15 @@ class StageTimer:
 
 @dataclass
 class CudaStageTimer:
-    """CUDA-event stage timer. Synchronize only inside `finalize()`."""
+    """CUDA-event stage timer. Synchronize only inside `finalize()`.
+
+    ``device`` is a **CUDA-visible** index (i.e. after ``CUDA_VISIBLE_DEVICES``
+    remapping), which is what ``torch.cuda.device()`` expects — so the default
+    of 0 means "the first GPU this process can see", not "physical GPU 0".
+    That is correct here, but do NOT reuse this number for NVML power
+    sampling: NVML ignores ``CUDA_VISIBLE_DEVICES``. See
+    ``action_refresh.energy.nvml_index_for_uuid``.
+    """
 
     device: int = 0
     _events: list[tuple[str, Any, Any]] = field(default_factory=list)

@@ -45,11 +45,25 @@ def have(binary: str) -> bool:
 
 
 def probe_blockers(env: dict) -> list[str]:
+    """Report what actually blocks us on THIS host.
+
+    Deliberately derives every statement from a probe rather than asserting
+    host facts: this file previously hardcoded "98 GB VRAM per GPU" and "one
+    Blackwell GPU … the other", which silently became false when the project
+    moved machines.
+    """
     b: list[str] = []
     if not have("nvidia-ctk"):
         b.append(
-            "no `nvidia-container-toolkit` — cannot expose GPUs to podman/docker "
-            "containers; must run natively via `uv`"
+            "no `nvidia-container-toolkit` — cannot expose GPUs to containers; "
+            "must run natively via `uv`"
+        )
+    elif not env.get("docker_usable"):
+        b.append(
+            "`nvidia-container-toolkit` present but the docker socket is not "
+            "usable by this uid (not in the `docker` group, and no rootless "
+            "prerequisites) — the upstream container path is unavailable. "
+            "Native `uv` installs need no root, so this is not fatal."
         )
     if not have("git-lfs"):
         b.append(
@@ -61,26 +75,54 @@ def probe_blockers(env: dict) -> list[str]:
             "no `nsys` (Nsight Systems) — rely on PyTorch profiler; user-local "
             "install possible if we need deeper kernel tracing"
         )
-    if not have("docker"):
-        b.append("no `docker` — using rootless `podman` instead when unavoidable")
-    if have("podman") and not env.get("subuid_configured"):
+    if not env.get("nvml_total_energy_supported", False):
         b.append(
-            "`subuid` not configured — podman rootless is in single-mapping mode; "
-            "some images may misbehave"
+            "NVML exposes no total-energy counter — energy must be integrated "
+            "from sampled power and labelled ESTIMATED"
         )
+
     procs = env.get("current_gpu_processes") or ""
     if procs.strip():
         n = len([ln for ln in procs.splitlines() if ln.strip()])
+        vram = env.get("gpu_memory_total_mib") or "unknown"
         b.append(
             f"{n} process(es) currently on the GPUs — measurement runs must wait "
-            "for a quiet window; correctness runs can proceed (98 GB VRAM per GPU)"
+            f"for a quiet window; correctness runs can proceed "
+            f"({vram} MiB VRAM per GPU)"
+        )
+
+    # CPU contention distorts every host-side stage (preprocessing,
+    # serialization, websocket round-trip, Isaac physics).
+    try:
+        load1 = os.getloadavg()[0]
+        ncpu = os.cpu_count() or 1
+        if load1 > 0.5 * ncpu:
+            b.append(
+                f"CPU is contended (1-min loadavg {load1:.0f} on {ncpu} cores) — "
+                "host-side timing stages will be perturbed; record loadavg with "
+                "every timed run and prefer a quiet window for final numbers"
+            )
+    except OSError:
+        pass
+
+    # Disk: the install budget is ~100 GB (checkpoint 33 GB + two torch
+    # environments + Isaac assets), and /scratch is shared.
+    free_gb = env.get("output_fs_free_gb")
+    if isinstance(free_gb, (int, float)) and free_gb < 150:
+        b.append(
+            f"only {free_gb:.0f} GB free on the output filesystem against a "
+            "~100 GB install budget on a shared volume — check `df` at every "
+            "install boundary and abort rather than filling it"
         )
     return b
 
 
 def gather() -> dict:
     env: dict = {
-        "timestamp_utc": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "timestamp_utc": dt.datetime.now(dt.timezone.utc)
+        .replace(microsecond=0, tzinfo=None)
+        .isoformat()
+        + "Z",
         "hostname": socket.gethostname(),
         "user": getpass.getuser(),
         "os": "",
@@ -107,15 +149,45 @@ def gather() -> dict:
     env["ram_human"] = run("free -h | awk '/Mem:/ {print $2}'")
     env["repo_fs"] = run(f"df -h {REPO_ROOT} | tail -1")
 
+    # Disk headroom on the filesystem we will actually write to, and CPU load.
+    # Both are contended on a shared host and both gate what we can run.
+    try:
+        st = os.statvfs(REPO_ROOT)
+        env["output_fs_free_gb"] = round(st.f_bavail * st.f_frsize / 1e9, 1)
+        env["output_fs_pct_used"] = round(
+            100.0 * (1.0 - st.f_bavail / st.f_blocks) if st.f_blocks else 0.0, 1
+        )
+    except OSError:
+        env["output_fs_free_gb"] = None
+        env["output_fs_pct_used"] = None
+    try:
+        env["loadavg_1_5_15"] = list(os.getloadavg())
+    except OSError:
+        env["loadavg_1_5_15"] = None
+    env["top_cpu_processes"] = run(
+        "ps -eo user,pcpu,etime,comm --sort=-pcpu --no-headers | head -8"
+    )
+
     # GPUs
     env["gpu_query_csv"] = run(
         "nvidia-smi --query-gpu=index,name,pci.bus_id,memory.total,memory.free,"
         "memory.used,compute_cap,driver_version,pstate --format=csv,noheader"
     )
     env["gpu_count"] = int(run("nvidia-smi -L | wc -l") or 0)
+    env["gpu_name"] = run("nvidia-smi --query-gpu=name --format=csv,noheader | head -1")
+    env["gpu_memory_total_mib"] = run(
+        "nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1"
+    )
+    env["gpu_compute_cap"] = run(
+        "nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -1"
+    )
+    env["gpu_uuids"] = run("nvidia-smi --query-gpu=index,uuid --format=csv,noheader")
+    env["gpu_topo_matrix"] = run("nvidia-smi topo -m 2>/dev/null | head -6")
     env["gpu_driver"] = run("nvidia-smi --query-gpu=driver_version --format=csv,noheader | head -1")
+    # The header line reads "Driver Version: X  CUDA Version: Y", so matching on
+    # the bare token "Version:" picks up both. Anchor on "CUDA Version:".
     env["cuda_runtime_max"] = run(
-        "nvidia-smi | awk '/CUDA Version:/ {for(i=1;i<=NF;i++) if($i==\"Version:\") print $(i+1); exit}'"
+        r"nvidia-smi | sed -n 's/.*CUDA Version: *\([0-9.]*\).*/\1/p' | head -1"
     )
     env["current_gpu_processes"] = run(
         "nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader"
@@ -139,8 +211,18 @@ def gather() -> dict:
         "uv python list --only-installed 2>/dev/null | awk '{print $1}' | sort -u"
     )
 
-    # Container
+    # Container. `docker --version` only proves the *client* exists; it says
+    # nothing about whether this uid may talk to the daemon socket. Probe that
+    # separately, or we repeat the earlier mistake of concluding "docker is
+    # available" from a client binary.
     env["docker_version"] = run("docker --version") if have("docker") else "MISSING"
+    env["docker_usable"] = bool(
+        have("docker") and run("docker info --format '{{.ServerVersion}}' 2>/dev/null")
+    )
+    env["docker_group_members"] = run("getent group docker | cut -d: -f4")
+    env["rootless_prereqs"] = bool(
+        Path("/usr/bin/newuidmap").exists() and Path("/usr/bin/newgidmap").exists()
+    )
     env["podman_version"] = run("podman --version") if have("podman") else "MISSING"
     env["nvidia_container_toolkit"] = (
         run("nvidia-ctk --version | head -1") if have("nvidia-ctk") else "MISSING"
@@ -182,15 +264,36 @@ def render_md(env: dict, blockers: list[str]) -> str:
     lines.append(f"- Kernel: `{env['kernel']}`")
     lines.append(f"- CPU: **{env['cpu_model']}** ({env['cpu_cores_logical']} logical cores)")
     lines.append(f"- RAM: **{env['ram_human']}**")
-    lines.append(f"- Repo filesystem: `{env['repo_fs']}`\n")
+    lines.append(f"- Repo filesystem: `{env['repo_fs']}`")
+    lines.append(
+        f"- Output filesystem free: **{env.get('output_fs_free_gb')} GB** "
+        f"({env.get('output_fs_pct_used')}% used) — install budget is ~100 GB"
+    )
+    lines.append(f"- Load average (1/5/15 min): `{env.get('loadavg_1_5_15')}`\n")
+
+    lines.append("### Top CPU consumers (contention risk for host-side timing)\n")
+    lines.append("```")
+    lines.append(env.get("top_cpu_processes") or "(none)")
+    lines.append("```\n")
 
     lines.append("## GPUs\n")
     lines.append(
         f"Count: **{env['gpu_count']}** — driver **{env['gpu_driver']}** — "
-        f"max CUDA runtime: **{env['cuda_runtime_max']}**\n"
+        f"max CUDA runtime: **{env['cuda_runtime_max']}** — "
+        f"compute capability **{env.get('gpu_compute_cap')}**\n"
     )
     lines.append("```")
     lines.append(env["gpu_query_csv"] or "(nvidia-smi unavailable)")
+    lines.append("```\n")
+
+    lines.append("### UUIDs (stable identity — indices renumber, UUIDs do not)\n")
+    lines.append("```")
+    lines.append(env.get("gpu_uuids") or "(unavailable)")
+    lines.append("```\n")
+
+    lines.append("### PCIe topology (place co-running services on separate switches)\n")
+    lines.append("```")
+    lines.append(env.get("gpu_topo_matrix") or "(unavailable)")
     lines.append("```\n")
 
     lines.append("### Current GPU occupants (contention risk for measurement)\n")
@@ -221,6 +324,11 @@ def render_md(env: dict, blockers: list[str]) -> str:
 
     lines.append("## Containers\n")
     lines.append(f"- docker      : {env['docker_version']}")
+    lines.append(
+        f"- docker usable by this uid : **{env.get('docker_usable')}** "
+        f"(group members: `{env.get('docker_group_members') or '(none)'}`, "
+        f"rootless prereqs: {env.get('rootless_prereqs')})"
+    )
     lines.append(f"- podman      : {env['podman_version']}")
     lines.append(f"- nvidia-ctk  : {env['nvidia_container_toolkit']}")
     lines.append(f"- CDI dirs    : {env['cdi_present']}")
@@ -239,11 +347,29 @@ def render_md(env: dict, blockers: list[str]) -> str:
         lines.append("")
 
     lines.append("## Selected deployment topology\n")
-    lines.append(
-        "**`single_host_multi_gpu`** — one Blackwell GPU pinned to Cosmos policy "
-        "server, the other to RoboLab/Isaac Sim via `CUDA_VISIBLE_DEVICES`. "
-        "See `configs/topology.yaml`.\n"
-    )
+    n = env.get("gpu_count") or 0
+    name = env.get("gpu_name") or "GPU"
+    vram = env.get("gpu_memory_total_mib") or "?"
+    if n >= 2:
+        lines.append(
+            f"**`single_host_multi_gpu`** — {n}× {name} ({vram} MiB each). One GPU "
+            "pinned to the Cosmos policy server, a second to RoboLab/Isaac Sim via "
+            "`CUDA_VISIBLE_DEVICES`; any remainder is spare capacity for later "
+            "parallel sweeps. Exact index/UUID assignment lives in "
+            "`configs/topology.yaml` — that file is authoritative, not this text.\n"
+        )
+    elif n == 1:
+        lines.append(
+            f"**`single_host_shared_gpu`** — only one {name} ({vram} MiB) is "
+            "present, so Cosmos and Isaac Sim must share it. Per spec §5 this is "
+            "only valid once memory measurements show both fit safely; measure "
+            "before assuming. See `configs/topology.yaml`.\n"
+        )
+    else:
+        lines.append(
+            "**BLOCKED** — no NVIDIA GPU detected. RoboLab requires one; finish "
+            "source checkout and non-GPU setup, then report the blocker.\n"
+        )
     return "\n".join(lines) + "\n"
 
 

@@ -30,7 +30,7 @@ uv run python -m action_refresh.analysis.profile_runner \
   --cosmos-host "$COSMOS_HOST" --cosmos-port "$COSMOS_PORT" \
   --warmup "$PROFILE_WARMUP" --iters "$PROFILE_ITERS" \
   --out-dir "$OUT_DIR" \
-  --configs B0,B1,B2,B3,B4
+  --configs B0,B1,B2_steps_1,B2_steps_2,B2_steps_3,B2_steps_4,B3
 
 uv run python -m action_refresh.analysis.compute_anatomy_report \
   --profile-dir "$OUT_DIR" \

@@ -18,6 +18,11 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
+# Never sit on a credential prompt. One of our sources is private and this host has
+# no key or credential helper, so without this a `git fetch` blocks forever waiting
+# for a username that no interactive terminal is going to supply.
+export GIT_TERMINAL_PROMPT=0
+
 mkdir -p third_party
 
 declare -A REPOS=(
@@ -56,6 +61,39 @@ for name in "${!REPOS[@]}"; do
     else
       git -C "$dst" checkout -b "$RESEARCH_BRANCH" "origin/$default_branch"
     fi
+  fi
+done
+
+# ---------------------------------------------------------------------------
+# Private sources: present-or-instruct, never cloned here.
+#
+# chooper1/Cosmos3-Efficient-Imagination is the group's own baseline and is a
+# PRIVATE repo. This script cannot clone it: firesim2 has no SSH key and no
+# credential helper, and the alternative — accepting a token into this process —
+# would put a credential somewhere the repo rules say it must never go. So the
+# clone is the operator's, with their own credentials, and this script's job is to
+# say so exactly once rather than to fail obscurely later.
+#
+# `update_manifest.py` discovers it and records URL/branch/SHA once it exists.
+# ---------------------------------------------------------------------------
+declare -A MANUAL_REPOS=(
+  [cosmos3-efficient-imagination]="git@github.com:chooper1/Cosmos3-Efficient-Imagination.git"
+)
+
+for name in "${!MANUAL_REPOS[@]}"; do
+  dst="third_party/$name"
+  if [ -d "$dst/.git" ]; then
+    echo "==> $name (private, manual)"
+    echo "    present — fetching"
+    if ! git -C "$dst" fetch --all --prune; then
+      echo "    warning: fetch failed (no credentials on this host?) — using the" >&2
+      echo "             checked-out state as-is. The manifest records its SHA." >&2
+    fi
+  else
+    echo "==> $name (private, manual) — MISSING"
+    echo "    Clone it yourself; this script will not handle credentials:"
+    echo "      git clone ${MANUAL_REPOS[$name]} $dst"
+    echo "    (needs an SSH key on this host registered at github.com/settings/keys)"
   fi
 done
 

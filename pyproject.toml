@@ -16,7 +16,11 @@ dependencies = [
     "pyarrow>=17.0",
     "pandas>=2.2",
     "orjson>=3.10",
-    "pynvml>=11.5",
+    # NVML bindings. Use nvidia-ml-py (the maintained package) rather than the
+    # `pynvml` shim, which emits a FutureWarning on import. Both expose the
+    # module as `pynvml`; this driver has no total-energy counter, so power
+    # integration in action_refresh.energy is the only route to energy.
+    "nvidia-ml-py>=12.535",
     "matplotlib>=3.9",
     "seaborn>=0.13",
     "scipy>=1.13",

@@ -145,10 +145,17 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     run_id = new_run_id("profile")
 
-    for name in [s.strip() for s in args.configs.split(",")]:
-        if name not in B_CONFIGS:
-            logger.error("unknown_config", name=name)
-            continue
+    requested = [s.strip() for s in args.configs.split(",")]
+    unknown = [n for n in requested if n not in B_CONFIGS]
+    if unknown:
+        # Previously this logged an error and `continue`d, so asking for "B2"
+        # (which is not a key — the sweep is B2_steps_1..4) silently profiled
+        # nothing and still exited 0. A missing config must fail the run.
+        raise SystemExit(
+            f"unknown config(s) {unknown}; known configs: {sorted(B_CONFIGS)}"
+        )
+
+    for name in requested:
         run_config(name, B_CONFIGS[name], args.cosmos_host, args.cosmos_port,
                    args.warmup, args.iters, out_dir, run_id)
     logger.info("profile_runner_done", out_dir=str(out_dir))

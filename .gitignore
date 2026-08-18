@@ -49,6 +49,12 @@ results/raw/**/*.npz
 results/profiles/**/*.qdrep
 results/profiles/**/*.nsys-rep
 results/profiles/**/*.json.gz
+# PyTorch chrome traces are tens of MB each — the M2 sweep alone produced 432 MB.
+# The *.summary.json and *.jsonl files beside them are small and ARE tracked;
+# those carry every number the reports are built from, so dropping the traces
+# costs no reproducibility. Trace paths are recorded in compute_anatomy.md, and
+# `make profile` regenerates them.
+results/profiles/**/*.chrome_trace.json
 
 # third-party checkouts — tracked via source_manifest.json, never re-committed here
 third_party/*/
@@ -69,3 +75,16 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# git worktrees used for A/B-ing our patches against unpatched upstream
+# (scripts/validate_pg_backend.py). Regenerable: `git -C third_party/<repo> worktree add`.
+.worktrees/
+
+# ---------------------------------------------------------------------------
+# Material belonging to the group's private, unlicensed efficiency repo.
+# `origin` is a PUBLIC GitHub repo, so this must never be pushed: it is their
+# unpublished code and results, not ours to publish. The repo itself stays
+# registered in reproducibility/source_manifest.json (name + URL + SHA) so it
+# can be re-cloned by anyone who has been granted access — see
+# private/README.md and scripts/bootstrap_new_machine.sh.
+private/

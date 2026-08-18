@@ -42,6 +42,74 @@ cache_physical_aware:   { parent: baseline_full }
 spatial_random:         { parent: baseline_full }
 spatial_oracle:         { parent: baseline_full }
 keyframe_fixed_refresh: { parent: baseline_full }
-keyframe_oracle_refresh:{ parent: baseline_full }
+keyframe_oracle_refresh: { parent: baseline_full }
 keyframe_event_refresh: { parent: baseline_full }
 combined_best:          { parent: baseline_full }
+
+# — Experiment E2b: shorten the imagined horizon (spec §11.5 / §11.8) —
+# 85.3% of the 3,188-token sequence is imagined future video (8 of 9 latent frames), and
+# the model is matmul-bound, so token count is very nearly cost. Offline on 88 real
+# requests these deviate 1.14-1.40x the model's own seed-to-seed sampling noise, with
+# gripper flips inside the range the baseline already exhibits between seeds — which is
+# what justified spending closed-loop episodes on them.
+# Frame counts keep the action stream aligned AND the conditioning caption
+# byte-identical to the baseline's "2.0 seconds long"; see cosmos-framework-0004.
+baseline_vision_frames_9:
+  parent: baseline_full
+  hypothesis: >
+    Imagining 3 latent frames instead of 9 (1,020 vs 3,060 vision tokens) preserves task
+    success. Tests whether the action needs a long imagined rollout or only a coherent one.
+  server_args: { vision_frames: 9 }
+  metric: task_success_vs_normalized_total_compute
+  stop_criterion: ">2 absolute success points lost on the screened set"
+
+baseline_vision_frames_5:
+  parent: baseline_full
+  hypothesis: >
+    As above but 2 latent frames (680 vision tokens) — the most aggressive horizon that
+    keeps both the action alignment and the caption unchanged.
+  server_args: { vision_frames: 5 }
+  metric: task_success_vs_normalized_total_compute
+  stop_criterion: ">2 absolute success points lost on the screened set"
+
+# — Prompt-format correction (setup bug, not a method) —
+# The server cannot load the checkpoint's training config from an HF repo id, so it falls
+# back to plain-text prompts. The training recipe for THIS checkpoint
+# (action_policy_droid_nano.py:219) uses format_prompt_as_json=True, so every request we
+# served before this entry had off-distribution conditioning text — the baseline included.
+# This is the corrected baseline; if it scores materially higher, all earlier numbers were
+# measured against a handicapped reference and must be re-run.
+baseline_full_promptjson:
+  parent: baseline_full
+  hypothesis: >
+    The official baseline, served with the prompt format it was trained with. Tests whether
+    our 33-39% baseline success is a setup artefact rather than the model's true ability.
+  server_args: { format_prompt_as_json: true }
+  metric: task_success_vs_normalized_total_compute
+  stop_criterion: "reference — replaces baseline_full if materially better"
+
+baseline_vision_frames_9_promptjson:
+  parent: baseline_vision_frames_9
+  hypothesis: >
+    Re-test the one statistically significant result (0/9, p=0.012) under the prompt format
+    the checkpoint was trained with. If the 0/9 survives, the "imagination is the plan"
+    conclusion holds; if it lifts materially, that conclusion was confounded by the setup bug.
+  server_args: { format_prompt_as_json: true, vision_frames: 9 }
+  metric: task_success_vs_normalized_total_compute
+  stop_criterion: "diagnostic re-measurement, not a candidate method"
+
+# — The closest reproduction of the published baseline we can run —
+# Matches policies/cosmos3/README.md except for guardrails, which need approved access to
+# the gated nvidia/Cosmos-Guardrail1. --num-envs 10 is how the leaderboard's 10
+# episodes/task (1200/120) is obtained, and runner.py explicitly prefers it over
+# --num-runs. Prompt format stays at the DOCUMENTED default (plain text): the official
+# server command passes no --checkpoint-path, so it resolves the HF repo id and hits the
+# same training-config fallback we do.
+baseline_official:
+  parent: baseline_full
+  hypothesis: >
+    Closest runnable reproduction of the published 36.8% RoboLab-120 result: official
+    defaults with 10 parallel envs, giving 10 episodes per task in one Isaac instance.
+  client_args: { num_envs: 10 }
+  metric: task_success_vs_normalized_total_compute
+  stop_criterion: "reference — the baseline all methods should be compared against"

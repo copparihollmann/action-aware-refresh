@@ -2,7 +2,8 @@
 """Inspect the checked-out Cosmos + RoboLab source and write docs/baseline_contract.md.
 
 Reads:
-  third_party/cosmos-framework/cosmos_framework/scripts/action_policy_server_robolab.py
+  the selected substrate's policy-server module (see configs/substrates.yaml;
+  `COSMOS_SUBSTRATE=efficient_imagination` derives the contract for the fork instead)
   third_party/RoboLab/policies/cosmos3/run.py
   (optionally) a locally cached Cosmos3-Nano-Policy-DROID config.json under HF_HOME
 
@@ -24,11 +25,25 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SERVER_PY = REPO_ROOT / "third_party" / "cosmos-framework" / "cosmos_framework" / "scripts" / "action_policy_server_robolab.py"
+sys.path.insert(0, str(REPO_ROOT / "src"))
+
+from action_refresh.config import ResolvedSubstrate, resolve_substrate  # noqa: E402
+
 CLIENT_PY = REPO_ROOT / "third_party" / "RoboLab" / "policies" / "cosmos3" / "run.py"
+
+
+def _substrate() -> ResolvedSubstrate:
+    """The tree whose contract we are deriving.
+
+    `require_venv=False`: this script only reads source text, so it is useful on a
+    freshly cloned substrate before anything is installed — which is exactly when you
+    want to know whether the fork's server contract differs from upstream's.
+    """
+    return resolve_substrate(repo_root=REPO_ROOT, require_venv=False)
 
 
 def _read(p: Path) -> str:
@@ -40,7 +55,7 @@ def _find(rx: str, text: str) -> str | None:
     return m.group(1).strip() if m else None
 
 
-def inspect_server(text: str) -> dict[str, object]:
+def inspect_server(text: str, server_py: Path) -> dict[str, object]:
     return {
         "port_default": _find(r"port[^=]*=[^)\d]*(\d+)", text) or _find(r'--port[^,)]*default\s*=\s*(\d+)', text),
         "denoising_steps_default": _find(r"denois.*step[^=]*=\s*(\d+)", text.lower())
@@ -49,7 +64,7 @@ def inspect_server(text: str) -> dict[str, object]:
         "action_chunk_default": _find(r"chunk[^=]*=\s*(\d+)", text.lower()),
         "returns_action": "samples['action']" in text or 'samples["action"]' in text,
         "returns_vision": "samples['vision']" in text or 'samples["vision"]' in text,
-        "source_file": str(SERVER_PY.relative_to(REPO_ROOT)),
+        "source_file": str(server_py.relative_to(REPO_ROOT)),
     }
 
 
@@ -81,18 +96,25 @@ def try_read_hf_config() -> dict[str, object]:
     return {"hf_config_path": None}
 
 
-def render(server: dict, client: dict, hf: dict) -> str:
+def render(server: dict, client: dict, hf: dict, sub: ResolvedSubstrate) -> str:
     def cell(v: object) -> str:
         return f"`{v}`" if v not in (None, "unknown", "UNKNOWN") else "**UNKNOWN — inspect manually**"
 
     def dump(d: dict, source_key: str) -> str:
         return "\n".join(f"- **{k}**: {cell(v)}" for k, v in d.items() if k != source_key)
 
+    dirty = " **(DIRTY TREE)**" if sub.dirty else ""
     return f"""# Baseline contract
 
 Derived from checked-out source. Every value here must be *observed*, not
 assumed. Anything marked UNKNOWN needs manual inspection before we run
 the baseline.
+
+**Substrate**: `{sub.name}` — `{sub.source_name}` @ `{(sub.commit or "unknown")[:12]}`{dirty}
+
+Two substrates exist and their server contracts need not agree, so this document
+describes only the one named above. Regenerate with `COSMOS_SUBSTRATE=...` to derive
+another; the differences are the substrate audit.
 
 ## Server (`{server.get('source_file')}`)
 {dump(server, 'source_file')}
@@ -118,11 +140,12 @@ def main() -> int:
     ap.add_argument("--out", default=str(REPO_ROOT / "docs" / "baseline_contract.md"))
     args = ap.parse_args()
 
-    server = inspect_server(_read(SERVER_PY))
+    sub = _substrate()
+    server = inspect_server(_read(sub.server_file), sub.server_file)
     client = inspect_client(_read(CLIENT_PY))
     hf = try_read_hf_config()
-    Path(args.out).write_text(render(server, client, hf))
-    print(f"wrote {args.out}")
+    Path(args.out).write_text(render(server, client, hf, sub))
+    print(f"wrote {args.out} (substrate={sub.name} @ {(sub.commit or '')[:12]})")
     return 0
 
 

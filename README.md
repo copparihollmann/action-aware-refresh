@@ -15,14 +15,19 @@ Current milestone: **M0–M2** (source checkout, environment audit, baseline
 smoke, compute anatomy). Later milestones require explicit user checkpoints
 and GPU-hour approval.
 
-## Prerequisites (this machine)
+## Prerequisites (this machine: `firesim2`)
 
-- RHEL 9.7, 2× NVIDIA RTX PRO 6000 Blackwell (98 GB VRAM), driver 580.
-- **No sudo, no docker, no NVIDIA container toolkit.** All installs are
-  native, user-space, via `uv`.
-- Python 3.11 via `uv`. HF token as env var only (never on disk).
-- Machine is shared with other users — measurement runs must wait for a
-  quiet window (see `docs/environment_report.md`).
+- Ubuntu 24.04.4, **4× NVIDIA L40S** (45.0 GiB each, SM 8.9), driver 580.126.18,
+  CUDA 13.0. GPU 0 → Cosmos server, GPU 2 → RoboLab/Isaac, GPUs 1/3 spare.
+- **No sudo.** Docker and `nvidia-container-toolkit` exist on the host but this
+  uid is not in the `docker` group, so all installs are native, user-space, via
+  `uv` — which needs no root anyway. `ffmpeg` (RoboLab's only apt prerequisite)
+  is already present.
+- Python 3.11 via `uv`. HF token as env var only (never on disk) — though the
+  Cosmos3-Nano checkpoint is not gated, so no token is required.
+- Shared machine: the **GPUs are idle**, but CPU and `/scratch` are contended.
+  Record `loadavg` with every timed run and watch `df -h /scratch` (≈134 GB free
+  against a ~100 GB install budget). See `docs/environment_report.md`.
 
 ## Workflow
 
@@ -35,6 +40,13 @@ make test       # unit tests for metrics/profiler/energy
 make smoke      # server /healthz + one RoboLab task
 make profile    # compute anatomy B0–B4
 ```
+
+## Picking this up cold
+
+Start with **`docs/handover.md`** — current state, live blockers (including host conditions
+that will silently ruin a run), what is sanctioned to do next, and the gotchas that have
+already cost time. Then `docs/decision_log.md` (last sections = current direction) and the
+per-session reports under `results/reports/`.
 
 ## Directory map
 

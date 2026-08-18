@@ -13,6 +13,9 @@ env:
   hf_token_env: HF_TOKEN
 
 runtime:
-  # Native installation because no NVIDIA container toolkit is available.
+  # Native installation. Set `container: true` only if you can actually reach a
+  # container runtime *and* expose GPUs to it — check both, not just that a
+  # `docker` client binary exists on PATH (`docker info` must succeed for your
+  # uid). Native `uv` installs need no root, so this is rarely worth the trouble.
   container: false
   python: "3.11"

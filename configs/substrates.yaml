@@ -1,0 +1,42 @@
+# configs/substrates.yaml — which Cosmos source tree serves the policy.
+#
+# Two substrates now exist, and every number we publish has to name the one that
+# produced it. The launchers used to spell `third_party/cosmos-framework` out in
+# four separate places; they now resolve it once through
+# `action_refresh.config.resolve_substrate` (see `resolve_substrate` in
+# scripts/lib/common.sh for the shell side).
+#
+# Selection precedence: explicit argument > $COSMOS_SUBSTRATE > `default` below.
+# There is no fallback to "whatever is on disk" — running the fork while a result
+# claims upstream would silently invalidate the comparison.
+#
+# `local_path` deliberately does NOT appear here. Each substrate names a source in
+# reproducibility/source_manifest.json instead, so its path arrives attached to the
+# commit SHA and dirty flag that were recorded for it.
+
+# Upstream stays the default: `results/reports/baseline_official.json`
+# (28/90 = 31.1%, 5.95 GPU-h) was measured on it, and it remains the arm every
+# substrate change is checked against.
+default: upstream
+
+substrates:
+  upstream:
+    source_name: cosmos-framework
+    server_module: cosmos_framework.scripts.action_policy_server_robolab
+    notes: >
+      NVIDIA upstream cosmos-framework, plus our research branch
+      (research/action-aware-refresh). The reference substrate.
+
+  # There is deliberately no `efficient_imagination` entry.
+  #
+  # It was written here on the assumption that chooper1/Cosmos3-Efficient-Imagination is
+  # a fork of cosmos-framework. The 2026-08-10 audit found it is not: it is a standalone
+  # repo that patches cosmos-framework from the outside (framework_patches/*.patch) and
+  # monkeypatches its sampler (sampler/patch.py). It contains no `cosmos_framework`
+  # package, so it cannot be a substrate and the entry could only ever have failed.
+  # See private/upstream_fork_audit.md.
+  #
+  # When a second substrate is actually needed it will be a separate clone of
+  # cosmos-framework with their 02/03 patches applied (03 of 4 rebase cleanly; 01 needs a
+  # module vendored from a third repo we do not have) — registered as its own source, e.g.
+  # `cosmos-framework-cei`, so each substrate keeps mapping to exactly one recorded tree.
